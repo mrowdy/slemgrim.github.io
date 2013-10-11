@@ -3,6 +3,8 @@ define(function() {
 
     return function(x, y){
 
+        var sn, cs, x, y, d;
+
         if(typeof x === 'object'){
             this.x = x.x || 0;
             this.y = x.y || 0;
@@ -70,7 +72,7 @@ define(function() {
         };
 
         this.perp = function(){
-            var x = this.x;
+            x = this.x;
             this.x = this.y;
             this.y = -x;
             return this;
@@ -83,7 +85,7 @@ define(function() {
         };
 
         this.nor = function(){
-            var d = this.len();
+            d = this.len();
             if(d > 0) {
                 this.x = this.x / d;
                 this.y = this.y / d;
@@ -112,8 +114,8 @@ define(function() {
         };
 
         this.reflect = function(axis){
-            var x = this.x;
-            var y = this.y;
+            x = this.x;
+            y = this.y;
             this.project(axis).scale(2);
             this.x -= x;
             this.y -= y;
@@ -121,8 +123,8 @@ define(function() {
         };
 
         this.reflectN = function(axis){
-            var x = this.x;
-            var y = this.y;
+            x = this.x;
+            y = this.y;
             this.projectN(axis).scale(2);
             this.x -= x;
             this.y -= y;
@@ -160,16 +162,27 @@ define(function() {
         };
 
         this.rotate = function(rad){
-            var sn = Math.sin(rad);
-            var cs = Math.cos(rad);
+            sn = Math.sin(rad);
+            cs = Math.cos(rad);
 
-            var px = this.x * cs - this.y * sn;
-            var py = this.x * sn + this.y * cs;
+            x = this.x * cs - this.y * sn;
+            y = this.x * sn + this.y * cs;
 
-            this.x = px;
-            this.y = py;
+            this.x = x;
+            this.y = y;
 
             return this;
         };
+
+        this.rotateAround = function(v, rad){
+            sn = Math.sin(rad);
+            cs = Math.cos(rad);
+            x = this.x - v.x;
+            y = this.y - v.y;
+
+            this.x = x*cs + y*sn + v.x;
+            this.y = -x*sn + y*cs + v.y;
+            return this;
+        }
     };
 });

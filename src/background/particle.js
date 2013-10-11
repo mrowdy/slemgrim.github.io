@@ -1,31 +1,49 @@
 define(['app/core', 'background/vector2', 'background/spring'], function(core, Vector2, Rectangle, Spring) {
     'use strict';
 
-    return function(x, y, radius){
+    return function(x, y, radius, element){
 
-        this.TYPE = 'SNAKE';
+        this.TYPE = 'PARTICLE';
         this.radius = radius;
+        this.element = element;
 
         this.position = new Vector2(x, y);
         this.velocity = new Vector2(0, 0);
 
-        this.speed = 3;
-        this.growth = 1.001;
+        this.ttl = false;
+        this.speed = 0.2;
         this.friction = 0.000;
-        this.affectedByGravity = false;
+        this.dead = false;
+        this.age = 0;
+        this.canDie = false;
+        this.color = {
+            r: 0,
+            g: 138,
+            b: 25
+        }
+
+        this.background = false;
 
         var acceleration = new Vector2();
 
         this.update = function(deltaTime){
-            this.radius /= this.growth;
-            if(this.radius <= 1){
-                this.radius = radius;
-            }
-
             acceleration = acceleration.copyFrom(this.velocity);
             acceleration.mul(this.speed * deltaTime);
             this.position.add(acceleration);
             this.velocity.mul( 1 - this.friction);
+
+            if(this.element){
+                this.element.style.top = this.position.y - this.radius/2 + 'px';
+                this.element.style.left = this.position.x - this.radius/2 + 'px';
+            }
+
+
+            if(this.canDie !== false && this.dead === false){
+                this.age += deltaTime;
+                if(this.age >= this.ttl){
+                    this.dead = true;
+                }
+            }
         };
 
         this.addForce = function(v){

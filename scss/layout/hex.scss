@@ -1,0 +1,75 @@
+.hex {
+  position: fixed;
+  top: auto;
+  left: auto;
+
+  a {
+    display: block;
+    color: transparent;
+    text-align: center;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+
+    @include transition(none);
+
+    &:hover {
+      background-color: transparent;
+      color: transparent;
+    }
+
+    &:before {
+      content: '';
+      background-image: url(../images/slemgrim_icons.png);
+      display: block;
+      width: 65px;
+      height: 65px;
+    }
+  }
+
+  &#hex-twitter a:before {
+    background-position: -130px 0px;
+    margin: 8px 0 0 -2px;
+  }
+
+  &#hex-github a:before {
+    background-position: -65px  0px;
+    margin: 6px 0 0 -3px;
+  }
+
+  &#hex-email a:before {
+    background-position: -195px  0px;
+    margin-top: 11px;
+  }
+
+  &#hex-xing a:before {
+    margin: 0 -3px 0 0;
+  }
+
+
+  &#hex-twitter a:hover:before {
+    background-position: -130px -65px;
+  }
+
+  &#hex-github a:hover:before {
+    background-position: -65px  -65px;
+  }
+
+  &#hex-email a:hover:before {
+    background-position: -195px  -65px;
+  }
+
+  &#hex-xing a:hover:before {
+    background-position: 05px  -65px;
+  }
+
+}
+
+#hex-center {
+  color: $darkOne;
+  text-shadow: -2px 2px #000000;;
+  font-size: $baseFontSize + 10px;
+  text-align: center;
+  font-weight: bold;
+  padding: 25px 5px;
+}

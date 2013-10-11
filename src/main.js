@@ -2,7 +2,7 @@ require.config({
     baseUrl: 'src'
 });
 
-require(["app/core", "background/canvas-handler", "background/background"], function(core, CanvasHandler, Background) {
+require(["app/core", "background/canvas-handler", "background/background", 'email-crypt'], function(core, CanvasHandler, Background, EmailCrypt) {
     'use strict';
 
     var $background = core.dom.el('#background'),
@@ -13,6 +13,10 @@ require(["app/core", "background/canvas-handler", "background/background"], func
         background = new Background($background);
         canvasHandler = new CanvasHandler($background);
         canvasHandler.registerListener(background);
+
+        var $email = core.dom.el('#hex-email a');
+        new EmailCrypt($email);
+
     };
 
     init();

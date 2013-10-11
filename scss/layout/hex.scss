@@ -1,7 +1,15 @@
 .hex {
-  position: fixed;
-  top: auto;
-  left: auto;
+
+  width: 120px;
+  height: 120px;
+  float: left;
+
+  &.animated {
+    position: fixed;
+    top: auto;
+    left: auto;
+    float: none;
+  }
 
   a {
     display: block;

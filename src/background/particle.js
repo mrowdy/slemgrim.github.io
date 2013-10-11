@@ -22,6 +22,10 @@ define(['app/core', 'background/vector2', 'background/spring'], function(core, V
             b: 25
         }
 
+        if(element){
+            core.classlist.add(element, 'animated');
+        }
+
         this.background = false;
 
         var acceleration = new Vector2();

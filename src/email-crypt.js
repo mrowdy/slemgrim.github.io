@@ -7,13 +7,13 @@ define(['app/core'], function(core){
 
         var init = function(){
             clickBindings();
-        }
+        };
 
         var clickBindings = function(){
             if($el){
                 core.event.add($el, 'click', onClick);
             }
-        }
+        };
 
         var onClick = function(evt){
             if(encrypted === false){
@@ -21,7 +21,7 @@ define(['app/core'], function(core){
                 this.setAttribute("href", email);
                 encrypted = true;
             }
-        }
+        };
 
         var encrypt = function(value){
             var n = 0;
@@ -36,7 +36,7 @@ define(['app/core'], function(core){
                 r += String.fromCharCode( n - 1 );
             }
             return r;
-        }
+        };
 
         init();
     };

@@ -64,7 +64,7 @@ define(function() {
 
                 context.translate(particle.position.x * -1, particle.position.y * -1);
             }
-        }
+        };
 
         var drawHexagon = function(position, radius, color, shadow){
             context.fillStyle = color;
@@ -79,7 +79,7 @@ define(function() {
 
             context.fill();
             context.closePath();
-        }
+        };
 
         init();
     };

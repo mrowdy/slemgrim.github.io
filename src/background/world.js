@@ -60,17 +60,19 @@ define(
                     r: 200,
                     g: 0,
                     b: 0
-                }
+                };
+
                 this.particles[1].color = {
                     r: 200,
                     g: 0,
                     b: 0
-                }
+                };
+
                 this.particles[2].color = {
                     r: 200,
                     g: 0,
                     b: 0
-                }
+                };
 
                 for(i = 0; i < this.items.length; i++){
                     item = this.items[i];
@@ -78,7 +80,7 @@ define(
                         r: 42,
                         g: 42,
                         b: 42
-                    }
+                    };
 
                     if(item === center){
                         continue;
@@ -88,7 +90,7 @@ define(
                         r: 56,
                         g: 56,
                         b: 56
-                    }
+                    };
                 }
             };
 
@@ -99,7 +101,7 @@ define(
                 item.ttl = Math.random() * 500;
                 item.canDie = true;
                 instance.particles.push(item);
-            }
+            };
 
             var reuseParticle = function(particle){
                 particle.position.reset(instance.size.x / 2, instance.size.y / 2);
@@ -109,15 +111,15 @@ define(
                 particle.age = 0;
                 particle.ttl = Math.random() * 500;
                 particle.dead = false;
-            }
+            };
 
             this.update = function(deltaTime){
-                for(var i = 0; i < this.items.length; i++){
+                for(i = 0; i < this.items.length; i++){
                     item = this.items[i];
                     item.update(deltaTime);
                 }
 
-                for(var i = 0; i < this.particles.length; i++){
+                for(i = 0; i < this.particles.length; i++){
                     item = this.particles[i];
                     if(item.dead === true){
                         reuseParticle(item);

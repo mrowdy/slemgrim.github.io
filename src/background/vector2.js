@@ -3,7 +3,7 @@ define(function() {
 
     return function(x, y){
 
-        var sn, cs, x, y, d;
+        var sn, cs, d;
 
         if(typeof x === 'object'){
             this.x = x.x || 0;
@@ -183,6 +183,6 @@ define(function() {
             this.x = x*cs + y*sn + v.x;
             this.y = -x*sn + y*cs + v.y;
             return this;
-        }
+        };
     };
 });

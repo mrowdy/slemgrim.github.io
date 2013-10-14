@@ -1,7 +1,7 @@
 define(['app/core', 'background/vector2', 'background/spring'], function(core, Vector2, Rectangle, Spring) {
     'use strict';
 
-    return function(x, y, radius, element){
+    return function(x, y, radius, element, rotationSpeed){
 
         this.TYPE = 'PARTICLE';
         this.radius = radius;
@@ -9,6 +9,7 @@ define(['app/core', 'background/vector2', 'background/spring'], function(core, V
 
         this.position = new Vector2(x, y);
         this.velocity = new Vector2(0, 0);
+        this.rotationSpeed = rotationSpeed || 0;
 
         this.ttl = false;
         this.speed = 0.2;
@@ -20,7 +21,7 @@ define(['app/core', 'background/vector2', 'background/spring'], function(core, V
             r: 0,
             g: 138,
             b: 25
-        }
+        };
 
         if(element){
             core.classlist.add(element, 'animated');

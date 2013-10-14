@@ -93,7 +93,7 @@ define(
             };
 
             var createParticle = function(){
-                item = new Particle(instance.size.x / 2, instance.size.y / 2, Math.random() * 30);
+                item = new Particle(instance.size.x / 2, instance.size.y / 2, Math.random() * 30, false, Math.random() * -3);
                 item.velocity.x = (Math.random() * 20) - 10;
                 item.velocity.y = (Math.random() * 20) - 10;
                 item.ttl = Math.random() * 500;
@@ -123,6 +123,8 @@ define(
                         reuseParticle(item);
                         continue;
                     }
+
+                    item.position.rotateAround(center.position, item.rotationSpeed *deltaTime * (Math.PI/180));
                     item.update(deltaTime);
                 }
 

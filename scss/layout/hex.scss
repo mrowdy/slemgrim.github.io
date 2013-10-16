@@ -50,10 +50,21 @@
     margin-top: 11px;
   }
 
+  &#hex-codepen a:before {
+    background-position: -324px  0px;
+    margin-top: 1px;
+    margin-left: -4px;
+  }
+
+  &#hex-gplus a:before {
+    background-position: -260px  0px;
+    margin-top: 3px;
+    margin-left: 1px;
+  }
+
   &#hex-xing a:before {
     margin: 0 -3px 0 0;
   }
-
 
   &#hex-twitter a:hover:before {
     background-position: -130px -65px;
@@ -69,6 +80,14 @@
 
   &#hex-xing a:hover:before {
     background-position: 05px  -65px;
+  }
+
+  &#hex-codepen a:hover:before {
+    background-position: -324px  -65px;
+  }
+
+  &#hex-gplus a:hover:before {
+    background-position: -260px  -65px;
   }
 
 }

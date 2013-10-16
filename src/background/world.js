@@ -23,6 +23,8 @@ define(
                 twitter,
                 xing,
                 email,
+                codepen,
+                gplus,
                 rot = 0.8,
                 wait = false,
                 timeToWait = 30;
@@ -35,22 +37,30 @@ define(
                 email = new Particle(this.size.x / 2, this.size.y / 2, 100, core.dom.el('#hex-email'));
                 twitter = new Particle(this.size.x / 2, this.size.y / 2, 100, core.dom.el('#hex-twitter'));
                 xing = new Particle(this.size.x / 2, this.size.y / 2, 100, core.dom.el('#hex-xing'));
+                codepen = new Particle(this.size.x / 2, this.size.y / 2, 100, core.dom.el('#hex-codepen'));
+                gplus = new Particle(this.size.x / 2, this.size.y / 2, 100, core.dom.el('#hex-gplus'));
 
                 github.position.y += 210;
                 xing.position.y += 210;
                 email.position.y += 210;
                 twitter.position.y += 210;
+                codepen.position.y += 210;
+                gplus.position.y += 210;
 
                 github.position.rotateAround(center.position, 360/6 * (Math.PI/180));
                 xing.position.rotateAround(center.position, 360/6*2 * (Math.PI/180));
                 twitter.position.rotateAround(center.position, 360/6*4 * (Math.PI/180));
                 email.position.rotateAround(center.position, 360/6*5 * (Math.PI/180));
+                codepen.position.rotateAround(center.position, 360/6*6 * (Math.PI/180));
+                gplus.position.rotateAround(center.position, 360/6*3 * (Math.PI/180));
 
                 this.items.push(center);
                 this.items.push(github);
                 this.items.push(email);
                 this.items.push(twitter);
                 this.items.push(xing);
+                this.items.push(codepen);
+                this.items.push(gplus);
 
                 for(i = 0; i < 100; i++){
                     createParticle();
@@ -137,6 +147,8 @@ define(
                     xing.position.rotateAround(center.position, rot*deltaTime * (Math.PI/180));
                     email.position.rotateAround(center.position, rot*deltaTime * (Math.PI/180));
                     github.position.rotateAround(center.position, rot*deltaTime * (Math.PI/180));
+                    codepen.position.rotateAround(center.position, rot*deltaTime * (Math.PI/180));
+                    gplus.position.rotateAround(center.position, rot*deltaTime * (Math.PI/180));
                 } else {
                     if(wait === false){
                         wait = timeToWait;

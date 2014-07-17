@@ -1,0 +1,36 @@
+#container {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+
+    background-color: $color-b-2;
+    font-family: $font-base;
+    font-size: $font-size-base;
+
+    &.init {
+        -webkit-animation: anim-container .8s;
+        height: 100%;
+        top: 0%;
+    }
+}
+
+@-webkit-keyframes anim-container {
+    0% {
+        top: 50%;
+        height: 20%;
+        @include transform(translateX(100%));
+    }
+    50% {
+        top: 50%;
+        height: 20%;
+    }
+    100% {
+        top: 0%;
+        height: 100%;
+        @include transform(translateX(0%));
+
+    }
+}

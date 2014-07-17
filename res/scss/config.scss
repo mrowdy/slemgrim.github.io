@@ -1,16 +1,28 @@
 /* Base Color */
 
-$color0: #ffffff;
-$color1: #263238;
-$color2: #eceff1;
-$color3: #cfd8dc;
+/* Background Colors */
 
-/* Colors usage */
+$color-b-1: #ffffff;
+$color-b-2: #37474f;
 
-$color-background: $color0;
-$color-text: $color1;
+/* Primary Colors */
+$color-p-1: #a3e9a4;
+$color-p-2: #259b24;
+$color-p-3: #0a7e07;
 
-$color-border: $color3;
+/* Accent Colors */
+$color-a-1: #f8bbd0;
+$color-a-2: #f48fb1;
+$color-a-3: #ec407a;
+$color-a-f: #ffffff;
+
+$color-background: $color-b-2;
+$color-background-card: $color-b-1;
 
 /* Dimensions */
-$max-width: 900px;
+$width-max: 900px;
+
+/* Fonts */
+$font-base: 'Roboto', sans-serif;
+
+$font-size-base: 16px;

@@ -1,12 +1,18 @@
 import 'dart:html';
+import 'dart:async';
 import 'package:slemgrim.com/slemgrim.dart';
 
-main(){
-    Element contact = querySelector('.contact');
-    Element contactButton = querySelector('.bContact');
+Element container = querySelector('#container');
+Element sidebar = querySelector('.sidebar');
 
-    if(contact != null){
-        Card contactCard = new Card(contact);
-        contactButton.onClick.listen((_) => contactCard.open());
-    }
+main(){
+
+    container.classes.add('init');
+
+    new Future.delayed(new Duration(milliseconds: 500)).then(initSidebar);
+}
+
+void initSidebar(Future future){
+    sidebar.classes.add('init');
+
 }

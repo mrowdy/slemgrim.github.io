@@ -1,0 +1,11 @@
+.sidebar {
+    width: 300px;
+    height: 100%;
+
+    @include transition(all, .8s, ease-out);
+    @include transform(translateX(-100%));
+
+    &.init {
+        @include transform(translateX(0%));
+    }
+}

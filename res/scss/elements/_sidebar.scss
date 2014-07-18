@@ -1,11 +1,32 @@
 .sidebar {
-    width: 300px;
+    width: 200px;
     height: 100%;
+    background-color: $color-b-3;
 
     @include transition(all, .8s, ease-out);
-    @include transform(translateX(-100%));
+    @include transform(translateX(-300px));
 
-    &.init {
+    &.show {
         @include transform(translateX(0%));
     }
+
+    .sidebarHeader {
+        padding: 24px 0;
+        border-bottom: 2px solid $color-b-2;
+        a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+
+    @media (min-width: $breakpoint-1) {
+        &.init {
+            @include transform(translateX(0));
+        }
+    }
+
 }

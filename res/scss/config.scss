@@ -3,7 +3,8 @@
 /* Background Colors */
 
 $color-b-1: #ffffff;
-$color-b-2: #37474f;
+$color-b-2: #2f5272;
+$color-b-3: #03152b;
 
 /* Primary Colors */
 $color-p-1: #a3e9a4;
@@ -11,13 +12,11 @@ $color-p-2: #259b24;
 $color-p-3: #0a7e07;
 
 /* Accent Colors */
-$color-a-1: #f8bbd0;
-$color-a-2: #f48fb1;
-$color-a-3: #ec407a;
+$color-a-1: #ff7ebc;
+$color-a-2: #ef3274;
+$color-a-3: #ad1546;
 $color-a-f: #ffffff;
 
-$color-background: $color-b-2;
-$color-background-card: $color-b-1;
 
 /* Dimensions */
 $width-max: 900px;
@@ -26,3 +25,6 @@ $width-max: 900px;
 $font-base: 'Roboto', sans-serif;
 
 $font-size-base: 16px;
+
+/* Breakpoints */
+$breakpoint-1: 640px;

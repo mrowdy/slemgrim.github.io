@@ -14,6 +14,36 @@
         -webkit-animation: anim-container .8s;
         height: 100%;
         top: 0%;
+        .sidebarToggle {
+            -webkit-animation: anim-toggle .5s;
+            -webkit-animation-timing-function: ease-out;
+        }
+    }
+
+    .sidebarToggle {
+        position: fixed;
+        display: block;
+        top: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        color: #ffffff;
+        background-color: $color-a-2;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+
+    @media (min-width: $breakpoint-1) {
+        &.init {
+            .sidebarToggle {
+                top: -100px;
+                -webkit-animation: anim-toggle-out .5s;
+                -webkit-animation-timing-function: ease-in;
+            }
+        }
     }
 }
 
@@ -32,5 +62,24 @@
         height: 100%;
         @include transform(translateX(0%));
 
+    }
+}
+
+@-webkit-keyframes anim-toggle {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 24px;
+
+    }
+}
+
+@-webkit-keyframes anim-toggle-out {
+    0% {
+        top: 24px;
+    }
+    100% {
+        top: -100px;
     }
 }

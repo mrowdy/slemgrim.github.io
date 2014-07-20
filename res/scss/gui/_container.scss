@@ -1,10 +1,10 @@
 #container {
-    position: relative;
+    position: absolute;
+    top: 50%;
     width: 100%;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
-    height: 100%;
+    margin-top: -50px;
+    height: 100px;
 
     background-color: $color-b-2;
     font-family: $font-base;
@@ -13,6 +13,7 @@
     &.init {
         -webkit-animation: anim-container .8s;
         height: 100%;
+        margin-top: 0;
         top: 0%;
         .sidebarToggle {
             -webkit-animation: anim-toggle .5s;
@@ -22,7 +23,7 @@
 
     .sidebarToggle {
         position: fixed;
-        display: block;
+        display: none;
         top: 24px;
         right: 24px;
         width: 48px;
@@ -33,6 +34,10 @@
         border-radius: 50%;
         font-size: 40px;
         line-height: 48px;
+    }
+
+    .content {
+        position: relative;
     }
 
 
@@ -50,16 +55,19 @@
 @-webkit-keyframes anim-container {
     0% {
         top: 50%;
-        height: 20%;
+        margin-top: -50px;
+        height: 100px;
         @include transform(translateX(100%));
     }
     50% {
         top: 50%;
-        height: 20%;
+        height: 100px;
+        margin-top: -50px;
     }
     100% {
         top: 0%;
         height: 100%;
+        margin-top: 0px;
         @include transform(translateX(0%));
 
     }

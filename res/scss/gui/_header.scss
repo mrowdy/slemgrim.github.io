@@ -1,13 +1,114 @@
 .header {
-    height: 60px;
-    h1 {
-        margin: 0;
-        padding: 15px 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -30px;
+    width: 100%;
+    padding: 0 16px;
+    max-height: 60px;
+    overflow: hidden;
+
+    .wrap {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    &.init {
+        top: 100px;
+        margin-top: 0;
+        max-height: 400px;
+        -webkit-animation: anim-header-init .3s;
+        -webkit-animation-timing-function: ease-out;
+    }
+
+    .logo {
+        margin: 16px 0;
         text-transform: uppercase;
+        text-decoration: none;
         font-weight: bold;
         text-align: center;
-        color: white;
-        font-size: 30px;
+        color: $color-b-1;
+        font-size: 35px;
         line-height: 30px;
+        display: block;
+    }
+
+    .subline {
+        margin: 16px;
+        text-align: center;
+        padding: 0;
+        margin: 10px 0;
+        font-size: 22px;
+        color: $color-b-1;
+    }
+
+    .card {
+        margin: 16px 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 0 0 90px;
+    }
+
+    li {
+        margin: 0;
+        padding: 4px 0;
+
+        a {
+            font-size: 16px;
+            display: block;
+            color: $color-b-1;
+            text-decoration: none;
+
+            &:before {
+                opacity: 0;
+                content: '';
+                display: inline-block;
+                height: 10px;
+                width: 10px;
+                border:1px solid $color-b-1;
+                border-radius: 50%;
+                margin-right: 12px;
+                @include transform(translateX(-30px));
+                @include transition(all, .5s, ease-out);
+            }
+
+            &.active {
+                &:before {
+                    background-color: $color-b-1;
+                }
+            }
+        }
+    }
+
+    &.showNavBalls {
+        li {
+            a {
+                &:before {
+                    opacity: 1;
+                    @include transform(translateX(0px));
+                }
+            }
+        }
+    }
+
+    @media (min-width: $breakpoint-1) {
+
+    }
+}
+
+@-webkit-keyframes anim-header-init {
+    0% {
+        top: 50%;
+        margin-top: -30px;
+        max-height: 60px;
+    }
+    100% {
+        top: 100px;
+        margin-top: 0px;
+        max-height: 400px;
     }
 }

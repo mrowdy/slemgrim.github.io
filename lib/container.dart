@@ -16,6 +16,10 @@ class Container {
         });
     }
 
+    void init(){
+        element.classes.add('init');
+    }
+
     void showCard(String name, String target, Rectangle rect){
 
         if(!cards.containsKey(name)){

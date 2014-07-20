@@ -12,27 +12,22 @@ Element menuElement = querySelector('.menu');
 Container container;
 Sidebar sidebar;
 Menu menu;
+Header header;
 
 main(){
-    containerElement.classes.add('init');
-    Window.animationEndEvent.forTarget(containerElement).listen((AnimationEvent evt){
-        if(evt.animationName == 'anim-container'){
-            headerElement.classes.add('init');
-        }
-    });
-
-    Window.animationEndEvent.forTarget(headerElement).listen((AnimationEvent evt){
-        if(evt.animationName == 'anim-header-init'){
-            headerElement.classes.add('showNavBalls');
-        }
-    });
-
-
     container = new Container(containerElement);
+    header = new Header(headerElement);
     sidebar = new Sidebar(sidebarElement);
     menu = new Menu(menuElement);
 
-    new Future.delayed(new Duration(milliseconds: 500)).then((_) => sidebar.init());
+    container.init();
+
+
+    Window.animationEndEvent.forTarget(containerElement).listen((AnimationEvent evt){
+        if(evt.animationName == 'anim-container'){
+            header.init();
+        }
+    });
 
     sidebarToggleElement.onClick.listen((_){
         sidebar.toggle();

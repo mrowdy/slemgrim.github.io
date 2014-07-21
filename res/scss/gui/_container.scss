@@ -1,14 +1,62 @@
+$wrapInitHeight: 470px;
+
 #container {
     position: absolute;
     top: 50%;
     width: 100%;
-    overflow: scroll;
+    overflow: hidden;
     margin-top: -50px;
     height: 100px;
 
-    background-color: $color-b-2;
+    background-color: $color-b-3;
     font-family: $font-base;
     font-size: $font-size-base;
+
+    .innerWrap {
+        width: 320px;
+        height: $wrapInitHeight;
+        @include clear-fix();
+        margin: 0 auto;
+        padding: 0 16px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .content {
+        max-width: 960px;
+        margin: 134px auto 0;
+        max-height: 200px;
+        overflow: hidden;
+
+        @include transition(max-height, 0.8s, linear);
+
+        .card {
+            margin: 10px 0;
+        }
+    }
+
+    .menu {
+        position: absolute;
+        left: 0;
+        top: 350px;
+        width: 100%;
+        padding: 0 12px;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 12px;
+        font-weight: normal;
+        color: $color-f-2;
+
+        a {
+            color: $color-f-2;
+        }
+    }
 
     &.init {
         -webkit-animation: anim-container .8s;
@@ -16,81 +64,50 @@
         margin-top: 0;
         top: 0%;
     }
-    
+
     &.expand {
         .innerWrap {
             -webkit-animation: anim-expand .8s;
             height: 100%;
             width: 100%;
         }
-        
+
         .content {
             max-height: 2000px;
         }
     }
-    
+
     &.expanded {
         .header {
             position: fixed;
         }
-        
+
         .menu {
             position: fixed;
+            width: 150px;
+            li {
+                clear:both;
+                width:100%;
+            }
         }
-        
+
         .footer {
             position: fixed;
         }
-        
+
         .content {
             max-height: 2000px;
         }
+
+        .innerWrap {
+            overflow-y: auto;
+        }
     }
-    
+
     &.contract {
         .innerWrap {
             -webkit-animation: anim-contract .8s;
-            height: 400px;
-            width: 320px;
         }
-    }
-    
-    .innerWrap {
-        width: 320px;
-        height: 400px;
-        @include clear-fix();
-        border: 1px solid red;
-        margin: 0 auto;
-        position: relative;
-        overflow: scroll;
-    }
-    
-    .content {
-        max-width: 960px;
-        margin: 150px auto 0;
-        max-height: 125px;
-        overflow: hidden;
-        
-        @include transition(max-height, 0.8s, linear);
-        
-        .card {
-            padding: 10px;
-            margin: 10px 0;
-        }
-    }
-    
-    .menu {
-        position: absolute;
-        left: 0;
-        top: 280px;
-        width: 320px;
-    }
-    
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        padding: 16px;
     }
 }
 
@@ -117,7 +134,7 @@
 @-webkit-keyframes anim-expand {
     0% {
         width: 320px;
-        height: 400px
+        height: $wrapInitHeight;
     }
     100% {
         width: 100%;
@@ -132,6 +149,6 @@
     }
     100% {
         width: 320px;
-        height: 400px
+        height: $wrapInitHeight;
     }
 }

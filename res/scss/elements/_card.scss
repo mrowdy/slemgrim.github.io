@@ -1,15 +1,4 @@
 .card {
-    border-radius: 3px;
-    background-color: #ffffff;
-    padding: 16px;
-}
-
-@-webkit-keyframes anim-open-card {
-    0% {
-        left: 0px;
-    }
-    100% {
-        top: 0;
-        left: 300px;
-    }
+    background-color: $color-b-2;
+    padding: 48px 20px;
 }

@@ -4,19 +4,21 @@
     left: 0;
     z-index: 1000;
     width: 100%;
-    background-color: $color-b-2;
-    height: 110px;
+    background-color: $color-b-3;
+    padding: 0 16px;
+    height: 100px;
     .logo {
         margin: 0;
-        padding: 16px 0;
+        padding: 20px 0 15px;
         text-transform: uppercase;
         text-decoration: none;
-        font-weight: bold;
         text-align: center;
-        color: $color-b-1;
-        font-size: 35px;
+        color: $color-f-1;
+        font-size: 37px;
         line-height: 30px;
         display: block;
+        letter-spacing: 14px;
+        font-weight: normal;
     }
 
     .subline {
@@ -24,51 +26,53 @@
         margin: 16px;
         text-align: center;
         padding: 0;
-        margin: 10px 0;
-        font-size: 22px;
-        color: $color-b-1;
-        
+        margin: 0;
+        font-size: 17px;
+        font-weight: lighter;
+        color: $color-f-1;
+
         @include transition(opacity, 0.8s, linear);
-    } 
-    
+    }
+
     .avatar {
         display: block;
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
-        background-color: grey;
+        background-color: #ffffff;
+        border: 2px solid $color-f-1;
         padding: 0;
-        
+
         position: absolute;
         top: 110px;
         left: 50%;
-        margin-left: -40px;
-        
+        margin-left: -35px;
+
         @include transition(all, 0.8s, linear);
     }
-    
+
     &.contract {
-        height: 60px;
-        background-color: $color-b-3;
+        height: 68px;
+        background-color: $color-b-4;
         -webkit-animation: anim-header-contract .8s;
-        
+
         .subline {
             opacity: 0;
         }
-        
+
         .avatar {
-            top: 4px;
+            top: 8px;
             left: 16px;
             height: 52px;
             width: 52px;
-            margin-left: 0; 
+            margin-left: 0;
         }
     }
-    
+
     &.expand {
         -webkit-animation: anim-header-expand .8s;
     }
-    
+
     &.contracted {
         overflow: hidden;
     }
@@ -76,23 +80,23 @@
 
 @-webkit-keyframes anim-header-expand {
     0% {
-        background-color: $color-b-3;
-        height: 60px;
+        background-color: $color-b-4;
+        height: 68px;
     }
     100% {
-        background-color: $color-b-2;
-        height: 110px;
+        background-color: $color-b-3;
+        height: 100px;
     }
 }
 
 @-webkit-keyframes anim-header-contract {
     0% {
-        background-color: $color-b-2;
-        height: 110px;
+        background-color: $color-b-3;
+        height: 100px;
     }
     100% {
-        background-color: $color-b-3;
-        height: 60px;
+        background-color: $color-b-4;
+        height: 68px;
     }
 }
 

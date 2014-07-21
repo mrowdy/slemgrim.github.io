@@ -4,15 +4,20 @@ class Container {
 
     Element element;
     Element content;
-    Map<String, Card> cards = new Map<String, Card>();
-
 
     Container(this.element){
         content = element.querySelector('.content');
-        List cardElements = element.querySelectorAll('.card');
-        cardElements.forEach((Element cardElement){
-            Card card = new Card(cardElement);
-            cards[card.name] = card;
+
+        Window.animationEndEvent.forTarget(element).listen((AnimationEvent evt){
+            if(evt.animationName == 'anim-expand'){
+                element.classes.add('expanded');
+            }
+        });
+
+        Window.animationStartEvent.forTarget(element).listen((AnimationEvent evt){
+            if(evt.animationName == 'anim-contract'){
+                element.classes.remove('expanded');
+            }
         });
     }
 
@@ -20,19 +25,13 @@ class Container {
         element.classes.add('init');
     }
 
-    void showCard(String name, String target, Rectangle rect){
+    void expand(){
+        element.classes.remove('contract');
+        element.classes.add('expand');
+    }
 
-        if(!cards.containsKey(name)){
-            Card card = new Card.create(name);
-            cards[name] = card;
-            content.append(card.element);
-        }
-
-        cards.forEach((String name, Card card){
-            card.close();
-        });
-
-        Card card = cards[name];
-        card.open(rect);
+    void contract(){
+        element.classes.remove('expand');
+        element.classes.add('contract');
     }
 }

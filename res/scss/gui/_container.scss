@@ -2,7 +2,7 @@
     position: absolute;
     top: 50%;
     width: 100%;
-    overflow-x: hidden;
+    overflow: scroll;
     margin-top: -50px;
     height: 100px;
 
@@ -15,40 +15,82 @@
         height: 100%;
         margin-top: 0;
         top: 0%;
-        .sidebarToggle {
-            -webkit-animation: anim-toggle .5s;
-            -webkit-animation-timing-function: ease-out;
+    }
+    
+    &.expand {
+        .innerWrap {
+            -webkit-animation: anim-expand .8s;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .content {
+            max-height: 2000px;
         }
     }
-
-    .sidebarToggle {
-        position: fixed;
-        display: none;
-        top: 24px;
-        right: 24px;
-        width: 48px;
-        height: 48px;
-        color: #ffffff;
-        background-color: $color-a-2;
-        text-align: center;
-        border-radius: 50%;
-        font-size: 40px;
-        line-height: 48px;
+    
+    &.expanded {
+        .header {
+            position: fixed;
+        }
+        
+        .menu {
+            position: fixed;
+        }
+        
+        .footer {
+            position: fixed;
+        }
+        
+        .content {
+            max-height: 2000px;
+        }
     }
-
-    .content {
+    
+    &.contract {
+        .innerWrap {
+            -webkit-animation: anim-contract .8s;
+            height: 400px;
+            width: 320px;
+        }
+    }
+    
+    .innerWrap {
+        width: 320px;
+        height: 400px;
+        @include clear-fix();
+        border: 1px solid red;
+        margin: 0 auto;
         position: relative;
+        overflow: scroll;
     }
-
-
-    @media (min-width: $breakpoint-1) {
-        &.init {
-            .sidebarToggle {
-                top: -100px;
-                -webkit-animation: anim-toggle-out .5s;
-                -webkit-animation-timing-function: ease-in;
-            }
+    
+    .content {
+        max-width: 960px;
+        margin: 150px auto 0;
+        max-height: 125px;
+        overflow: hidden;
+        
+        @include transition(max-height, 0.8s, linear);
+        
+        .card {
+            padding: 10px;
+            margin: 10px 0;
         }
+    }
+    
+    .menu {
+        position: absolute;
+        left: 0;
+        top: 280px;
+        width: 320px;
+    }
+    
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 16px;
     }
 }
 
@@ -69,25 +111,27 @@
         height: 100%;
         margin-top: 0px;
         @include transform(translateX(0%));
-
     }
 }
 
-@-webkit-keyframes anim-toggle {
+@-webkit-keyframes anim-expand {
     0% {
-        top: -100px;
+        width: 320px;
+        height: 400px
     }
     100% {
-        top: 24px;
-
+        width: 100%;
+        height: 100%;
     }
 }
 
-@-webkit-keyframes anim-toggle-out {
+@-webkit-keyframes anim-contract {
     0% {
-        top: 24px;
+        width: 100%;
+        height: 100%;
     }
     100% {
-        top: -100px;
+        width: 320px;
+        height: 400px
     }
 }

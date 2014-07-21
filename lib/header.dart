@@ -3,26 +3,18 @@ part of slemgrim;
 class Header {
 
     Element element;
-    bool isExpanded = false;
-    List<Element> nodes = new List<Element>();
 
     Header(this.element){
-        nodes = element.querySelectorAll('.node');
-        _eventBindings();
-    }
-
-    void _eventBindings(){
-        Window.animationEndEvent.forTarget(element).listen((AnimationEvent evt){
-            if(evt.animationName == 'anim-header-init'){
-                element.classes.add('showNavBalls');
+        Window.animationStartEvent.forTarget(element).listen((AnimationEvent evt){
+            if(evt.animationName == 'anim-header-expand'){
+                element.classes.remove('contracted');
             }
         });
 
-        nodes.forEach((Element node){
-            node.onClick.listen((MouseEvent evt){
-                evt.preventDefault();
-                expand();
-            });
+        Window.animationEndEvent.forTarget(element).listen((AnimationEvent evt){
+            if(evt.animationName == 'anim-header-contract'){
+                element.classes.add('contracted');
+            }
         });
     }
 
@@ -31,22 +23,12 @@ class Header {
     }
 
     void expand(){
-        if(isExpanded){
-            return;
-        }
-
+        element.classes.remove('contract');
         element.classes.add('expand');
-
-        isExpanded = true;
     }
 
     void contract(){
-        if(!isExpanded){
-            return;
-        }
-
         element.classes.remove('expand');
-
-        isExpanded = false;
+        element.classes.add('contract');
     }
 }

@@ -4,20 +4,15 @@ import 'package:slemgrim.com/slemgrim.dart';
 
 Element containerElement = querySelector('#container');
 Element headerElement = querySelector('.header');
-
-Element sidebarElement = querySelector('.sidebar');
-Element sidebarToggleElement = querySelector('.sidebarToggle');
 Element menuElement = querySelector('.menu');
 
 Container container;
-Sidebar sidebar;
 Menu menu;
 Header header;
 
 main(){
     container = new Container(containerElement);
     header = new Header(headerElement);
-    sidebar = new Sidebar(sidebarElement);
     menu = new Menu(menuElement);
 
     container.init();
@@ -29,11 +24,22 @@ main(){
         }
     });
 
-    sidebarToggleElement.onClick.listen((_){
-        sidebar.toggle();
+    Window.animationStartEvent.forTarget(containerElement).listen((AnimationEvent evt){
+        if(evt.animationName == 'anim-expand'){
+            header.contract();
+        }
+        if(evt.animationName == 'anim-contract'){
+            header.expand();
+        }
     });
 
     menu.onChangeNode.listen((Map node){
-        container.showCard(node['node'], node['target'], node['rect']);
+        if(node['node'] != 'slemgrim'){
+            container.expand();
+        } else {
+            container.contract();
+        }
+
+        print(node);
     });
 }

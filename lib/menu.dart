@@ -9,7 +9,7 @@ class Menu {
     Stream get onChangeNode => _onChangeNode.stream;
 
     Menu(this.element){
-        nodes = element.querySelectorAll('a');
+        nodes = element.querySelectorAll('.node');
         _eventBindings();
     }
 

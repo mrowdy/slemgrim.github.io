@@ -62,11 +62,17 @@ abstract class Expander {
     }
 
     void expand(){
+        if(_isExpanded){
+            return;
+        }
         element.classes.remove('contracting');
         element.classes.add('expanding');
     }
 
     void contract(){
+        if(!_isExpanded){
+            return;
+        }
         element.classes.remove('expanding');
         element.classes.add('contracting');
     }

@@ -10,12 +10,22 @@ Container container;
 Menu menu;
 Header header;
 Sidebar sidebar;
+String currentNode = 'slemgrim';
+Map<String, Card> cards = new Map<String, Card>();
+
 
 main(){
     container = new Container(containerElement);
     header = new Header(headerElement);
     menu = new Menu(menuElement);
     sidebar = new Sidebar(sidebarElement);
+
+    List<Element> cardElements = querySelectorAll('.card');
+
+    cardElements.forEach((Element cardElement){
+        Card card = new Card(cardElement);
+        cards[card.name] = card;
+    });
 
     container..init()
              ..onExpandingStart.listen((_)   => header.contract())
@@ -24,6 +34,9 @@ main(){
              ..onContractingStart.listen((_) => sidebar.expand());
 
     menu.onChangeNode.listen((Map node){
+        if(currentNode == node['node']){
+            return;
+        }
         if(node['node'] != 'slemgrim'){
             if(!container.isExpanded){
                 container.expand();
@@ -33,5 +46,22 @@ main(){
                 container.contract();
             }
         }
+        if(cards.containsKey(node['node'])){
+
+            cards.forEach((String name, Card card){
+                card.contract();
+            });
+
+            if(container.isExpanded){
+                cards[node['node']].expand();
+            } else {
+                cards['slemgrim'].onContractingEnd.listen((_){
+                    cards[node['node']].expand();
+                });
+            }
+        }
+
+        currentNode = node['node'];
+
     });
 }

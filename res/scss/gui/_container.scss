@@ -23,7 +23,8 @@ $wrapInitHeight: 470px;
     }
 
     .content {
-        max-width: 960px;
+        position: relative;
+        max-width: $width-max;
         margin: 134px auto 0;
         max-height: 200px;
         overflow: hidden;
@@ -87,7 +88,14 @@ $wrapInitHeight: 470px;
         }
 
         .content {
-            max-height: 2000px;
+            max-height: none;
+            position: relative;
+            overflow: visible;
+
+            .card {
+                position: absolute;
+                top: 0;
+            }
         }
 
         .innerWrap {

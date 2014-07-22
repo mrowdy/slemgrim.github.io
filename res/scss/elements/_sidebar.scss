@@ -4,15 +4,93 @@
     top: 350px;
     width: 100%;
     padding: 0 12px;
-        
+
+    .menu {
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        li {
+            margin: 0;
+            padding: 4px;
+            width: 148px;
+            position: absolute;
+
+            @include transition(all, .8s, linear);
+
+            &:nth-of-type(1){
+                top: 0;
+                left: 0;
+            }
+
+            &:nth-of-type(2){
+                top: 0;
+                left: 148px;
+            }
+
+            &:nth-of-type(3){
+                left: 0;
+                top: 40px;
+            }
+
+            &:nth-of-type(4){
+                left: 148px;
+                top: 40px;
+            }
+        }
+
+        .node {
+            display: block;
+            text-align: left;
+            padding: 4px 20px;
+            color: $color-f-1;
+            background-color: $color-b-2;
+            text-decoration: none;
+
+            &.active {
+                background-color: $color-a-2;
+            }
+        }
+    }
+
     &.expanding {
         -webkit-animation: anim-sidebar-expand .8s;
     }
-    
+
     &.contracting {
         -webkit-animation: anim-sidebar-contract .8s;
     }
-    
+
+    &.contracting,
+    &.contracted {
+        .menu {
+            li {
+                width: 150px;
+                &:nth-of-type(1){
+                    top: 0;
+                    left: 0;
+                }
+
+                &:nth-of-type(2){
+                    top: 40px;
+                    left: 0;
+                }
+
+                &:nth-of-type(3){
+                    left: 0;
+                    top: 80px;
+                }
+
+                &:nth-of-type(4){
+                    left: 0;
+                    top: 120px;
+                }
+            }
+        }
+    }
+
     &.contracted {
         position: fixed;
         width: 150px;
@@ -43,7 +121,7 @@
         width: 100%;
         top: 350px;
         margin-top: 0;
-        
+
     }
     100% {
         width: 150px;

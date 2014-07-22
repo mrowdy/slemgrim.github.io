@@ -1,21 +1,53 @@
 .sidebar {
-    position: fixed;
-    top: 0;
+    position: absolute;
     left: 0;
-    width: 200px;
-    height: 100%;
-    background-color: $color-b-3;
-    padding-top: 60px;
-
-    @include transition(all, .8s, ease-out);
-    @include transform(translateX(-300px));
-
-    &.show {
-        @include transform(translateX(0%));
+    top: 350px;
+    width: 100%;
+    padding: 0 12px;
+        
+    &.expanding {
+        -webkit-animation: anim-sidebar-expand .8s;
     }
-
-    @media (min-width: $breakpoint-1) {
-        display: none;
+    
+    &.contracting {
+        -webkit-animation: anim-sidebar-contract .8s;
     }
+    
+    &.contracted {
+        position: fixed;
+        width: 150px;
+        top: 50%;
+        margin-top: -80px;
+        li {
+            clear:both;
+            width:100%;
+        }
+    }
+}
 
+@-webkit-keyframes anim-sidebar-expand {
+    0% {
+        width: 150px;
+        top: 50%;
+        margin-top: -80px;
+    }
+    100% {
+        width: 100%;
+        top: 350px;
+        margin-top: 0;
+    }
+}
+
+@-webkit-keyframes anim-sidebar-contract {
+    0% {
+        width: 100%;
+        top: 350px;
+        margin-top: 0;
+        
+    }
+    100% {
+        width: 150px;
+        top: 50%;
+        margin-top: -80px;
+    }
 }

@@ -34,8 +34,7 @@ class Menu {
         target.classes.add('active');
         _onChangeNode.add({
             'node': target.dataset['node'],
-            'target': target.href,
-            'rect': target.getBoundingClientRect()
+            'target': target.href
         });
     }
 }

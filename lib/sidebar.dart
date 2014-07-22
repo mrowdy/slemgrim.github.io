@@ -1,16 +1,8 @@
 part of slemgrim;
 
-class Sidebar {
+class Sidebar extends Expander{
 
-    Element element;
-
-    Sidebar(this.element){
-        _eventBindings();
-    }
-
-    void _eventBindings(){
-
-    }
+    Sidebar(element) : super(element, 'sidebar');
 
     void init(){
         element.classes.add('init');
@@ -19,5 +11,4 @@ class Sidebar {
     void toggle(){
         element.classes.toggle('show');
     }
-
 }

@@ -48,10 +48,10 @@
         left: 50%;
         margin-left: -35px;
 
-        @include transition(all, 0.8s, linear);
+        @include transition(all, 0.8s, ease-in-out);
     }
 
-    &.contract {
+    &.contracting {
         height: 68px;
         background-color: $color-b-4;
         -webkit-animation: anim-header-contract .8s;
@@ -69,12 +69,26 @@
         }
     }
 
-    &.expand {
+    &.expanding {
         -webkit-animation: anim-header-expand .8s;
     }
-
+    
     &.contracted {
         overflow: hidden;
+        height: 68px;
+        background-color: $color-b-4;
+
+        .subline {
+            opacity: 0;
+        }
+        
+        .avatar {
+            top: 8px;
+            left: 16px;
+            height: 52px;
+            width: 52px;
+            margin-left: 0;
+        }
     }
 }
 

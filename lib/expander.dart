@@ -29,29 +29,29 @@ abstract class Expander {
         }
 
         Window.animationStartEvent.forTarget(element).listen((AnimationEvent evt){
-            if(evt.animationName == 'anim-${animationBase}-expand'){
+            if(evt.animationName.contains('anim-${animationBase}-expand')){
                 element.classes.remove('contracted');
                 _onExpandingStart.add(true);
-            } else if(evt.animationName == 'anim-${animationBase}-contract'){
+            } else if(evt.animationName.contains('anim-${animationBase}-contract')){
                 element.classes.remove('expanded');
                 _isExpanded = false;
                 _onContractingStart.add(true);
-            } else if(evt.animationName == 'anim-${animationBase}-init'){
+            } else if(evt.animationName.contains('anim-${animationBase}-init')){
                 _onInitStart.add(true);
             }
         });
 
         Window.animationEndEvent.forTarget(element).listen((AnimationEvent evt){
-            if(evt.animationName == 'anim-${animationBase}-expand'){
+            if(evt.animationName.contains('anim-${animationBase}-expand')){
                 element.classes.remove('expanding');
                 element.classes.add('expanded');
                 _isExpanded = true;
                 _onExpandingEnd.add(true);
-            } else if (evt.animationName == 'anim-${animationBase}-contract'){
+            } else if (evt.animationName.contains('anim-${animationBase}-contract')){
                 element.classes.remove('contracting');
                 element.classes.add('contracted');
                 _onContractingEnd.add(true);
-            } else if(evt.animationName == 'anim-${animationBase}-init'){
+            } else if(evt.animationName.contains('anim-${animationBase}-init')){
                 _onInitEnd.add(true);
             }
         });

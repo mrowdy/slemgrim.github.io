@@ -51,8 +51,26 @@
         @include transition(all, 0.8s, ease-in-out);
     }
 
+    .toggle {
+        display: block;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background-color: $color-a-2;
+        border: 2px solid $color-f-1;
+        color: $color-b-2;
+        padding: 0;
+        opacity: 0;
+        position: absolute;
+        text-align: center;
+        top: 8px;
+        right: 16px;
+        @include transform(translateY(-100px));
+        @include transition(all, 0.5s, ease-out);
+    }
+
     &.contracting {
-        height: 68px;
+        height: 92px;
         background-color: $color-b-4;
         -webkit-animation: anim-header-contract .8s;
 
@@ -60,11 +78,13 @@
             opacity: 0;
         }
 
+        .logo {
+            padding-top: 30px;
+        }
+
         .avatar {
-            top: 8px;
+            top: 10px;
             left: 16px;
-            height: 52px;
-            width: 52px;
             margin-left: 0;
         }
     }
@@ -72,30 +92,45 @@
     &.expanding {
         -webkit-animation: anim-header-expand .8s;
     }
-    
+
     &.contracted {
         overflow: hidden;
-        height: 68px;
+        height: 90px;
         background-color: $color-b-4;
 
         .subline {
             opacity: 0;
         }
-        
+
+        .logo {
+            padding-top: 30px;
+        }
+
+
         .avatar {
-            top: 8px;
+            top: 10px;
             left: 16px;
-            height: 52px;
-            width: 52px;
             margin-left: 0;
         }
+
+        .toggle {
+            opacity: 1;
+            @include transform(translateY(0));
+        }
     }
+
+    @media (min-width: $breakpoint-1) {
+        .toggle {
+            display: none;
+        }
+    }
+
 }
 
 @-webkit-keyframes anim-header-expand {
     0% {
         background-color: $color-b-4;
-        height: 68px;
+        height: 90px;
     }
     100% {
         background-color: $color-b-3;
@@ -110,7 +145,7 @@
     }
     100% {
         background-color: $color-b-4;
-        height: 68px;
+        height: 90px;
     }
 }
 

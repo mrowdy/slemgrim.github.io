@@ -5,6 +5,7 @@ Element containerElement = querySelector('#container');
 Element headerElement = querySelector('.header');
 Element menuElement = querySelector('.menu');
 Element sidebarElement = querySelector('.sidebar');
+Element toggle = querySelector('.toggle');
 
 Container container;
 Menu menu;
@@ -32,6 +33,8 @@ main(){
              ..onExpandingStart.listen((_)   => sidebar.contract())
              ..onContractingStart.listen((_) => header.expand())
              ..onContractingStart.listen((_) => sidebar.expand());
+
+    toggle.onClick.listen((_) => sidebar.toggle());
 
     menu.onChangeNode.listen((Map node){
         if(currentNode == node['node']){

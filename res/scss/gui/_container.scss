@@ -65,10 +65,6 @@ $wrapInitHeight: 470px;
             height: 100%;
             width: 100%;
         }
-
-        .content {
-            max-height: 2000px;
-        }
     }
 
 
@@ -90,6 +86,7 @@ $wrapInitHeight: 470px;
         .content {
             max-height: none;
             position: relative;
+            margin-top: 80px;
             overflow: visible;
 
             .card {
@@ -116,6 +113,12 @@ $wrapInitHeight: 470px;
         &.expanding {
             .innerWrap {
                 -webkit-animation: anim-container-expand-bp1 .8s;
+            }
+        }
+
+        &.expanded {
+            .content {
+                margin-top: 134px;
             }
         }
 

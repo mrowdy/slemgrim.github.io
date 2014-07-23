@@ -19,6 +19,7 @@
         display: block;
         letter-spacing: 14px;
         font-weight: normal;
+        @include transition(all, 0.8s, ease-out);
     }
 
     .subline {
@@ -48,7 +49,7 @@
         left: 50%;
         margin-left: -35px;
 
-        @include transition(all, 0.8s, ease-in-out);
+        @include transition(all, 0.8s, ease-out);
     }
 
     .toggle {
@@ -70,32 +71,12 @@
     }
 
     &.contracting {
-        height: 92px;
-        background-color: $color-b-4;
         -webkit-animation: anim-header-contract .8s;
-
-        .subline {
-            opacity: 0;
-        }
-
-        .logo {
-            padding-top: 30px;
-        }
-
-        .avatar {
-            top: 10px;
-            left: 16px;
-            margin-left: 0;
-        }
     }
 
-    &.expanding {
-        -webkit-animation: anim-header-expand .8s;
-    }
-
-    &.contracted {
-        overflow: hidden;
-        height: 90px;
+    &.contracted,
+    &.contracting {
+        height: 64px;
         background-color: $color-b-4;
 
         .subline {
@@ -103,13 +84,17 @@
         }
 
         .logo {
-            padding-top: 30px;
+            padding-top: 16px;
+            font-size: 27px;
+            letter-spacing: 4px;
         }
 
 
         .avatar {
-            top: 10px;
+            top: 8px;
             left: 16px;
+            width: 52px;
+            height: 52px;
             margin-left: 0;
         }
 
@@ -119,9 +104,45 @@
         }
     }
 
+    &.contracted {
+        overflow: hidden;
+    }
+
+    &.expanding {
+        -webkit-animation: anim-header-expand .8s;
+    }
+
+
     @media (min-width: $breakpoint-1) {
         .toggle {
             display: none;
+        }
+
+        &.contracting {
+            -webkit-animation: anim-header-contract-bp1 .8s;
+        }
+
+        &.expanding {
+            -webkit-animation: anim-header-expand-bp1 .8s;
+        }
+
+        &.contracted,
+        &.contracting {
+            height: 92px;
+
+            .logo {
+                font-size: 37px;
+                padding-top: 30px;
+                letter-spacing: 14px;
+            }
+
+            .avatar {
+                top: 10px;
+                left: 16px;
+                width: 70px;
+                height: 70px;
+                margin-left: 0;
+            }
         }
     }
 
@@ -130,7 +151,7 @@
 @-webkit-keyframes anim-header-expand {
     0% {
         background-color: $color-b-4;
-        height: 90px;
+        height: 64px;
     }
     100% {
         background-color: $color-b-3;
@@ -145,7 +166,29 @@
     }
     100% {
         background-color: $color-b-4;
-        height: 90px;
+        height: 64px;
+    }
+}
+
+@-webkit-keyframes anim-header-expand-bp1 {
+    0% {
+        background-color: $color-b-4;
+        height: 92px;
+    }
+    100% {
+        background-color: $color-b-3;
+        height: 100px;
+    }
+}
+
+@-webkit-keyframes anim-header-contract-bp1 {
+    0% {
+        background-color: $color-b-3;
+        height: 100px;
+    }
+    100% {
+        background-color: $color-b-4;
+        height: 92px;
     }
 }
 

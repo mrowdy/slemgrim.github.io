@@ -11,4 +11,12 @@ class Sidebar extends Expander{
     void toggle(){
         element.classes.toggle('show');
     }
+
+    void hide(){
+         element.classes.remove('show');
+     }
+
+    void show(){
+         element.classes.add('show');
+    }
 }

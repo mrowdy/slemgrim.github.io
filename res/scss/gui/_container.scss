@@ -31,7 +31,7 @@ $wrapInitHeight: 470px;
 
         @include transition(max-height, 0.8s, linear);
 
-        .contentBox {
+        .content-box {
             margin: 10px 0;
         }
     }
@@ -89,7 +89,7 @@ $wrapInitHeight: 470px;
             margin-top: 80px;
             overflow: visible;
 
-            .contentBox {
+            .content-box {
                 position: absolute;
                 top: 0;
             }

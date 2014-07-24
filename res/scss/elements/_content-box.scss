@@ -1,6 +1,7 @@
-.contentBox {
+.content-box {
     @include transform(translateY(-100px));
     opacity: 0;
+    width: 100%;
 
     &.contracted {
         opacity: 0;
@@ -15,16 +16,16 @@
 
 
     &.expanding {
-        -webkit-animation: anim-content-card-expand .8s;
+        -webkit-animation: anim-content-box-expand .8s;
     }
 
 
     &.contracting {
-        -webkit-animation: anim-content-card-contract .8s;
+        -webkit-animation: anim-content-box-contract .8s;
     }
 }
 
-@-webkit-keyframes anim-content-card-expand {
+@-webkit-keyframes anim-content-box-expand {
     0% {
         opacity: 0;
         @include transform(translateY(-100px));
@@ -35,7 +36,7 @@
     }
 }
 
-@-webkit-keyframes anim-content-card-contract {
+@-webkit-keyframes anim-content-box-contract {
     0% {
         opacity: 1;
         @include transform(scale(1));

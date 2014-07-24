@@ -21,7 +21,7 @@ main(){
     menu = new Menu(menuElement);
     sidebar = new Sidebar(sidebarElement);
 
-    List<Element> contentBoxElements = querySelectorAll('.contentBox');
+    List<Element> contentBoxElements = querySelectorAll('.content-box');
 
     contentBoxElements.forEach((Element contentBoxElement){
         ContentBox contentBox = new ContentBox(contentBoxElement);

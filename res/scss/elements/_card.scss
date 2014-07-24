@@ -1,4 +1,50 @@
-.card {
-    background-color: $color-b-2;
-    padding: 48px 20px;
+.card,
+.static-card {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    &.half-card {
+        float: left;
+        width: 50%;
+    }
+
+    &.contracting,
+    &.contracted {
+        padding: 0;
+    }
+
+    &.expanding,
+    &.expanded {
+        padding: 0 16px 32px;
+    }
+
+
+    &.expanding {
+        -webkit-animation: anim-card-expand .2s;
+        -webkit-animation-timing-function: ease-out;
+    }
+
+
+    &.contracting {
+        -webkit-animation: anim-card-contract .2s;
+    }
+}
+
+@-webkit-keyframes anim-card-expand {
+    0% {
+        padding: 0;
+    }
+    100% {
+        padding: 0 16px 32px;
+    }
+}
+
+@-webkit-keyframes anim-card-contract {
+    0% {
+        padding: 0 16px 32px;
+    }
+    100% {
+        padding: 0;
+    }
 }

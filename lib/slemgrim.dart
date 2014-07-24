@@ -9,3 +9,6 @@ part 'header.dart';
 part 'sidebar.dart';
 part 'content-box.dart';
 part 'menu.dart';
+part 'card.dart';
+
+part 'content/projects.dart';

@@ -1,0 +1,47 @@
+.contentBox {
+    @include transform(translateY(-100px));
+    opacity: 0;
+
+    &.contracted {
+        opacity: 0;
+        @include transform(scale(.8));
+    }
+
+    &.expanded {
+        opacity: 1;
+        @include transform(translateY(0px));
+        @include transform(scale(1));
+    }
+
+
+    &.expanding {
+        -webkit-animation: anim-content-card-expand .8s;
+    }
+
+
+    &.contracting {
+        -webkit-animation: anim-content-card-contract .8s;
+    }
+}
+
+@-webkit-keyframes anim-content-card-expand {
+    0% {
+        opacity: 0;
+        @include transform(translateY(-100px));
+    }
+    100% {
+        opacity: 1;
+        @include transform(translateY(0px));
+    }
+}
+
+@-webkit-keyframes anim-content-card-contract {
+    0% {
+        opacity: 1;
+        @include transform(scale(1));
+    }
+    100% {
+        opacity: 0;
+        @include transform(scale(.8));
+    }
+}

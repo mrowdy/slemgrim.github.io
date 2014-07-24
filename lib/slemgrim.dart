@@ -7,5 +7,5 @@ part 'expander.dart';
 part 'container.dart';
 part 'header.dart';
 part 'sidebar.dart';
-part 'card.dart';
+part 'content-box.dart';
 part 'menu.dart';

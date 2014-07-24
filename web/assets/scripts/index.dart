@@ -12,7 +12,7 @@ Menu menu;
 Header header;
 Sidebar sidebar;
 String currentNode = 'slemgrim';
-Map<String, Card> cards = new Map<String, Card>();
+Map<String, ContentBox> contentBoxes = new Map<String, ContentBox>();
 
 
 main(){
@@ -21,11 +21,11 @@ main(){
     menu = new Menu(menuElement);
     sidebar = new Sidebar(sidebarElement);
 
-    List<Element> cardElements = querySelectorAll('.card');
+    List<Element> contentBoxElements = querySelectorAll('.contentBox');
 
-    cardElements.forEach((Element cardElement){
-        Card card = new Card(cardElement);
-        cards[card.name] = card;
+    contentBoxElements.forEach((Element contentBoxElement){
+        ContentBox contentBox = new ContentBox(contentBoxElement);
+        contentBoxes[contentBox.name] = contentBox;
     });
 
     container..init()
@@ -49,17 +49,17 @@ main(){
                 container.contract();
             }
         }
-        if(cards.containsKey(node['node'])){
+        if(contentBoxes.containsKey(node['node'])){
 
-            cards.forEach((String name, Card card){
-                card.contract();
+            contentBoxes.forEach((String name, ContentBox contentBox){
+                contentBox.contract();
             });
 
             if(container.isExpanded){
-                cards[node['node']].expand();
+                contentBoxes[node['node']].expand();
             } else {
-                cards['slemgrim'].onContractingEnd.listen((_){
-                    cards[node['node']].expand();
+                contentBoxes['slemgrim'].onContractingEnd.listen((_){
+                    contentBoxes[node['node']].expand();
                 });
             }
         }

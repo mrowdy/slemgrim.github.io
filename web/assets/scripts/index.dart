@@ -63,7 +63,7 @@ main(){
                 });
             }
         }
-
+        sidebar.toggle();
         currentNode = node['node'];
 
     });

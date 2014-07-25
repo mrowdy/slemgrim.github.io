@@ -37,4 +37,18 @@ class Menu {
             'target': target.href
         });
     }
+
+    void open(String node){
+        List<AnchorElement> elements = nodes.where((AnchorElement element){
+            if(element.dataset['node'] == node){
+                return true;
+            }
+            return false;
+        }).toList();
+
+        if(elements.length > 0){
+            new Future.delayed(new Duration(seconds: 1), () => elements.first.click());
+
+        }
+    }
 }

@@ -1,4 +1,66 @@
 .project {
-    height: 200px;
     background-color: $color-b-2;
+    overflow: hidden;
+
+    .image {
+        display: block;
+        width: 100%;
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border: none;
+        }
+    }
+
+    .projectHeader {
+        margin: 16px;
+        h3 {
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+
+        .title {
+            color: $color-f-1;
+        }
+    }
+
+    .description {
+        margin: 16px;
+    }
+
+    .projectFooter {
+        background-color: $color-b-4;
+        padding: 16px;
+
+        .repository {
+            float: right;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            display: inline;
+            font-size: 12px;
+
+            &:after {
+                content: ' |';
+            }
+
+            &:last-child {
+                &:after {
+                    content: '';
+                }
+            }
+        }
+    }
+
 }

@@ -52,7 +52,7 @@ $wrapInitHeight: 470px;
     }
 
     &.init {
-        -webkit-animation: anim-container-init .8s;
+        -webkit-animation: anim-container-init .5s;
         height: 100%;
         margin-top: 0;
         top: 0%;
@@ -61,7 +61,7 @@ $wrapInitHeight: 470px;
 
     &.expanding {
         .innerWrap {
-            -webkit-animation: anim-container-expand .8s;
+            -webkit-animation: anim-container-expand .5s;
             height: 100%;
             width: 100%;
         }
@@ -70,7 +70,7 @@ $wrapInitHeight: 470px;
 
     &.contracting {
         .innerWrap {
-            -webkit-animation: anim-container-contract .8s;
+            -webkit-animation: anim-container-contract .5s;
         }
     }
 
@@ -112,7 +112,7 @@ $wrapInitHeight: 470px;
 
         &.expanding {
             .innerWrap {
-                -webkit-animation: anim-container-expand-bp1 .8s;
+                -webkit-animation: anim-container-expand-bp1 .5s;
             }
         }
 
@@ -125,7 +125,7 @@ $wrapInitHeight: 470px;
 
         &.contracting {
             .innerWrap {
-                -webkit-animation: anim-container-contract-bp1 .8s;
+                -webkit-animation: anim-container-contract-bp1 .5s;
             }
         }
     }

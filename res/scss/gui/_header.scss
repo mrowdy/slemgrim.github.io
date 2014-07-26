@@ -8,6 +8,7 @@
     padding: 0 16px;
     height: 100px;
     .logo {
+        white-space:nowrap;
         margin: 0;
         padding: 20px 0 15px;
         text-transform: uppercase;
@@ -17,9 +18,20 @@
         font-size: 37px;
         line-height: 30px;
         display: block;
-        letter-spacing: 14px;
         font-weight: normal;
-        @include transition(all, 0.8s, ease-out);
+        @include transition(all, .5s, ease-out);
+
+        .key {
+            padding: 0;
+            margin: 0;
+            display: inline;
+            opacity: .5;
+
+            &.animated {
+                -webkit-animation: anim-key-flash 4s infinite;
+            }
+
+        }
     }
 
     .subline {
@@ -134,6 +146,11 @@
                 font-size: 37px;
                 padding-top: 30px;
                 letter-spacing: 14px;
+
+                .key {
+                    letter-spacing: 1px;
+
+                }
             }
 
             .avatar {
@@ -192,3 +209,15 @@
     }
 }
 
+
+@-webkit-keyframes anim-key-flash {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .5;
+    }
+}

@@ -8,6 +8,7 @@ Element headerElement = querySelector('.header');
 Element menuElement = querySelector('.menu');
 Element sidebarElement = querySelector('.sidebar');
 Element toggle = querySelector('.toggle');
+Element contactElement = querySelector('.contact');
 
 Container container;
 Menu menu;
@@ -18,11 +19,14 @@ Map<String, ContentBox> contentBoxes = new Map<String, ContentBox>();
 
 bool isAnimation = false;
 
+Contact contact;
+
 main(){
     container = new Container(containerElement);
     header = new Header(headerElement);
     menu = new Menu(menuElement);
     sidebar = new Sidebar(sidebarElement);
+    contact = new Contact(contactElement);
 
     List<Element> contentBoxElements = querySelectorAll('.content-box');
 

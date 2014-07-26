@@ -1,0 +1,35 @@
+.contact {
+    .inputFields {
+        background-color: $color-b-2;
+        padding: 16px;
+        position: relative;
+        z-index: 10;
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        h3 {
+            margin: 0;
+            padding-bottom: 16px;
+            text-align: center;
+        }
+    }
+
+    .submit {
+        opacity: 0;
+        margin-top: 16px;
+        @include transform(translateY(-40px));
+        position: relative;
+        z-index: 9;
+        @include transition(all, .5s, ease-out);
+
+
+        &.submitable {
+            opacity: 1;
+            @include transform(translateY(0px));
+        }
+    }
+}
+

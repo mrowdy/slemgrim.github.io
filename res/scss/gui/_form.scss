@@ -1,0 +1,42 @@
+input,
+textarea {
+    position: relative;
+    display: block;
+    background-image: none;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 15px 0;
+    outline: none;
+    border: none;
+    font-family: $font-base;
+    border-bottom: 1px solid $color-b-3;
+    font-size: $font-size-base;
+    line-height: 24px;
+    color: $color-f-1;
+
+    &:focus {
+        border-color: $color-a-2;
+    }
+
+    &.error {
+        border-color: $color-e-1;
+    }
+}
+
+input[type=button],
+input[type=submit] {
+    background-color: $color-a-2;
+    border: none;
+}
+
+textarea {
+    height: 150px;
+}
+
+label {
+    display: block;
+    padding: 0;
+    margin: 0;
+}

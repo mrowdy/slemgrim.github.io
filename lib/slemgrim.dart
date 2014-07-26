@@ -12,3 +12,4 @@ part 'menu.dart';
 part 'card.dart';
 
 part 'content/projects.dart';
+part 'content/contact.dart';

@@ -17,6 +17,7 @@
             padding: 4px;
             width: 148px;
             position: absolute;
+            height: 40px;
 
             @include transition(all, .8s, linear);
 
@@ -45,7 +46,7 @@
             height: 100%;
             display: block;
             text-align: left;
-            padding: 4px 32px;
+            padding: 6px 40px;
             color: $color-f-1;
             background-color: $color-b-2;
             text-decoration: none;
@@ -56,14 +57,10 @@
 
             &:before {
                 position: absolute;
-                content: '';
-                left: 20px;
+                left: 16px;
+                top: 12px;
                 display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background-color: $color-f-1;
-                top: 16px;
+                font-size: 16px;
 
                 @include transition(all, .8s, linear);
             }
@@ -129,8 +126,7 @@
             &:before {
                 top: 16px;
                 left: 30px;
-                width: 40px;
-                height: 40px;
+                font-size: 36px;
             }
         }
     }

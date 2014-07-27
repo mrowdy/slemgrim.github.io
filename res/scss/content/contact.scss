@@ -23,7 +23,7 @@
         @include transform(translateY(-40px));
         position: relative;
         z-index: 9;
-        @include transition(all, .5s, ease-out);
+        @include transition(all, .3s, ease-out);
 
 
         &.submitable {

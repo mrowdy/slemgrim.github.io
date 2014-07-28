@@ -1,8 +1,10 @@
 part of slemgrim;
 
 class Contact{
-    Element element;
+    FormElement element;
     Element submit;
+    Element success;
+    Element rocket;
     List<Element> required = new List<Element>();
 
     bool _isSubmitable = false;
@@ -10,9 +12,14 @@ class Contact{
     Contact(this.element){
         required = element.querySelectorAll('.required');
         submit = element.querySelector('.submit');
+        success = element.querySelector('.success');
+        rocket = element.querySelector('.rocket');
+
         required.forEach((Element field){
             field.onKeyUp.listen(_checkRequired);
         });
+
+        element.onSubmit.listen(_submit);
     }
 
     void _checkRequired(Event evt){
@@ -35,5 +42,20 @@ class Contact{
         } else {
             submit.classes.remove('submitable');
         }
+    }
+
+    void _submit(Event evt){
+       evt.preventDefault();
+       Map data = new Map();
+       required.forEach((var field){
+        data[field.attributes['name']] = field.value;
+       });
+
+       Uri uri = new Uri(path: 'contact', queryParameters: data);
+       Future request = HttpRequest.getString(uri.toString());
+       rocket.classes.add('fly');
+       success.classes.add('show');
+       _isSubmitable = false;
+       _updateForm();
     }
 }

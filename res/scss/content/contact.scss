@@ -1,5 +1,6 @@
 .contact {
     .inputFields {
+        overflow: hidden;
         background-color: $color-b-2;
         padding: 16px;
         position: relative;
@@ -30,6 +31,66 @@
             opacity: 1;
             @include transform(translateY(0px));
         }
+    }
+
+    .success {
+        visibility: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        @include transform(translateY(-100%));
+        @include transition(all, .8s, ease-out);
+        background-color: $color-b-2;
+
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        &.show {
+            visibility: 1;
+            @include transform(translateY(0%));
+        }
+
+        .rocketWrap {
+            margin: 60px auto 20px;
+            width: 200px;
+            height: 200px;
+            background-color: $color-b-3;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .rocket:before {
+            font-size: 80px;
+            @include transform(rotate(45deg));
+            transform: rotate(-45deg);
+            display: block;
+            color: white;
+            position: absolute;
+            top: 60px;
+            left: 60px;
+        }
+
+        .rocket.fly {
+            -webkit-animation: anim-rocket-fly 2s;
+            -webkit-animation-fill-mode: forwards;
+            -webkit-animation-delay: 1s;
+        }
+
+        p {
+            text-align: center;
+            margin: 0;
+        }
+    }
+}
+
+@-webkit-keyframes anim-rocket-fly {
+    0% {
+        @include transform(translateY(0%));
+    }
+    100% {
+        @include transform(translateY(-200px));
     }
 }
 

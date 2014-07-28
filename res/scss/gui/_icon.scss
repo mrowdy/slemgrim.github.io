@@ -23,15 +23,30 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-burger:before {
+    content: "\e608";
+}
+.icon-gplus:before {
+    content: "\e605";
+}
+.icon-twitter:before {
+    content: "\e606";
+}
+.icon-xing:before {
+    content: "\e607";
+}
 .icon-speech-bubble:before {
     content: "\e600";
+}
+.icon-tools:before {
+    content: "\e603";
+}
+.icon-pacman:before {
+    content: "\e604";
 }
 .icon-github:before {
     content: "\e601";
 }
 .icon-rocket:before {
     content: "\e602";
-}
-.icon-tools:before {
-    content: "\e603";
 }

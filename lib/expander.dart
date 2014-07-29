@@ -6,7 +6,13 @@ abstract class Expander {
     String animationBase;
 
     bool _isExpanded = false;
+    bool _isExpanding = false;
+    bool _isContracting = false;
+
     bool get isExpanded => _isExpanded;
+    bool get isExpanding => _isExpanding;
+    bool get isContracting => _isContracting;
+    bool get inProgress => _isContracting || _isExpanding;
 
     StreamController _onContractingStart = new StreamController.broadcast();
     StreamController _onContractingEnd = new StreamController.broadcast();
@@ -31,10 +37,12 @@ abstract class Expander {
         Window.animationStartEvent.forTarget(element).listen((AnimationEvent evt){
             if(evt.animationName.contains('anim-${animationBase}-expand')){
                 element.classes.remove('contracted');
+                _isExpanding = true;
                 _onExpandingStart.add(true);
             } else if(evt.animationName.contains('anim-${animationBase}-contract')){
                 element.classes.remove('expanded');
                 _isExpanded = false;
+                _isContracting = true;
                 _onContractingStart.add(true);
             } else if(evt.animationName.contains('anim-${animationBase}-init')){
                 _onInitStart.add(true);
@@ -45,9 +53,11 @@ abstract class Expander {
             if(evt.animationName.contains('anim-${animationBase}-expand')){
                 element.classes.remove('expanding');
                 element.classes.add('expanded');
+                _isExpanding = false;
                 _isExpanded = true;
                 _onExpandingEnd.add(true);
             } else if (evt.animationName.contains('anim-${animationBase}-contract')){
+                _isContracting = false;
                 element.classes.remove('contracting');
                 element.classes.add('contracted');
                 _onContractingEnd.add(true);
@@ -67,6 +77,15 @@ abstract class Expander {
         }
         element.classes.remove('contracting');
         element.classes.add('expanding');
+    }
+
+    void forceContract(){
+        _isContracting = true;
+        element.classes.remove('contracing');
+        element.classes.remove('expanding');
+        element.classes.remove('expanded');
+        element.classes.add('contracted');
+        _onContractingEnd.add(true);
     }
 
     void contract(){

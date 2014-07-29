@@ -135,7 +135,7 @@
     @media (min-width: $breakpoint-2) {
         &.contracting,
         &.contracted {
-            top: 140px;
+            top: 160px;
             background-color: transparent;
             @include transform(translateX(0px));
 

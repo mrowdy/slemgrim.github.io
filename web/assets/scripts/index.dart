@@ -68,20 +68,25 @@ main(){
         if(contentBoxes.containsKey(node['node'])){
 
             contentBoxes.forEach((String name, ContentBox contentBox){
+
+                if(contentBox.isExpanding){
+                    contentBox.forceContract();
+                }
                 contentBox.contract();
             });
 
+            ContentBox contentBox = contentBoxes[node['node']];
+            contentBox.onExpandingEnd.listen((_){
+               if(content.containsKey(node['node'])){
+                   content[node['node']].init();
+               }
+            });
+
             if(container.isExpanded){
-                contentBoxes[node['node']].expand();
+                contentBox.expand();
             } else {
                 contentBoxes['slemgrim'].onContractingEnd.listen((_){
-                    ContentBox contentBox = contentBoxes[node['node']];
                     contentBox.expand();
-                    contentBox.onExpandingEnd.listen((_){
-                        if(content.containsKey(node['node'])){
-                            content[node['node']].init();
-                        }
-                    });
                 });
             }
         }

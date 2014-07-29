@@ -1,4 +1,4 @@
-$wrapInitHeight: 490px;
+$wrapInitHeight: 520px;
 
 #container {
     position: absolute;
@@ -25,8 +25,8 @@ $wrapInitHeight: 490px;
     .content {
         position: relative;
         max-width: $width-max;
-        margin: 134px auto 0;
-        max-height: 220px;
+        margin: 154px auto 0;
+        max-height: 230px;
         overflow: hidden;
 
         @include transition(max-height, 0.8s, linear);
@@ -110,7 +110,7 @@ $wrapInitHeight: 490px;
 
         &.expanded {
             .content {
-                margin-top: 134px;
+                margin-top: 154px;
             }
         }
 

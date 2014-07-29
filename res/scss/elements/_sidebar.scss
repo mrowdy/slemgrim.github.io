@@ -1,7 +1,7 @@
 .sidebar {
     position: absolute;
     left: 0;
-    top: 370px;
+    top: 400px;
     width: 100%;
     padding: 0 12px;
 
@@ -181,7 +181,7 @@
     }
     100% {
         width: 100%;
-        top: 370px;
+        top: 400px;
         margin-top: 0;
     }
 }
@@ -189,7 +189,7 @@
 @-webkit-keyframes anim-sidebar-contract-bp1 {
     0% {
         width: 100%;
-        top: 370px;
+        top: 400px;
         margin-top: 0;
 
     }
@@ -205,7 +205,7 @@
     }
     100% {
         width: 100%;
-        top: 370px;
+        top: 400px;
         margin-top: 0;
     }
 }
@@ -213,7 +213,7 @@
 @-webkit-keyframes anim-sidebar-contract {
     0% {
         width: 100%;
-        top: 370px;
+        top: 400px;
         margin-top: 0;
 
     }

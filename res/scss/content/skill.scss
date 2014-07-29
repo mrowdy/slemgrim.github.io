@@ -1,3 +1,102 @@
 .skill {
     background-color: $color-b-2;
+    padding: 44px;
+    @include clear-fix();
+
+    h2 {
+        text-transform: uppercase;
+        margin-top: 0;
+    }
+
+    .figure,
+    .skill-content {
+        width: 100%;
+    }
+
+    .figure {
+        min-height: 100px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .level {
+        width: 100%;
+        margin: 6px 0 28px;
+        background-color: $color-b-3;
+        @include clear-fix();
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            content: '';
+            background-color: $color-a-2;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            z-index: 4;
+            @include transform(translateX(-100%));
+            @include transition(all, 0.5s, linear);
+        }
+
+        &.level-1:before {
+            width: 20%;
+        }
+
+        &.level-2:before {
+            width: 40%;
+        }
+
+        &.level-3:before {
+            width: 60%;
+        }
+
+        &.level-4:before {
+            width: 80%;
+        }
+
+        &.level-5:before {
+            width: 100%;
+        }
+
+        span {
+            position: relative;
+            z-index: 5;
+            background-color: transparent;
+            border-right: 1px solid $color-b-2;
+            display: block;
+            width: 20%;
+            float: left;
+            height: 5px;
+        }
+    }
+
+    &.init {
+        .level:before {
+            @include transform(translateX(0));
+        }
+    }
+
+
+    @media (min-width: $breakpoint-2) {
+        .figure,
+        .skill-content {
+            width: 50%;
+            float: left;
+            margin: 0;
+        }
+
+        &.odd {
+            .figure,
+            .skill-content {
+                float: right;
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 part of slemgrim;
 
-class Contact{
+class Contact extends Content{
     FormElement element;
     Element submit;
     Element success;

@@ -9,6 +9,7 @@ Element menuElement = querySelector('.menu');
 Element sidebarElement = querySelector('.sidebar');
 Element toggle = querySelector('.toggle');
 Element contactElement = querySelector('.contact');
+Element skillsElement = querySelector('.skills');
 
 Container container;
 Menu menu;
@@ -20,6 +21,12 @@ Map<String, ContentBox> contentBoxes = new Map<String, ContentBox>();
 bool isAnimation = false;
 
 Contact contact;
+Skills skills;
+
+Map<String, Content> content = {
+    'contact': contact,
+    'skills': skills
+};
 
 main(){
     container = new Container(containerElement);
@@ -27,6 +34,7 @@ main(){
     menu = new Menu(menuElement);
     sidebar = new Sidebar(sidebarElement);
     contact = new Contact(contactElement);
+    skills = new Skills(skillsElement);
 
     List<Element> contentBoxElements = querySelectorAll('.content-box');
 
@@ -67,7 +75,13 @@ main(){
                 contentBoxes[node['node']].expand();
             } else {
                 contentBoxes['slemgrim'].onContractingEnd.listen((_){
-                    contentBoxes[node['node']].expand();
+                    ContentBox contentBox = contentBoxes[node['node']];
+                    contentBox.expand();
+                    contentBox.onExpandingEnd.listen((_){
+                        if(content.containsKey(node['node'])){
+                            content[node['node']].init();
+                        }
+                    });
                 });
             }
         }

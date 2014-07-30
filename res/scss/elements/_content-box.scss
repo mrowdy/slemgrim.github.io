@@ -16,12 +16,12 @@
 
 
     &.expanding {
-        -webkit-animation: anim-content-box-expand .8s;
+        @include animation(anim-content-box-expand .8s);
     }
 
 
     &.contracting {
-        -webkit-animation: anim-content-box-contract .8s;
+        @include animation(anim-content-box-contract .8s);
     }
 
     &.contracted {
@@ -36,7 +36,7 @@
     }
 }
 
-@-webkit-keyframes anim-content-box-expand {
+@include keyframes(anim-content-box-expand) {
     0% {
         opacity: 0;
         @include transform(translateY(-100px));
@@ -47,7 +47,7 @@
     }
 }
 
-@-webkit-keyframes anim-content-box-contract {
+@include keyframes(anim-content-box-contract) {
     0% {
         opacity: 1;
         @include transform(scale(1));

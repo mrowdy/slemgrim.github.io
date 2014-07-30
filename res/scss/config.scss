@@ -1,21 +1,22 @@
 /* Background Colors */
 $color-b-1: #ffffff;
-$color-b-2: #1f2e45; /*contentblock*/
-$color-b-3: #0f1a2d; /*background*/
-$color-b-4: #090d16; /*header*/
+$color-b-2: #ffffff; /*contentblock*/
+$color-b-3: #242424; /*background*/
+$color-b-4: #822FF7; /*header*/
 
 /* Accent Colors */
 $color-a-1: #c0c5cc;
-$color-a-2: #008c0a; /*highlight-hover*/
+$color-a-2: #822FF7; /*highlight-hover*/
 
 /* Font Color */
-$color-f-1: #c0c5cc; /*fontcolour*/
-$color-f-2: #21334f; /*footer-colour*/
+$color-f-1: #000000; /*fontcolour*/
+$color-f-2: #ffffff; /*footer-colour*/
 
 $color-e-1: #d31131;
 
 /* Dimensions */
 $width-max: 600px;
+$width-max-bp3: 900px;
 
 /* Fonts */
 $font-base: 'Roboto', sans-serif;
@@ -23,5 +24,6 @@ $font-base: 'Roboto', sans-serif;
 $font-size-base: 16px;
 
 /* Breakpoints */
-$breakpoint-1: 500px;
-$breakpoint-2: 816px;
+$breakpoint-1: 500px; /* Small header Text */
+$breakpoint-2: 816px; /* Sidebar Menu*/
+$breakpoint-3: 1100px; /* 3 columns */

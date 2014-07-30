@@ -15,14 +15,15 @@
     }
 
     .projectHeader {
-        margin: 16px;
+        padding: 16px;
+        background-color: $color-a-2;
         h3 {
             margin: 0;
             padding: 0;
         }
 
         .title {
-            color: $color-f-1;
+            color: $color-f-2;
         }
     }
 

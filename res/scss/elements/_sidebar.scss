@@ -44,15 +44,18 @@
 
         .node {
             height: 100%;
-            display: block;
+            display: block; 
             text-align: left;
             padding: 6px 40px;
             color: $color-f-1;
             background-color: $color-b-2;
             text-decoration: none;
+            @include transition(all, .3s, linear);
 
-            &.active {
+            &.active,
+            &:hover {
                 background-color: $color-a-2;
+                color: $color-f-2;
             }
 
             &:before {
@@ -68,11 +71,11 @@
     }
 
     &.expanding {
-        -webkit-animation: anim-sidebar-expand .8s;
+        @include animation(anim-sidebar-expand .8s);
     }
 
     &.contracting {
-        -webkit-animation: anim-sidebar-contract .8s;
+        @include animation(anim-sidebar-contract .8s);
     }
 
     &.contracting,
@@ -83,9 +86,9 @@
         width: 140px;
         height: 440px;
         z-index: 500;
-        background-color: $color-b-4;
+        background-color: $color-b-3;
 
-        @include transform(translateX(-132px));
+        @include transform(translateX(-140px));
         @include transition(all, .5s, ease-in-out);
 
         &.show {
@@ -130,6 +133,10 @@
             }
         }
     }
+    
+    &.contracted {
+        position: fixed;    
+    }
 
 
     @media (min-width: $breakpoint-2) {
@@ -165,16 +172,16 @@
             }
         }
         &.expanding {
-            -webkit-animation: anim-sidebar-expand-bp1 .8s;
+            @include animation(anim-sidebar-expand-bp1 .8s);
         }
 
         &.contracting {
-            -webkit-animation: anim-sidebar-contract-bp1 .8s;
+            @include animation(anim-sidebar-contract-bp1 .8s);
         }
     }
 }
 
-@-webkit-keyframes anim-sidebar-expand-bp1 {
+@include keyframes(anim-sidebar-expand-bp1) {
     0% {
         width: 140px;
         top: 140px;
@@ -186,7 +193,7 @@
     }
 }
 
-@-webkit-keyframes anim-sidebar-contract-bp1 {
+@include keyframes(anim-sidebar-contract-bp1) {
     0% {
         width: 100%;
         top: 400px;
@@ -198,7 +205,8 @@
         top: 140px;
     }
 }
-@-webkit-keyframes anim-sidebar-expand {
+
+@include keyframes(anim-sidebar-expand) {
     0% {
         width: 100px;
         top: 64px;
@@ -210,7 +218,7 @@
     }
 }
 
-@-webkit-keyframes anim-sidebar-contract {
+@include keyframes(anim-sidebar-contract) {
     0% {
         width: 100%;
         top: 400px;

@@ -1,6 +1,8 @@
 .skill {
     background-color: $color-b-2;
     padding: 44px;
+    max-width: $width-max;
+    margin: 0 auto;
     @include clear-fix();
 
     h2 {

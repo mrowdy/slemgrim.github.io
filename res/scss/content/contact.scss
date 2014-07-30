@@ -5,6 +5,8 @@
         padding: 16px;
         position: relative;
         z-index: 10;
+        max-width: $width-max;
+        margin: 0 auto;
 
         label {
             display: block;
@@ -73,9 +75,9 @@
         }
 
         .rocket.fly {
-            -webkit-animation: anim-rocket-fly 2s;
-            -webkit-animation-fill-mode: forwards;
-            -webkit-animation-delay: 1s;
+            @include animation(anim-rocket-fly 2s);
+            @include animation-fill-mode(forwards);
+            @include animation-delay(1s);
         }
 
         p {
@@ -85,7 +87,7 @@
     }
 }
 
-@-webkit-keyframes anim-rocket-fly {
+@include keyframes(anim-rocket-fly) {
     0% {
         @include transform(translateY(0%));
     }

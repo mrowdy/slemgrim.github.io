@@ -57,3 +57,57 @@
 @mixin no-shadow(){
     @include drop-shadow(0, 0, 0, 0, 0);
 }
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    
+    -webkit-animation: $animations;
+       -moz-animation: $animations;
+         -o-animation: $animations;
+            animation: $animations;
+}
+
+@mixin animation-timing-function($timing) { 
+    -webkit-animation-timing-function: $timing;
+       -moz-animation-timing-function: $timing;
+         -o-animation-timing-function: $timing;
+            animation-timing-function: $timing;
+}
+
+@mixin animation-delay($delay) { 
+    -webkit-animation-delay: $delay;
+       -moz-animation-delay: $delay;
+         -o-animation-delay: $delay;
+            animation-delay: $delay;
+}
+
+@mixin animation-fill-mode($mode) { 
+    -webkit-animation-fill-mode: $mode;
+       -moz-animation-fill-mode: $mode;
+         -o-animation-fill-mode: $mode;
+            animation-fill-mode: $mode;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

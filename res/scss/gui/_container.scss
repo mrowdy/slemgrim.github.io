@@ -44,7 +44,7 @@ $wrapInitHeight: 520px;
     }
 
     &.init {
-        -webkit-animation: anim-container-init .5s;
+        @include animation(anim-container-init .5s);
         height: 100%;
         margin-top: 0;
         top: 0%;
@@ -53,7 +53,7 @@ $wrapInitHeight: 520px;
 
     &.expanding {
         .innerWrap {
-            -webkit-animation: anim-container-expand .5s;
+            @include animation(anim-container-expand .5s);
             height: 100%;
             width: 100%;
         }
@@ -62,7 +62,7 @@ $wrapInitHeight: 520px;
 
     &.contracting {
         .innerWrap {
-            -webkit-animation: anim-container-contract .5s;
+            @include animation(anim-container-contract .5s);
         }
     }
 
@@ -92,7 +92,7 @@ $wrapInitHeight: 520px;
             overflow-y: auto;
             width: 100%;
             height: 100%;
-
+            padding: 0;
         }
     }
 
@@ -100,11 +100,12 @@ $wrapInitHeight: 520px;
     @media (min-width: $breakpoint-2) {
         .innerWrap {
             margin-top: 100px;
+            padding: 0;
         }
 
         &.expanding {
             .innerWrap {
-                -webkit-animation: anim-container-expand-bp1 .5s;
+                @include animation(anim-container-expand-bp1 .5s);
             }
         }
 
@@ -117,14 +118,20 @@ $wrapInitHeight: 520px;
 
         &.contracting {
             .innerWrap {
-                -webkit-animation: anim-container-contract-bp1 .5s;
+                @include animation(anim-container-contract-bp1 .5s);
             }
+        }
+    }
+    
+    @media (min-width: $breakpoint-3) {
+        .content {
+            max-width: $width-max-bp3; 
         }
     }
 
 }
 
-@-webkit-keyframes anim-container-init {
+@include keyframes(anim-container-init) {
     0% {
         top: 50%;
         margin-top: -50px;
@@ -144,7 +151,8 @@ $wrapInitHeight: 520px;
     }
 }
 
-@-webkit-keyframes anim-container-expand {
+
+@include keyframes(anim-container-expand) {
     0% {
         width: 320px;
         height: $wrapInitHeight;
@@ -155,7 +163,7 @@ $wrapInitHeight: 520px;
     }
 }
 
-@-webkit-keyframes anim-container-contract {
+@include keyframes(anim-container-contract) {
     0% {
         width: 100%;
         height: 100%;
@@ -166,7 +174,7 @@ $wrapInitHeight: 520px;
     }
 }
 
-@-webkit-keyframes anim-container-expand-bp1 {
+@include keyframes(anim-container-expand-bp1) {
     0% {
         margin-top: 100px;
         width: 320px;
@@ -179,7 +187,7 @@ $wrapInitHeight: 520px;
     }
 }
 
-@-webkit-keyframes anim-container-contract-bp1 {
+@include keyframes(anim-container-contract-bp1) {
     0% {
         margin-top: 0;
         width: 100%;

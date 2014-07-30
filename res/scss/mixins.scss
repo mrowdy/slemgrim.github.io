@@ -69,30 +69,34 @@
             $animations: #{$animations + ", "};
         }
     }
-    
+
     -webkit-animation: $animations;
        -moz-animation: $animations;
+        -ms-animation: $animations;
          -o-animation: $animations;
             animation: $animations;
 }
 
-@mixin animation-timing-function($timing) { 
+@mixin animation-timing-function($timing) {
     -webkit-animation-timing-function: $timing;
        -moz-animation-timing-function: $timing;
+        -ms-animation-timing-function: $timing;
          -o-animation-timing-function: $timing;
             animation-timing-function: $timing;
 }
 
-@mixin animation-delay($delay) { 
+@mixin animation-delay($delay) {
     -webkit-animation-delay: $delay;
        -moz-animation-delay: $delay;
+        -ms-animation-delay: $delay;
          -o-animation-delay: $delay;
             animation-delay: $delay;
 }
 
-@mixin animation-fill-mode($mode) { 
+@mixin animation-fill-mode($mode) {
     -webkit-animation-fill-mode: $mode;
        -moz-animation-fill-mode: $mode;
+        -ms-animation-fill-mode: $mode;
          -o-animation-fill-mode: $mode;
             animation-fill-mode: $mode;
 }
@@ -102,6 +106,9 @@
         @content;
     }
     @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-ms-keyframes #{$animationName} {
         @content;
     }
     @-o-keyframes #{$animationName} {

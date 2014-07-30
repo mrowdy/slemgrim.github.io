@@ -22,8 +22,9 @@
 
     .submit {
         opacity: 0;
-        margin-top: 16px;
+        margin: 16px auto 0;
         @include transform(translateY(-40px));
+        max-width: $width-max;
         position: relative;
         z-index: 9;
         @include transition(all, .3s, ease-out);

@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
     shell: {
       build: {
-        command: 'pub build'
+        command: 'pub build --mode=release'
       }
     },
 

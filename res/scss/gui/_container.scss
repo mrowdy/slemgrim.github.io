@@ -1,0 +1,201 @@
+$wrapInitHeight: 520px;
+
+#container {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    overflow: hidden;
+    margin-top: -50px;
+    height: 100px;
+
+    background-color: $color-b-3;
+    font-family: $font-base;
+    font-size: $font-size-base;
+
+    .innerWrap {
+        width: 320px;
+        height: $wrapInitHeight;
+        margin: 0 auto 0;
+        padding: 0 16px;
+        position: relative;
+        overflow: hidden;
+        @include clear-fix();
+    }
+
+    .content {
+        position: relative;
+        max-width: $width-max;
+        margin: 154px auto 0;
+        max-height: 230px;
+        overflow: hidden;
+
+        @include transition(max-height, 0.8s, linear);
+
+        .content-box {
+            margin: 10px 0;
+        }
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    &.init {
+        @include animation(anim-container-init .5s);
+        height: 100%;
+        margin-top: 0;
+        top: 0%;
+        overflow: auto;
+    }
+
+    &.expanding {
+        .innerWrap {
+            @include animation(anim-container-expand .5s);
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+
+    &.contracting {
+        .innerWrap {
+            @include animation(anim-container-contract .5s);
+        }
+    }
+
+    &.expanded {
+        .header {
+            position: fixed;
+        }
+
+        .footer {
+            position: fixed;
+        }
+
+        .content {
+            max-height: none;
+            position: relative;
+            margin-top: 80px;
+            overflow: visible;
+
+            .content-box {
+                position: absolute;
+                top: 0;
+            }
+        }
+
+        .innerWrap {
+            margin-top: 0;
+            overflow-y: auto;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+    }
+
+
+    @media (min-width: $breakpoint-2) {
+        .innerWrap {
+            margin-top: 100px;
+            padding: 0;
+        }
+
+        &.expanding {
+            .innerWrap {
+                @include animation(anim-container-expand-bp1 .5s);
+            }
+        }
+
+        &.expanded {
+            .content {
+                margin-top: 154px;
+            }
+        }
+
+
+        &.contracting {
+            .innerWrap {
+                @include animation(anim-container-contract-bp1 .5s);
+            }
+        }
+    }
+    
+    @media (min-width: $breakpoint-3) {
+        .content {
+            max-width: $width-max-bp3; 
+        }
+    }
+
+}
+
+@include keyframes(anim-container-init) {
+    0% {
+        top: 50%;
+        margin-top: -50px;
+        height: 100px;
+        @include transform(translateX(100%));
+    }
+    50% {
+        top: 50%;
+        height: 100px;
+        margin-top: -50px;
+    }
+    100% {
+        top: 0%;
+        height: 100%;
+        margin-top: 0px;
+        @include transform(translateX(0%));
+    }
+}
+
+
+@include keyframes(anim-container-expand) {
+    0% {
+        width: 320px;
+        height: $wrapInitHeight;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@include keyframes(anim-container-contract) {
+    0% {
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        width: 320px;
+        height: $wrapInitHeight;
+    }
+}
+
+@include keyframes(anim-container-expand-bp1) {
+    0% {
+        margin-top: 100px;
+        width: 320px;
+        height: $wrapInitHeight;
+    }
+    100% {
+        margin-top: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@include keyframes(anim-container-contract-bp1) {
+    0% {
+        margin-top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        margin-top: 100px;
+        width: 320px;
+        height: $wrapInitHeight;
+    }
+}

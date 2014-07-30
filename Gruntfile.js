@@ -1,69 +1,64 @@
 module.exports = function(grunt) {
-    'use strict';
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        requirejs: {
-            build: {
-                options: {
-                    baseUrl: 'src',
-                    name: 'main',
-                    out: 'build/main.min.js',
-                    removeCombined: false
-                }
-            }
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    deploy: grunt.file.readJSON('.deploy.json'),
+    sass: {
+      dev: {
+        options: {
+          outputStyle: 'nested',
+          imagePath: '/web/assets/images',
+          sourceMap: true
         },
-        usebanner: {
-            build: {
-                options: {
-                    position: 'top'
-                },
-                files: {
-                    src: [ 'build/main.min.js' ]
-                }
-            }
-        },
-        sass: {
-            build: {
-                options: {
-                    loadPath: 'scss',
-                    style: 'compressed',
-                    cacheLocation: 'cache/scss'
-                },
-                files: {
-                    'build/main.min.css': 'scss/main.scss'
-                }
-            }
-        },
-        jshint: {
-            all: [
-                'Gruntfile.js',
-                'src/**/*.js',
-                'spec/**/*.js'
-            ],
-            options: {
-                jshintrc: '.jshintrc'
-            }
-        },
-        jasmine: {
-            src : 'src/**/*.js',
-            options : {
-                specs : 'spec/**/*.js',
-                template: require('grunt-template-jasmine-requirejs'),
-                templateOptions: {
-                    requireConfig: {
-                        baseUrl: 'src'
-                    }
-                }
-            }
+        files: {
+          'web/assets/css/main.css': 'res/scss/main.scss'
         }
-    });
+      },
+      build: {
+        options: {
+          outputStyle: 'compressed',
+          imagePath: '/web/assets/images'
+        },
+        files: {
+          'web/assets/css/main.css': 'res/scss/main.scss'
+        }
+      }
+    },
 
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    'sftp-deploy': {
+      live: {
+        auth: {
+          host: '<%= deploy.live.host %>',
+          port: '<%= deploy.live.port %>',
+          authKey: 'live'
+        },
+        src: '<%= deploy.live.src %>',
+        dest: '<%= deploy.live.dest %>',
+        server_sep: '<%= deploy.live.sep %>'
+      }
+    },
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    shell: {
+      build: {
+        command: 'pub build --mode=release'
+      }
+    },
 
-    grunt.registerTask('default', ['requirejs', 'sass']);
-    grunt.registerTask('test', ['jshint', 'jasmine']);
+    watch: {
+      files: [
+        'res/scss/**/*.scss'
+      ],
+      tasks: ['default']
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sftp-deploy');
+  grunt.loadNpmTasks('grunt-shell');
+
+  grunt.registerTask('default', ['sass:dev']);
+  grunt.registerTask('build-test', ['sass:dev', 'shell:build']);
+  grunt.registerTask('build-live', ['sass:build', 'shell:build']);
+
+  grunt.registerTask('deploy-live', ['build-live', 'sftp-deploy:live']);
 };

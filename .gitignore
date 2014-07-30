@@ -2,3 +2,16 @@
 .grunt
 node_modules
 cache
+.ftppass
+.deploy.json
+
+web/assets/css/*
+
+packages/
+pubspec.lock
+.project
+.buildlog
+*.js_
+*.js.deps
+*.js.map
+build

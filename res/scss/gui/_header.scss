@@ -67,11 +67,11 @@
     .toggle {
         display: block;
         color: $color-f-2;
-        padding: 0;
+        padding: 10px;
         opacity: 0;
         position: absolute;
         text-align: center;
-        top: 12px;
+        top: 4px;
         right: 16px;
         font-size: 36px;
         @include transform(translateY(-100px));

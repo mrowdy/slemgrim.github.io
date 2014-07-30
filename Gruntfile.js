@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    deploy: grunt.file.readJSON('.deploy.json'),
     sass: {
       dev: {
         options: {
@@ -12,7 +13,7 @@ module.exports = function(grunt) {
           'web/assets/css/main.css': 'res/scss/main.scss'
         }
       },
-      live: {
+      build: {
         options: {
           outputStyle: 'compressed',
           imagePath: '/web/assets/images'
@@ -22,6 +23,26 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    'sftp-deploy': {
+      live: {
+        auth: {
+          host: '<%= deploy.live.host %>',
+          port: '<%= deploy.live.port %>',
+          authKey: 'live'
+        },
+        src: '<%= deploy.live.src %>',
+        dest: '<%= deploy.live.dest %>',
+        server_sep: '<%= deploy.live.sep %>'
+      }
+    },
+
+    shell: {
+      build: {
+        command: 'pub build'
+      }
+    },
+
     watch: {
       files: [
         'res/scss/**/*.scss'
@@ -32,6 +53,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sftp-deploy');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('default', ['sass:dev']);
+  grunt.registerTask('build-test', ['sass:dev', 'shell:build']);
+  grunt.registerTask('build-live', ['sass:build', 'shell:build']);
+
+  grunt.registerTask('deploy-live', ['build-live', 'sftp-deploy:live']);
 };

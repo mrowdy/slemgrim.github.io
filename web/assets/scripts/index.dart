@@ -68,8 +68,7 @@ main(){
         if(contentBoxes.containsKey(node['node'])){
 
             contentBoxes.forEach((String name, ContentBox contentBox){
-
-                if(contentBox.isExpanding){
+                if(contentBox.isExpanding || contentBox.isContracting){
                     contentBox.forceContract();
                 }
                 contentBox.contract();
@@ -85,8 +84,12 @@ main(){
             if(container.isExpanded){
                 contentBox.expand();
             } else {
+                bool listen = true;
                 contentBoxes['slemgrim'].onContractingEnd.listen((_){
-                    contentBox.expand();
+                    if(listen == true){
+                        contentBox.expand();
+                        listen = false;
+                    }
                 });
             }
         }

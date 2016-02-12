@@ -1,7 +1,0 @@
-name: slemgrim.com
-description: website of markus ritberger
-dependencies:
-  browser: any
-  query_string: any
-  route: any
-  mailer: any

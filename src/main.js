@@ -1,3 +1,3 @@
 "use strict";
 
-require("./modules/layout/layout.js");
+require("./components/layout/layout.js");

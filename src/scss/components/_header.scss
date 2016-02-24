@@ -1,0 +1,35 @@
+.header {
+  background-color: $color-primary;
+  color: $color-text-primary;
+}
+
+.header_image {
+  width: 100%;
+  height: auto;
+}
+
+.header_headline {
+  margin: 0;
+  padding: 0;
+}
+
+.header_content {
+  @include grid($gutter);
+  @include clear-fix;
+}
+
+.header_section {
+  //@include grid-helper(12, 20px);
+  @include grid-col(12, 12, $gutter);
+}
+
+.header_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header_anchor {
+  text-decoration: none;
+  color: $color-accent;
+}

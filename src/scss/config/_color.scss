@@ -1,5 +1,9 @@
-$color-background: white;
-$color-primary: green;
-$color-accent: blue;
+$color-background: hsl(192,33,97);
+$color-background-alternate: white;
 
-$color-text: black;
+$color-primary: hsl(223, 34, 23);
+$color-accent: hsl(88, 100, 35);
+
+$color-text: $color-primary;
+$color-text-primary: white;
+$color-text-secondary: hsl(195, 16, 76);

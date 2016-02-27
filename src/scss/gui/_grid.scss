@@ -1,15 +1,25 @@
 @mixin grid-helper($grid, $gutter) {
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 0, 0, .1) #{$gutter / 2},
-      rgba(255, 0, 0, .3) #{$gutter / 2},
-      rgba(255, 0, 0, .3) calc(100% / #{$grid} - #{$gutter / 2}),
-      rgba(255, 0, 0, .1) calc(100% / #{$grid} - #{$gutter / 2}),
-      rgba(255, 0, 0, .1) calc(100% / #{$grid} + #{$gutter / 2}),
-      rgba(255, 0, 0, .3) calc(100% / #{$grid} + #{$gutter / 2})
-    ),
-    white;
+  position: relative;
+  &:after {
+    content: '';
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+            repeating-linear-gradient(
+                            90deg,
+                            rgba(255, 0, 0, .1) #{$gutter / 2},
+                            rgba(255, 0, 0, .3) #{$gutter / 2},
+                            rgba(255, 0, 0, .3) calc(100% / #{$grid} - #{$gutter / 2}),
+                            rgba(255, 0, 0, .1) calc(100% / #{$grid} - #{$gutter / 2}),
+                            rgba(255, 0, 0, .1) calc(100% / #{$grid} + #{$gutter / 2}),
+                            rgba(255, 0, 0, .3) calc(100% / #{$grid} + #{$gutter / 2})
+            ),
+            white;
+  }
 }
 
 @mixin grid($gutter) {
@@ -25,4 +35,36 @@
   float: left;
   width: calc(100% / #{$grid} * #{$count});
   padding: $gutter / 2;
+}
+
+@mixin text-grid-helper($fontSize, $lineHeight) {
+
+  $offset: ($lineHeight - $fontSize) / 2;
+  $negativeOffset: $lineHeight - $offset;
+  //
+  //@debug($offset);
+  //@debug($negativeOffset);
+  //
+  background:
+          repeating-linear-gradient(
+                          rgba(255, 0, 0, 0) 0,
+                          rgba(255, 0, 0, 0) #{$lineHeight},
+                          rgba(255, 0, 0, 0.1) #{$lineHeight},
+                          rgba(255, 0, 0, 0.1) calc(#{$lineHeight} * 2)
+          ),
+          repeating-linear-gradient(
+                          rgba(0, 0, 255, 0) 0,
+                          rgba(0, 0, 255, 0) #{$offset},
+                          rgba(0, 0, 255, 1) #{$offset},
+                          rgba(0, 0, 255, 1) calc(#{$offset} + 1px),
+                          rgba(0, 0, 255, 0) calc(#{$offset} + 1px),
+                          rgba(0, 0, 255, 0) #{$negativeOffset},
+                          rgba(0, 0, 255, 1) #{$negativeOffset},
+                          rgba(0, 0, 255, 1) calc(#{$negativeOffset} + 1px),
+                          rgba(0, 0, 255, 0) calc(#{$negativeOffset} + 1px),
+                          rgba(0, 0, 255, 0) $lineHeight
+
+
+
+          ), white;
 }

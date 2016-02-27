@@ -1,20 +1,59 @@
 <header class="header">
-    <img class="header_image" src="assets/images/slemgrim.jpg">
 
-    <div class="header_content">
-        <section class="header_section">
-            <h1 class="header_headline">Markus Ritberger</h1>
+    <section class="header_section header_section--full header_section--image">
+        {{>logo}}
+    </section>
 
-            <span class="header_subline">Lead Developer</span>
+    <section class="header_section header_section--primary header_section--contact">
 
-            <ul class="header_list">
-                <li class="header_list-item">Freistädter Straße 291, 4040 Linz, Austria</li>
-                <li class="header_list-item">+43 664 9144536</li>
-                <li class="header_list-item"><a href="#" class="header_anchor">contact@ritberger.at</a></li>
-                <li class="header_list-item"><a href="#" class="header_anchor">@slemgrim</a></li>
-                <li class="header_list-item"><a href="#" class="header_anchor">slemgrim</a></li>
+        <h1 class="header_logo">Markus Ritberger</h1>
 
-            </ul>
-        </section>
-    </div>
+        <span class="header_subline">Lead Developer</span>
+
+        <ul class="icon-list">
+            <li class="icon-list_item">
+                <svg class="icon icon-list_icon">
+                    <use xlink:href="#map-marker"></use>
+                </svg>
+                Freistädter Straße 291, 4040 Linz, Austria
+            </li>
+            <li class="icon-list_item">
+                <svg class="icon icon-list_icon">
+                    <use xlink:href="#phone"></use>
+                </svg>
+                +43 664 9144536
+            </li>
+            <li class="icon-list_item">
+                <svg class="icon icon-list_icon">
+                    <use xlink:href="#envelope"></use>
+                </svg>
+                <a href="#" class="icon-list_anchor">contact@ritberger.at</a>
+            </li>
+            <li class="icon-list_item">
+                <svg class="icon icon-list_icon">
+                    <use xlink:href="#twitter"></use>
+                </svg>
+                <a href="#" class="icon-list_anchor">@slemgrim</a>
+            </li>
+            <li class="icon-list_item">
+                <svg class="icon icon-list_icon">
+                    <use xlink:href="#github"></use>
+                </svg>
+                <a href="#" class="icon-list_anchor">slemgrim</a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="header_section header_section--about">
+        <h2 class="header_headline header_headline--dark">
+            About me
+        </h2>
+
+        <p class="header_about-text">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore
+            magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+            et justo duo dolores et ea rebum.
+        </p>
+    </section>
 </header>

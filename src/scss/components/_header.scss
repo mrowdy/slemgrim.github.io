@@ -1,35 +1,74 @@
 .header {
+  position: relative;
+
+  @include breakpoint($brpt-header-split){
+    display: flex;
+  }
+}
+
+.header_logo {
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+  line-height: 44px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header_headline {
+  margin: 5px 0 20px;
+  padding: 0;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header_subline {
+  margin: 15px 0 30px;
+  font-size: 23px;
+  line-height: 29px;
+  font-weight: normal;
+  display: block;
+}
+
+.header_section {
+  padding: 30px $gutter 40px;
+  background-color: $color-background;
+  color: $color-text;
+  @include clear-fix;
+
+  @include breakpoint($brpt-header-split){
+    flex: 1;
+  }
+}
+
+.header_section--primary {
   background-color: $color-primary;
   color: $color-text-primary;
 }
 
-.header_image {
-  width: 100%;
-  height: auto;
-}
-
-.header_headline {
-  margin: 0;
+.header_section--full {
   padding: 0;
 }
 
-.header_content {
-  @include grid($gutter);
-  @include clear-fix;
+.header_section--image {
+  @include breakpoint($brpt-header-split){
+    background: transparent;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
-.header_section {
-  //@include grid-helper(12, 20px);
-  @include grid-col(12, 12, $gutter);
+.header_section--contact {
+  @include breakpoint($brpt-header-split){
+    padding-right: 16vw;
+  }
 }
 
-.header_list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.header_anchor {
-  text-decoration: none;
-  color: $color-accent;
+.header_section--about {
+  @include breakpoint($brpt-header-split){
+    padding-left: 16vw;
+  }
 }

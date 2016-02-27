@@ -1,0 +1,31 @@
+.logo {
+  margin: 0;
+  padding: 0;
+}
+
+.logo_image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@include breakpoint($brpt-header-split) {
+  .logo,
+  .logo_shape {
+    margin: 0 auto;
+    transform-origin: 50% 50%;
+    overflow: hidden;
+  }
+
+  .logo {
+    transform: rotate(45deg) translateY(10px);
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .logo_shape {
+    width: 30vw;
+    height: 30vw;
+    transform: rotate(-45deg) translateY(-74px);
+  }
+}

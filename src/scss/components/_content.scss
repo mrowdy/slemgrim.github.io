@@ -1,14 +1,50 @@
 .content {
 }
 
+$font-size: 16px;
+$line-height: 24px;
+
 .content_section {
   //background: purple;
   display: flex;
   justify-content: center;
-  font-size: 16px;
-  line-height: 24px;
-  @include text-grid-helper(16px, 24px);
+  font-size: $font-size;
+  line-height: $line-height;
+  @include text-grid-helper($font-size, $line-height);
   &:nth-of-type(2) {
     //background: blue;
+  }
+
+  p {
+    padding: 0 3rem;
+    margin: $line-height 0;
+  }
+
+  h1 {
+    line-height: $line-height * 2;
+    margin: $line-height 0;
+    padding: 0 3rem;
+    font-size: $font-size * 1.6 * 2;
+  }
+
+  h2 {
+    line-height: $line-height * 2;
+    margin: $line-height 0;
+    padding: 0 3rem;
+    font-size: $font-size * 1.6;
+  }
+
+  h3 {
+    line-height: $line-height;
+    margin: $line-height 0;
+    padding: 0 3rem;
+    font-size: $font-size;
+  }
+
+  h4 {
+    line-height: $line-height;
+    margin: $line-height 0;
+    padding: 0 3rem;
+    font-size: $font-size;
   }
 }

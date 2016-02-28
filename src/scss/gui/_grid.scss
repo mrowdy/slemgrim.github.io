@@ -42,9 +42,6 @@
     $offset: ($lineHeight / 2) - ( $fontSize / 2);
     $negativeOffset: $lineHeight - $offset;
 
-    @debug ($offset);
-    @debug ($negativeOffset);
-
     background: repeating-linear-gradient(
                     rgba(255, 0, 0, 0) 0,
                     rgba(255, 0, 0, 0) #{$lineHeight},

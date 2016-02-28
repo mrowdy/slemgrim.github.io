@@ -9,3 +9,8 @@
 @mixin breakpoint($point) {
   @media (min-width: $point) { @content ; }
 }
+
+@mixin anchor {
+  color: $color-accent;
+  text-decoration: none;
+}

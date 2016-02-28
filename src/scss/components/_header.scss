@@ -1,6 +1,5 @@
 .header {
   position: relative;
-
   @include breakpoint($brpt-header-split){
     display: flex;
   }
@@ -39,6 +38,7 @@
 
   @include breakpoint($brpt-header-split){
     flex: 1;
+    height: 30vw;
   }
 }
 
@@ -53,6 +53,7 @@
 
 .header_section--image {
   @include breakpoint($brpt-header-split){
+    display: none;
     background: transparent;
     position: absolute;
     left: 50%;
@@ -63,12 +64,13 @@
 
 .header_section--contact {
   @include breakpoint($brpt-header-split){
-    padding-right: 16vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
 .header_section--about {
   @include breakpoint($brpt-header-split){
-    padding-left: 16vw;
   }
 }

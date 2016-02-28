@@ -1,0 +1,36 @@
+.activity {
+  background-color: $color-background-alternate;
+  padding: $gutter;
+  position: relative;
+
+  &:before{
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-right: 20px solid $color-background-alternate;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: -20px;
+  }
+}
+
+.activity_title {
+  margin: 0;
+  padding: 0;
+}
+
+.activity_anchor {
+  @include anchor;
+  border-bottom: 1px solid $color-text-secondary;
+  padding: 10px 0;
+  display: block;
+}
+
+.activity_description {
+  margin: 10px 0 0;
+}
+

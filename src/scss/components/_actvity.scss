@@ -18,6 +18,13 @@
   }
 }
 
+.activity--dark {
+  background-color: $color-background;
+  &:before {
+    border-right-color: $color-background;
+  }
+}
+
 .activity_title {
   margin: 0;
   padding: 0;

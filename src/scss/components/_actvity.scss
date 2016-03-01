@@ -3,25 +3,25 @@
   padding: $gutter;
   position: relative;
 
-  &:before{
-    content: '';
-    width: 0px;
-    height: 0px;
-    border-right: 20px solid $color-background-alternate;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-
-    display: block;
-    position: absolute;
-    top: 20px;
-    left: -20px;
+  @include breakpoint($brpt-header-split) {
+    &:before {
+      position: absolute;
+      top: 30px;
+      left: 0px;
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-color: $color-background-alternate;
+      display: block;
+      transform: translateX(-50%) rotate(45deg);
+    }
   }
 }
 
 .activity--dark {
   background-color: $color-background;
   &:before {
-    border-right-color: $color-background;
+    background-color: $color-background;
   }
 }
 

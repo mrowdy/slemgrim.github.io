@@ -1,0 +1,8 @@
+title: slemgirm.com
+email: slemgrim+blog@gmail.com
+description: Personal blog of Markus Ritberger about web technologies
+baseurl: ""
+url: "http://slemgrim.com"
+twitter_username: slemgrim
+github_username:  slemgrim
+markdown: kramdown

@@ -1,0 +1,38 @@
+@mixin grid-helper($grid, $gutter) {
+  position: relative;
+  &:after {
+    content: '';
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+            repeating-linear-gradient(
+                            90deg,
+                            rgba(255, 0, 0, .1) #{$gutter / 2},
+                            rgba(255, 0, 0, .3) #{$gutter / 2},
+                            rgba(255, 0, 0, .3) calc(100% / #{$grid} - #{$gutter / 2}),
+                            rgba(255, 0, 0, .1) calc(100% / #{$grid} - #{$gutter / 2}),
+                            rgba(255, 0, 0, .1) calc(100% / #{$grid} + #{$gutter / 2}),
+                            rgba(255, 0, 0, .3) calc(100% / #{$grid} + #{$gutter / 2})
+            ),
+            white;
+  }
+}
+
+@mixin grid($gutter) {
+  padding: $gutter / 2;
+}
+
+@mixin grid_row {
+  width: 100%;
+  overflow: hidden;
+}
+
+@mixin grid-col($grid, $count, $gutter){
+  float: left;
+  width: calc(100% / #{$grid} * #{$count});
+  padding: $gutter / 2;
+}

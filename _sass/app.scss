@@ -10,12 +10,17 @@
 @import
   "utilities/clear-fix",
   "utilities/breakpoint",
-  "utilities/grid";
+  "utilities/grid",
+  "utilities/page-wrap",
+  "utilities/content";
 
 @import
   "components/layout",
-  "components/content-wrap",
-  "components/header";
+  "components/headings",
+  "components/header",
+  "components/page-content",
+  "components/list-item",
+  "components/post";
 
 * {
   box-sizing: border-box;

@@ -1,0 +1,11 @@
+.list-item {
+  background-color: $color-background;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding: 0 $gutter;
+
+  &:nth-of-type(odd){
+    background-color: $color-background-alternate;
+  }
+}

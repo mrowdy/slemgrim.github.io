@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4713d5b-e354-430b-b45f-d82725c4164f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/slemgrim.com.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/head.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/icon-github.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/icon-github.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/icon-twitter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/icon-twitter.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/default.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/page.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/post.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/about.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/feed.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
+    <list default="true" id="e4713d5b-e354-430b-b45f-d82725c4164f" name="Default" comment="cleanup">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/components/_headings.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/components/_list-item.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/components/_page-content.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/components/_post.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/utilities/_content.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/utilities/_page-wrap.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ideas.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_posts/cv.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_sass/_config.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_sass/components/_content-wrap.scss" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_includes/list-item.html" afterPath="$PROJECT_DIR$/_includes/list-item.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_layouts/default.html" afterPath="$PROJECT_DIR$/_layouts/default.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_layouts/post.html" afterPath="$PROJECT_DIR$/_layouts/post.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" afterPath="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/app.scss" afterPath="$PROJECT_DIR$/_sass/app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/components/_header.scss" afterPath="$PROJECT_DIR$/_sass/components/_header.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/components/_layout.scss" afterPath="$PROJECT_DIR$/_sass/components/_layout.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/config/_font.scss" afterPath="$PROJECT_DIR$/_sass/config/_font.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/utilities/_breakpoint.scss" afterPath="$PROJECT_DIR$/_sass/utilities/_breakpoint.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/utilities/_clear-fix.scss" afterPath="$PROJECT_DIR$/_sass/utilities/_clear-fix.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="slemgrim.com.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="default.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+      <file leaf-file-name="_font.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_sass/config/_font.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55932206">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23775215">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -76,23 +77,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/templates/icons.hbs" />
-        <option value="$PROJECT_DIR$/src/templates/index.hbs" />
-        <option value="$PROJECT_DIR$/src/scss/components/_layout.scss" />
-        <option value="$PROJECT_DIR$/dist/assets/icons/symbol/svg/sprite.symbol.svg" />
-        <option value="$PROJECT_DIR$/src/templates/components/icons.hbs" />
-        <option value="$PROJECT_DIR$/src/scss/components/_icons.scss" />
-        <option value="$PROJECT_DIR$/src/scss/config/_breakpoints.scss" />
-        <option value="$PROJECT_DIR$/src/scss/gui/_grid.scss" />
-        <option value="$PROJECT_DIR$/src/scss/config/_dimensions.scss" />
-        <option value="$PROJECT_DIR$/src/templates/components/layout.hbs" />
-        <option value="$PROJECT_DIR$/src/scss/components/_content-wrap.scss" />
-        <option value="$PROJECT_DIR$/src/scss/_mixins.scss" />
-        <option value="$PROJECT_DIR$/src/templates/components/content.hbs" />
-        <option value="$PROJECT_DIR$/src/templates/components/education.hbs" />
-        <option value="$PROJECT_DIR$/src/templates/components/activity.hbs" />
-        <option value="$PROJECT_DIR$/src/templates/components/experience.hbs" />
-        <option value="$PROJECT_DIR$/src/scss/components/_time-line.scss" />
         <option value="$PROJECT_DIR$/src/templates/components/time-item.hbs" />
         <option value="$PROJECT_DIR$/src/scss/components/_logo.scss" />
         <option value="$PROJECT_DIR$/src/templates/components/header.hbs" />
@@ -109,9 +93,7 @@
         <option value="$PROJECT_DIR$/src/scss/components/_header.scss" />
         <option value="$PROJECT_DIR$/cv.md" />
         <option value="$PROJECT_DIR$/about.md" />
-        <option value="$PROJECT_DIR$/_includes/list-item.html" />
         <option value="$PROJECT_DIR$/_sass/nomralize.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/_site/css/main.scss" />
         <option value="$PROJECT_DIR$/_site/css/main.css" />
         <option value="$PROJECT_DIR$/_config.yml" />
@@ -122,11 +104,30 @@
         <option value="$PROJECT_DIR$/_sass/components/_breakpoint.scss" />
         <option value="$PROJECT_DIR$/_sass/_mixins.scss" />
         <option value="$PROJECT_DIR$/_sass/components/_clear-fix.scss" />
-        <option value="$PROJECT_DIR$/_sass/app.scss" />
-        <option value="$PROJECT_DIR$/_layouts/default.html" />
         <option value="$PROJECT_DIR$/_includes/footer.html" />
         <option value="$PROJECT_DIR$/_includes/header.html" />
         <option value="$PROJECT_DIR$/_layouts/page.html" />
+        <option value="$PROJECT_DIR$/ideas.md" />
+        <option value="$PROJECT_DIR$/_layouts/default.html" />
+        <option value="$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown" />
+        <option value="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" />
+        <option value="$PROJECT_DIR$/_sass/components/_layout.scss" />
+        <option value="$PROJECT_DIR$/_sass/components/_header.scss" />
+        <option value="$PROJECT_DIR$/_sass/components/_content-wrap.scss" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_clear-fix.scss" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_breakpoint.scss" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_page-wrap.scss" />
+        <option value="$PROJECT_DIR$/_sass/components/_page-content.scss" />
+        <option value="$PROJECT_DIR$/_layouts/post.html" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_grid.scss" />
+        <option value="$PROJECT_DIR$/_includes/list-item.html" />
+        <option value="$PROJECT_DIR$/_sass/components/_post.scss" />
+        <option value="$PROJECT_DIR$/_sass/components/_list-item.scss" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_content.scss" />
+        <option value="$PROJECT_DIR$/_sass/components/_headings.scss" />
+        <option value="$PROJECT_DIR$/_sass/app.scss" />
+        <option value="$PROJECT_DIR$/_sass/config/_font.scss" />
       </list>
     </option>
   </component>
@@ -140,7 +141,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
+    <option name="x" value="617" />
+    <option name="width" value="749" />
     <option name="height" value="768" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -215,20 +217,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="_sass" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -248,6 +236,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="slemgrim.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="slemgrim.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_sass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -498,7 +504,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457082657041</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="cleanup">
+      <created>1457084066784</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1457084066784</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -511,17 +523,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+    <frame x="617" y="0" width="749" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29229608" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29229608" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872927" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30662984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30662984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32966226" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -556,50 +568,18 @@
     <MESSAGE value="acitvities" />
     <MESSAGE value="mobile activities" />
     <MESSAGE value="move to jekyll" />
-    <option name="LAST_COMMIT_MESSAGE" value="move to jekyll" />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_posts/cv.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.8070176">
           <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/cv.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.1564482">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/about.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3488372">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,30 +672,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6292373">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding>
-            <marker date="1457080859000" expanded="true" signature="74:274" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1627907">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -729,60 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/utilities/_breakpoint.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41949153">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding>
-            <marker date="1457082395000" expanded="true" signature="17:90" placeholder="{...}" />
-            <marker date="1457082395000" expanded="true" signature="29:88" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/utilities/_grid.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83898306">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <marker date="1457082188000" expanded="true" signature="35:798" placeholder="{...}" />
-            <marker date="1457082188000" expanded="true" signature="69:796" placeholder="{...}" />
-            <marker date="1457082188000" expanded="true" signature="821:848" placeholder="{...}" />
-            <marker date="1457082188000" expanded="true" signature="866:904" placeholder="{...}" />
-            <marker date="1457082188000" expanded="true" signature="945:1031" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/utilities/_clear-fix.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20974576">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <marker date="1457082406000" expanded="true" signature="26:73" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/_config.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3707627">
-          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-          <folding>
-            <marker date="1457082637000" expanded="true" signature="326:355" placeholder="{...}" />
-            <marker date="1457082637000" expanded="true" signature="368:516" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_includes/head.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41949153">
@@ -790,14 +695,6 @@
           <folding>
             <marker date="1457081915000" expanded="true" signature="5:894" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_includes/list-item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,28 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_includes/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06991526">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="9" selection-end-column="18" />
-          <folding>
-            <marker date="1457084011000" expanded="true" signature="27:292" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41949153">
-          <caret line="6" column="68" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="68" />
-          <folding>
-            <marker date="1457079621000" expanded="true" signature="96:614" placeholder="..." />
-            <marker date="1457079621000" expanded="true" signature="128:522" placeholder="..." />
-            <marker date="1457079621000" expanded="true" signature="575:602" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41949153">
@@ -841,10 +716,277 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+    <entry file="file://$PROJECT_DIR$/about.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23741007">
+          <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ideas.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3488372">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41860464">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41860464">
+          <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7690678">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <marker date="1457084011000" expanded="true" signature="27:292" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/components/_layout.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27966103">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <marker date="1457186621000" expanded="true" signature="8:114" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/components/_header.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/config/_breakpoints.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/config/_color.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/config/_dimensions.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_clear-fix.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1457187095000" expanded="true" signature="17:90" placeholder="{...}" />
+            <marker date="1457187095000" expanded="true" signature="29:88" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_breakpoint.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13983051">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding>
+            <marker date="1457187097000" expanded="true" signature="26:73" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55932206">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <marker date="1457187140000" expanded="true" signature="74:276" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_page-wrap.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20974576">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding>
+            <marker date="1457187243000" expanded="true" signature="17:63" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/components/_page-content.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06991526">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7690678">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <marker date="1457185559000" expanded="true" signature="21:235" placeholder="..." />
+            <marker date="1457185559000" expanded="true" signature="54:226" placeholder="..." />
+            <marker date="1457185559000" expanded="true" signature="84:217" placeholder="..." />
+            <marker date="1457185559000" expanded="true" signature="146:179" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7690678">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <marker date="1457188574000" expanded="true" signature="46:539" placeholder="..." />
+            <marker date="1457188574000" expanded="true" signature="122:532" placeholder="..." />
+            <marker date="1457188574000" expanded="true" signature="155:436" placeholder="..." />
+            <marker date="1457188574000" expanded="true" signature="262:422" placeholder="..." />
+            <marker date="1457188574000" expanded="true" signature="349:411" placeholder="..." />
+            <marker date="1457188574000" expanded="true" signature="488:519" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_grid.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51059324">
+          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+          <folding>
+            <marker date="1457188732000" expanded="true" signature="35:798" placeholder="{...}" />
+            <marker date="1457188732000" expanded="true" signature="69:796" placeholder="{...}" />
+            <marker date="1457188732000" expanded="true" signature="821:848" placeholder="{...}" />
+            <marker date="1457188732000" expanded="true" signature="866:904" placeholder="{...}" />
+            <marker date="1457188732000" expanded="true" signature="945:1031" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/list-item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49364406">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding>
+            <marker date="1457189081000" expanded="true" signature="22:643" placeholder="..." />
+            <marker date="1457189081000" expanded="true" signature="100:636" placeholder="..." />
+            <marker date="1457189081000" expanded="true" signature="137:512" placeholder="..." />
+            <marker date="1457189081000" expanded="true" signature="302:494" placeholder="..." />
+            <marker date="1457189081000" expanded="true" signature="397:477" placeholder="..." />
+            <marker date="1457189081000" expanded="true" signature="568:621" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/components/_post.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6292373">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding>
+            <marker date="1457189148000" expanded="true" signature="6:322" placeholder="{...}" />
+            <marker date="1457189148000" expanded="true" signature="83:184" placeholder="{...}" />
+            <marker date="1457189148000" expanded="true" signature="145:180" placeholder="{...}" />
+            <marker date="1457189148000" expanded="true" signature="199:278" placeholder="{...}" />
+            <marker date="1457189148000" expanded="true" signature="293:320" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/components/_list-item.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34957626">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="20" />
+          <folding>
+            <marker date="1457189195000" expanded="true" signature="11:200" placeholder="{...}" />
+            <marker date="1457189195000" expanded="true" signature="142:198" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_content.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55932206">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <marker date="1457189291000" expanded="true" signature="15:222" placeholder="{...}" />
+            <marker date="1457189291000" expanded="true" signature="46:91" placeholder="{...}" />
+            <marker date="1457189291000" expanded="true" signature="98:131" placeholder="{...}" />
+            <marker date="1457189291000" expanded="true" signature="138:174" placeholder="{...}" />
+            <marker date="1457189291000" expanded="true" signature="181:220" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/components/_headings.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40254238">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <marker date="1457189548000" expanded="true" signature="15:193" placeholder="{...}" />
+            <marker date="1457189548000" expanded="true" signature="145:191" placeholder="{...}" />
+            <marker date="1457189548000" expanded="true" signature="213:344" placeholder="{...}" />
+            <marker date="1457189548000" expanded="true" signature="296:342" placeholder="{...}" />
+            <marker date="1457189548000" expanded="true" signature="367:498" placeholder="{...}" />
+            <marker date="1457189548000" expanded="true" signature="450:496" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38184437">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <marker date="1457189891000" expanded="true" signature="446:475" placeholder="{...}" />
+            <marker date="1457189891000" expanded="true" signature="488:636" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/config/_font.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23775215">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>

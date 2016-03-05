@@ -1,0 +1,17 @@
+@mixin content {
+  p, ul, ol, table, img, pre {
+    @include sassy-gridlover-margins();
+  }
+
+  h1 {
+    @extend .heading-title;
+  }
+
+  h2 {
+    @extend .heading-subtitle;
+  }
+
+  h3 {
+    @extend .heading-subsubtitle;
+  }
+}

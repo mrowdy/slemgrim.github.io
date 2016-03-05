@@ -1,3 +1,7 @@
-@mixin breakpoint($point) {
-  @media (min-width: $point) { @content ; }
+@mixin clear-fix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }

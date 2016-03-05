@@ -6,3 +6,12 @@ url: "http://slemgrim.com"
 twitter_username: slemgrim
 github_username:  slemgrim
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+sass:
+  style: compressed
+
+permalink: /:title

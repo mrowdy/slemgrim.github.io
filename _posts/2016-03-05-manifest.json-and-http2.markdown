@@ -18,7 +18,7 @@ A connection can also be used for a server to **push** a resource to a client.
 In the past we inlined and/or concatenated or assets to reduce the number of requests in order to increase the performance.
 Http2 push replaces this at the protocol level. Yes this means no more inlining and concatenation, in fact this practice is harmful.
 
-So is it ok to have multiple <script> and <link> tags in our documents? I know, we spent the last years to avoid this, but
+So is it ok to have multiple **script** and **link** tags in our documents? I know, we spent the last years to avoid this, but
 now this comes with a couple of benefits:
 
 - browser cache on module level
@@ -63,8 +63,8 @@ Every associated resource has a type and a weight and is in the format *<URL>: <
             "type": "style",
             "weight": 1
         },
-    }
-    
+    } 
+     
 ## type property
 
 ## weight property

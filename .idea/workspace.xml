@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4713d5b-e354-430b-b45f-d82725c4164f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/slemgrim.com.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_sass/utilities/_syntax-highlighting.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_config.yml" afterPath="$PROJECT_DIR$/_config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_includes/list-item.html" afterPath="$PROJECT_DIR$/_includes/list-item.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" afterPath="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown" afterPath="$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/app.scss" afterPath="$PROJECT_DIR$/_sass/app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/utilities/_content.scss" afterPath="$PROJECT_DIR$/_sass/utilities/_content.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="slemgrim.com.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +32,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="2016-03-05-manifest.json-and-http2.markdown" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2920354">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.7963801">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -61,7 +66,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/scss/components/_logo.scss" />
         <option value="$PROJECT_DIR$/src/templates/components/header.hbs" />
         <option value="$PROJECT_DIR$/src/scss/Sassy-Gridlover-master/sassy-gridlover/_config.scss" />
         <option value="$PROJECT_DIR$/src/scss/gui/_layout.scss" />
@@ -79,7 +83,6 @@
         <option value="$PROJECT_DIR$/_sass/nomralize.css" />
         <option value="$PROJECT_DIR$/_site/css/main.scss" />
         <option value="$PROJECT_DIR$/_site/css/main.css" />
-        <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/_includes/head.html" />
         <option value="$PROJECT_DIR$/css/main.scss" />
         <option value="$PROJECT_DIR$/_sass/gui/_grid.scss" />
@@ -92,26 +95,28 @@
         <option value="$PROJECT_DIR$/_layouts/page.html" />
         <option value="$PROJECT_DIR$/ideas.md" />
         <option value="$PROJECT_DIR$/_layouts/default.html" />
-        <option value="$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown" />
-        <option value="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" />
         <option value="$PROJECT_DIR$/_sass/components/_layout.scss" />
         <option value="$PROJECT_DIR$/_sass/components/_header.scss" />
         <option value="$PROJECT_DIR$/_sass/components/_content-wrap.scss" />
         <option value="$PROJECT_DIR$/_sass/utilities/_clear-fix.scss" />
         <option value="$PROJECT_DIR$/_sass/utilities/_breakpoint.scss" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/_sass/utilities/_page-wrap.scss" />
         <option value="$PROJECT_DIR$/_sass/components/_page-content.scss" />
         <option value="$PROJECT_DIR$/_layouts/post.html" />
         <option value="$PROJECT_DIR$/_sass/utilities/_grid.scss" />
-        <option value="$PROJECT_DIR$/_includes/list-item.html" />
         <option value="$PROJECT_DIR$/_sass/components/_list-item.scss" />
-        <option value="$PROJECT_DIR$/_sass/utilities/_content.scss" />
         <option value="$PROJECT_DIR$/_sass/components/_headings.scss" />
         <option value="$PROJECT_DIR$/_sass/config/_font.scss" />
-        <option value="$PROJECT_DIR$/_sass/app.scss" />
         <option value="$PROJECT_DIR$/_sass/components/_post.scss" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/_includes/list-item.html" />
+        <option value="$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_content.scss" />
+        <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/_sass/app.scss" />
+        <option value="$PROJECT_DIR$/_sass/utilities/_syntax-highlighting.scss" />
+        <option value="$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown" />
       </list>
     </option>
   </component>
@@ -221,70 +226,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_sass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_sass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slemgrim.com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -512,7 +453,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457190234938</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="remove intellij stuff">
+      <created>1457190272129</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1457190272129</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -574,7 +521,8 @@
     <MESSAGE value="basic article styling" />
     <MESSAGE value="refactor post css" />
     <MESSAGE value="add intellij to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add intellij to gitignore" />
+    <MESSAGE value="remove intellij stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove intellij stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -669,14 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19721116">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27966103">
@@ -731,28 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3488372">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41860464">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41860464">
-          <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -830,16 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55932206">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <marker date="1457187140000" expanded="true" signature="74:276" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_sass/utilities/_page-wrap.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20974576">
@@ -900,21 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_includes/list-item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49364406">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <marker date="1457189081000" expanded="true" signature="22:643" placeholder="..." />
-            <marker date="1457189081000" expanded="true" signature="100:636" placeholder="..." />
-            <marker date="1457189081000" expanded="true" signature="137:512" placeholder="..." />
-            <marker date="1457189081000" expanded="true" signature="302:494" placeholder="..." />
-            <marker date="1457189081000" expanded="true" signature="397:477" placeholder="..." />
-            <marker date="1457189081000" expanded="true" signature="568:621" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_sass/components/_list-item.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34957626">
@@ -922,20 +815,6 @@
           <folding>
             <marker date="1457189195000" expanded="true" signature="11:200" placeholder="{...}" />
             <marker date="1457189195000" expanded="true" signature="142:198" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/utilities/_content.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55932206">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <marker date="1457189291000" expanded="true" signature="15:222" placeholder="{...}" />
-            <marker date="1457189291000" expanded="true" signature="46:91" placeholder="{...}" />
-            <marker date="1457189291000" expanded="true" signature="98:131" placeholder="{...}" />
-            <marker date="1457189291000" expanded="true" signature="138:174" placeholder="{...}" />
-            <marker date="1457189291000" expanded="true" signature="181:220" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -963,17 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2542373">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <marker date="1457190133000" expanded="true" signature="446:475" placeholder="{...}" />
-            <marker date="1457190133000" expanded="true" signature="488:636" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_sass/components/_post.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30508474">
@@ -990,8 +858,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2920354">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.18098721">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40677965">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <marker date="1457207673000" expanded="true" signature="74:317" placeholder="..." />
+            <marker date="1457207673000" expanded="true" signature="246:294" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/list-item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66101694">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+          <folding>
+            <marker date="1457207786000" expanded="true" signature="72:687" placeholder="..." />
+            <marker date="1457207786000" expanded="true" signature="105:474" placeholder="..." />
+            <marker date="1457207786000" expanded="true" signature="165:254" placeholder="..." />
+            <marker date="1457207786000" expanded="true" signature="284:460" placeholder="..." />
+            <marker date="1457207786000" expanded="true" signature="375:447" placeholder="..." />
+            <marker date="1457207786000" expanded="true" signature="526:675" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2016-03-04-welcome-to-jekyll.markdown">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37330317">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feed.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4693878">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding>
+            <marker date="1457079621000" expanded="true" signature="119:1289" placeholder="..." />
+            <marker date="1457079621000" expanded="true" signature="131:1282" placeholder="..." />
+            <marker date="1457079621000" expanded="true" signature="657:1252" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_content.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14965986">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding>
+            <marker date="1457214496000" expanded="true" signature="15:245" placeholder="{...}" />
+            <marker date="1457214496000" expanded="true" signature="54:114" placeholder="{...}" />
+            <marker date="1457214496000" expanded="true" signature="121:154" placeholder="{...}" />
+            <marker date="1457214496000" expanded="true" signature="161:197" placeholder="{...}" />
+            <marker date="1457214496000" expanded="true" signature="204:243" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49044585">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <marker date="1457214762000" expanded="true" signature="234:285" placeholder="kramdown:" />
+            <marker date="1457214762000" expanded="true" signature="286:312" placeholder="sass:" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49659863">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding>
+            <marker date="1457215178000" expanded="true" signature="481:510" placeholder="{...}" />
+            <marker date="1457215178000" expanded="true" signature="523:671" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/utilities/_syntax-highlighting.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41304347">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <marker date="1457215203000" expanded="true" signature="49:3198" placeholder="{...}" />
+            <marker date="1457215203000" expanded="true" signature="95:122" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2016-03-05-manifest.json-and-http2.markdown">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7963801">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>

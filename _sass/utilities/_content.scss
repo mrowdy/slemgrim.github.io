@@ -1,5 +1,6 @@
 @mixin content {
-  p, ul, ol, table, img, pre {
+  p, ul, ol, table, img, pre, figure {
+    margin: 0;
     @include sassy-gridlover-margins();
   }
 

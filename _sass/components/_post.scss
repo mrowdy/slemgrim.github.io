@@ -1,22 +1,22 @@
 .post {
   @include page-wrap;
   @include sassy-gridlover-margins();
+}
 
-  .post_title {
-    color: inherit;
-    text-decoration: none;
+.post_title {
+  color: inherit;
+  text-decoration: none;
 
-    &:hover {
-      color: $color-accent;
-    }
+  &:hover {
+    color: $color-accent;
   }
+}
 
-  .post_meta {
-    @include sassy-gridlover-margins();
-    color: $color-text-secondary;
-  }
+.post_meta {
+  @include sassy-gridlover-margins();
+  color: $color-text-secondary;
+}
 
-  .post_body {
-    @include content;
-  }
+.post_body {
+  @include content;
 }

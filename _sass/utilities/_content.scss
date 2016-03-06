@@ -2,6 +2,7 @@
   p, ul, ol, table, img, pre, figure {
     margin: 0;
     @include sassy-gridlover-margins();
+    word-wrap: break-word;
   }
 
   h1 {

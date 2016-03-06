@@ -58,13 +58,15 @@ contain push information for a single document or multiple documents.
 
 Every associated resource has a type and a weight and is in the format *<URL>: <PUSH_PROPERTIES>*
 
-    {
-        "/css/main.css": {
-            "type": "style",
-            "weight": 1
-        },
-    } 
-     
+``` json
+{
+    "/css/main.css": {
+        "type": "style",
+        "weight": 1
+    },
+} 
+```
+
 ## type property
 
 ## weight property
@@ -73,7 +75,7 @@ Weight in HTTP/2 is a value used for distributing bandwidth between the streams.
 In case of CSS or JavaScript files, what you should do is to assign bandwidth exclusively to those files     
     
 Todo: what is type? Why is it necessary?
-Todo: what is weight? Why is it necessary?
+Todo: what is weight? Why is it necessary? 
 
 At the moment of writing no browser implements handling of the weight property. 
 

@@ -1,16 +1,13 @@
 <footer class="site-footer">
-   <!---->
-    <!--{{ site.title }}-->
-    <!--{{ site.title }}-->
-    <!--{{ site.email }}-->
+   <div class="site-footer_wrap">
+      <div class="site-footer_nav">
+         <nav class="nav">
+            <ul class="nav_list nav_list--no-wrap">
+               <li class="nav_item"><a href="/imprint" class="link link--secondary">Imprint</a></li>
+            </ul>
+         </nav>
+      </div>
 
-    <!--{% if site.github_username %}-->
-    <!--{% include icon-github.html username=site.github_username %}-->
-    <!--{% endif %}-->
-
-    <!--{% if site.twitter_username %}-->
-    <!--{% include icon-twitter.html username=site.twitter_username %}-->
-    <!--{% endif %}-->
-
-    <!--{{ site.description }}-->
+      <div class="site-footer_copy">© {{ site.time | date: '%Y' }} {{site.data.author.name}}</div>
+   </div>
 </footer>

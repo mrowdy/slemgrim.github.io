@@ -1,0 +1,26 @@
+.author {
+  @include page-wrap;
+  @include sassy-gridlover-margins();
+  @include clear-fix;
+  overflow: hidden;
+}
+
+.author_avatar {
+  @include sassy-gridlover-margins();
+  @include breakpoint($brpt-header-split){
+    margin-right: $gutter * 2;
+    float: left;
+    width: 100% - 100% / $GOLDEN_SECTION;
+  }
+}
+
+.author_image {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+}
+
+.author_description,
+.author_hire {
+  @include sassy-gridlover-margins();
+}

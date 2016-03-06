@@ -17,11 +17,15 @@
 
 @import
   "components/layout",
+  "components/link",
   "components/headings",
   "components/header",
   "components/page-content",
   "components/list-item",
-  "components/post";
+  "components/post",
+  "components/author",
+  "components/site-footer",
+  "components/navigation";
 
 * {
   box-sizing: border-box;

@@ -1,0 +1,12 @@
+.link {
+  text-decoration: none;
+  color: $color-accent;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link--secondary {
+  color: $color-text-secondary;
+}

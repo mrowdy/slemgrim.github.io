@@ -1,0 +1,29 @@
+.site-footer {
+  background-color: $color-primary;
+  color: $color-text-secondary;
+}
+
+.site-footer_wrap {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @include page-wrap;
+  @include breakpoint($brpt-header-split){
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+.site-footer_copy {
+  @include sassy-gridlover-margins();
+  margin-top: 0;
+  @include breakpoint($brpt-header-split){
+    @include sassy-gridlover-margins();
+  }
+}
+
+.site-footer_nav {
+  @include breakpoint($brpt-header-split){
+    order: 1;
+  }
+}

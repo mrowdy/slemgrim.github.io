@@ -1,0 +1,12 @@
+<div class="author" id="about">
+    <div class="author_avatar">
+        <img class="author_image" src="{{site.data.author.image}}">
+    </div>
+    {% if site.data.author.about %}
+        <p class="author_description">{{site.data.author.about}}</p>
+    {% endif %}
+
+    {% if site.data.author.hire %}
+        <p class="author_hire">{{site.data.author.hire}}</p>
+    {% endif %}
+</div>

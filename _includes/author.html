@@ -1,12 +1,14 @@
-<div class="author" id="about">
+<div class="author" id="author" itemprop="author publisher" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="{{site.data.author.name}}">
+
     <div class="author_avatar">
-        <img class="author_image" src="{{site.data.author.image}}">
+        <img alt="{{site.data.author.name}}" itemprop="image" class="author_image" src="{{site.data.author.image}}">
     </div>
     {% if site.data.author.about %}
         <p class="author_description">{{site.data.author.about}}</p>
     {% endif %}
 
-    {% if site.data.author.hire %}
-        <p class="author_hire">{{site.data.author.hire}}</p>
-    {% endif %}
+    <p class="author_hire">
+        Currently i work as lead developer at <a itemprop="worksFor" target="_blank" href="{{site.data.author.company.uri}}"><span itemscope itemtype="http://schema.org/Organization">{{site.data.author.company.name}}</span></a> but you can <a href='/hire'>hire</a> me as freelancer",
+    </p>
 </div>

@@ -1,22 +1,33 @@
 ---
 layout: default
 ---
-<div class="list-item">
-  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-    <header class="post_header">
-      <h1 class="heading-title" itemprop="name headline">{{ page.title }}</h1>
-      <p class="post_meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b
-          %-d, %Y" }}
-        </time>
-      </p>
-    </header>
+<main>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
+        <meta itemprop="mainEntityOfPage" content="{{page.url}}">
 
-    <div class="post_body" itemprop="articleBody">
-      {{ content }}
-    </div>
-  </article>
-</div>
-<div class="list-item">
-    {% include author.html %}
-</div>
+        {% if page.thumbnail %}
+            <meta itemprop="image" content="{{ page.thumbnail | prepend: site.url }}">
+        {% endif %}
+
+        <section class="page-section">
+            <header class="post_header">
+                <h1 class="heading-title" itemprop="headline">{{ page.title }}</h1>
+                <p class="post_meta">
+                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date:
+                        "%b
+                        %-d, %Y" }}
+                    </time>
+                </p>
+            </header>
+
+            <div class="post_body" itemprop="articleBody">
+                {{ content }}
+            </div>
+        </section>
+
+        <section class="page-section">
+            {% include author.html %}
+        </section>
+    </article>
+</main>

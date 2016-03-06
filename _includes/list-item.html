@@ -1,4 +1,8 @@
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<article itemprop="blogPost" class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <meta itemprop="author publisher" content="{{site.data.author.name}}">
+    <meta itemprop="dateModified" content="{{ post.date | date_to_xmlschema }}">
+    <meta itemprop="mainEntityOfPage" content="{{post.url}}">
+
     <header class="post_header">
         <h1 class="heading-title" itemprop="name headline">
             <a class="post_title" href="{{post.url}}">{{ post.title }}</a>

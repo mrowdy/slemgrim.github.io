@@ -1,15 +1,13 @@
 ---
 layout: default
 ---
-<main itemscope itemtype="https://schema.org/Blog">
-  <meta itemprop="author" content="Markus Ritberger">
-  <meta itemprop="genre" content="{{ site.description }}">
+<main>
   {% for post in site.posts %}
-    <div class="list-item">
+    <div class="page-section">
         {% include list-item.html %}
     </div>
   {% endfor %}
-  <div class="list-item">
+  <div class="page-section">
     {% include author.html %}
   </div>
 </main>

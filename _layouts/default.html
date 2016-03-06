@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 {% include head.html %}
+<body class="vertical-rhythm">
+    <div class="page-container">
+        {% include header.html %}
 
-<body>
+        <div class="page-content">
+            {{ content }}
+        </div>
 
-<div class="page-container">
-    {% include header.html %}
-
-    <div class="page-content">
-        {{ content }}
+        {% include footer.html %}
     </div>
-
-    {% include footer.html %}
-</div>
-
 </body>
-
 </html>

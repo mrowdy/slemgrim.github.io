@@ -24,3 +24,7 @@
 .author_hire {
   @include sassy-gridlover-margins();
 }
+
+.author_hire a {
+  @extend .link;
+}

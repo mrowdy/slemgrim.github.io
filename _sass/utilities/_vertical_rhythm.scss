@@ -1,0 +1,20 @@
+@mixin vertical-rythm($line-height) {
+    &:after {
+      top: 0;
+      left: 0;
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      pointer-events: none;
+      min-height: 1000%;
+      background-image: repeating-linear-gradient(
+                      hsla(200, 100%, 50%, .2) 0px,
+                      hsla(200, 100%, 50%, .2) $line-height,
+                      hsla(220, 100%, 50%, .2) $line-height,
+                      hsla(220, 100%, 50%, .2) $line-height * 2
+      );
+      background-position: left -1px;
+    }
+}
+

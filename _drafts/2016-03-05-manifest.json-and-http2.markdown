@@ -87,7 +87,7 @@ In the manifest for a single ressource each key is the url to an associated file
       "/css/main.css": {
         "type": "style",
         "weight": 1
-      },
+      }, 
       "/js/main.js": {
         "type": "script",
         "weight": 1

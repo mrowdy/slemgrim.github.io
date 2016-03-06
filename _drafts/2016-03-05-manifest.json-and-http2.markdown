@@ -2,7 +2,6 @@
 layout: post
 title:  "Push manifest and HTTP2"
 date:   2016-03-05 08:20:21 +0000
-categories: frontend
 author: slemgrim
 summary: "With http2 a connection can serve multiple requests simultaneously. 
          A connection can also be used for a server to **push** a resource to a client."

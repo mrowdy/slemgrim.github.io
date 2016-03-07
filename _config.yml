@@ -15,3 +15,6 @@ sass:
   style: compressed
 
 permalink: /:title
+
+gems:
+  - jekyll-sitemap

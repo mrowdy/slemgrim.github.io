@@ -16,4 +16,8 @@
   h3 {
     @extend .heading-subsubtitle;
   }
+
+  a {
+    @extend .link;
+  }
 }

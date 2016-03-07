@@ -1,10 +1,9 @@
-title: slemgirm.com
-email: slemgrim+blog@gmail.com
-description: Personal blog of Markus Ritberger about web technologies
+title: Slemgrim
+email: contact@slemgrim.com
+description: A blog about web technology, architecture, programming and unicorns.
 baseurl: ""
 url: "http://slemgrim.com"
-twitter_username: slemgrim
-github_username:  slemgrim
+
 markdown: kramdown
 
 kramdown:

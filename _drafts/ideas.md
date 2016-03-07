@@ -4,6 +4,6 @@ title: Article Ideas
 permalink: /ideas/
 ---
 
-- what is manifest.json for http2
-- servie workers
-- backgroundsync 
+- https push
+- service workers
+- background sync 

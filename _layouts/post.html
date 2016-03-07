@@ -2,15 +2,16 @@
 layout: default
 ---
 <main>
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
-        <meta itemprop="mainEntityOfPage" content="{{page.url}}">
+    <section class="page-section">
 
-        {% if page.thumbnail %}
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+            <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
+            <meta itemprop="mainEntityOfPage" content="{{page.url}}">
+
+            {% if page.thumbnail %}
             <meta itemprop="image" content="{{ page.thumbnail | prepend: site.url }}">
-        {% endif %}
+            {% endif %}
 
-        <section class="page-section">
             <header class="post_header">
                 <h1 class="heading-title" itemprop="headline">{{ page.title }}</h1>
                 <p class="post_meta">
@@ -24,10 +25,10 @@ layout: default
             <div class="post_body" itemprop="articleBody">
                 {{ content }}
             </div>
-        </section>
+        </article>
+    </section>
 
-        <section class="page-section">
-            {% include author.html %}
-        </section>
-    </article>
+    <section class="page-section">
+        {% include author.html %}
+    </section>
 </main>

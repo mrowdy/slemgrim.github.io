@@ -20,4 +20,9 @@
   a {
     @extend .link;
   }
+
+  pre {
+    background-color: $color-primary;
+    padding: $gutter;
+  }
 }

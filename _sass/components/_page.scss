@@ -1,0 +1,9 @@
+.page {
+  min-height: 100vh;
+  @include page-wrap;
+  @include sassy-gridlover-margins();
+}
+
+.page_body {
+  @include content;
+}

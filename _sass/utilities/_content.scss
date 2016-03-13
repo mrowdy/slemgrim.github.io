@@ -1,5 +1,5 @@
 @mixin content {
-  p, ul, ol, table, img, pre, figure {
+  p, ul, ol, table, img, pre, figure, .message, blockquote {
     margin: 0;
     @include sassy-gridlover-margins();
     word-wrap: break-word;
@@ -24,5 +24,16 @@
   pre {
     background-color: $color-primary;
     padding: $gutter;
+  }
+
+  img {
+    display: inline;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  blockquote {
+    @extend .quote;
   }
 }

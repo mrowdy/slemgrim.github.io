@@ -1,0 +1,15 @@
+.message {
+  padding: $gutter;
+  background-color: $color-text-secondary;
+  border: 1px solid currentColor;
+}
+
+.message--warning {
+  color: $color-warning;
+  background-color: lighten($color-warning, 45%);
+}
+
+.message--error {
+  color: $color-error;
+  background-color: lighten($color-error, 45%);
+}

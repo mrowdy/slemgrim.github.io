@@ -1,19 +1,22 @@
 ---
 layout: post
-title:  "Everything you need to know about HTTP/2's server push"
-date:   2016-03-05 08:20:21 +0000
+title: "All you need to know about server push"
+permalink: /all-you-need-to-know-about-server-push/
+date: 2016-03-10 08:00:00 +0000
 author: slemgrim
 ---
 
-Lorem Ipsum.... TODO
+I bet you heard about server push in the last few months. 
+Every HTTP/2 article mentions it, but do you really know what it's all about?
+The intention of this article is to give you a kick-start into the topic.
 
 Why do we need server push?
 ---
 
-When you require a resource over http it is often linked to other resources. 
-Almost every HTML file needs a lot of assets like images, stylesheets and scripts 
-to be rendered correctly. So when you request a file like the following, 
-how does your browser know which assets are required for this file?
+To answer that question we have to look at how HTTP/1.x works. 
+The "internet" consists of resources which are linked together. 
+Take your standard web-page, it consists of a HTML file various 
+stylesheets, scripts, images and other assets.
 
 ```
 <!DOCTYPE html>
@@ -28,29 +31,31 @@ how does your browser know which assets are required for this file?
 </html>
 ```
 
-The browser has to download the whole document first, search for attachments and than start a new request for every attachment.
-In http1.x this looks something like that:
+So when we request a website your browser first loads a html file, 
+looks for all assets inside it, and requests each asset at it's own. 
+Every asset can than require other assets at its own. Think about background 
+images in your stylesheets or scripts loaded with AJAX.
 
 ![http1.x asset waterfall][http1.x-asset-waterfall]
 
+You clearly see that the browser needs to download the HTML file before the other assets.
+There's also a lot of time spend on connection to the single resources. 
+
 With HTTP/2 and it's [multiplexed connections](https://http2.github.io/faq/#why-is-http2-multiplexed) the browser doesn't have
-to make multiple connections. It keeps the first connection open for a short while and downloads all assets to this 
-domain over that connection.
+to make multiple connections. It keeps the first connection open and downloads all assets from this 
+domain over it.
  
 ![HTTP/2 asset waterfall][http2-asset-waterfall]
 
-This already saves us a lot of overhead especially when we have a lot of assets. 
-This comes with pretty nice benefits:
+In reality it does a lot more things but for the scope of the article this should do it.
+We now save a lot of overhead especially when we have many assets. 
+With this feature we eliminate common hacks like script/style concatenation, spriting and domain sharding at 
+protocol level. Pretty rad. 
 
-- no more concatenation of stylesheets and scripts
-- no more spriting
-- no limit for simultan connections to one domain like in http1.x
-- therefore no need for domain sharding
+There are still big time steps in the waterfall. We know which files are required by our HTML file so wy can't we send
+them at once? We already do this. I'ts called inlining.
 
-But wouldn't it be nice to download all needed files at once? instead of waiting for the first file to finish?
-We already do this with inlining. 
-
-### whats the problem with inlining?
+### Whats the problem with inlining?
 
 In order to be performant we came up with a list of hacks in the past. One is asset inlining. You see it in various forms:
 
@@ -272,7 +277,7 @@ Further reading
 [http2-asset-waterfall]: /images/http2-waterfall.png
 [asset-inlining]: /images/inlining.png
 [http2-push-waterfall]: /images/http2-push-waterfall.png
-[push-example-push]: /images/push-example-pushed.jpg
+[push-example-push]: /images/pusxh-example-pushed.jpg
 [push-example-no-push]: /images/push-example-not-pushed.jpg
 [push-promise]: /images/push-promise.jpg
 

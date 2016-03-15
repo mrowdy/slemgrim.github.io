@@ -4,7 +4,7 @@ title: "All you need to know about server push"
 permalink: /all-you-need-to-know-about-server-push/
 date: 2016-03-10 08:00:00 +0000
 author: slemgrim
----
+--- 
 
 I bet you heard about server push in the last few months. 
 Every HTTP/2 article mentions it, but do you really know what it's all about?
@@ -57,52 +57,38 @@ them at once? We already do this. I'ts called inlining.
 
 ### Whats the problem with inlining?
 
-In order to be performant we came up with a list of hacks in the past. One is asset inlining. You see it in various forms:
+Nowadays you see developers inlining every kind of asset. While there are some more or less useful strategies like 
+"[Critical above the fold CSS](http://patrickhamann.com/workshops/performance/tasks/2_Critical_Path/2_2.html)", there 
+are also really cruel ones like base64 images inside css files.
 
 ![inlining of assets][asset-inlining]
 
-- Stylesheets are inlined for [Critical above the fold CSS](http://patrickhamann.com/workshops/performance/tasks/2_Critical_Path/2_2.html)
-- Scripts are inlined for "performance" *rolleyes*
-- Images are inlined as base64 to avoid further requests
-- SVG icons are inlined mainly to spare developer time
+In the end you will do this to avoid requests and get everything you need in one single request.
+This may look nice, but also introduces some new problems. 
 
-But that comes whit two huge disatvantages:
-
-#### Caching 
-
-Browsers are really good at caching. If you have some shared styles/scripts across your website,
-the browser will cache it at the first time of download. All further requests don't need to be downloaded. 
-When inlined, it will be downloaded every time the user requests a page. 
-
-Let's say you have a CSS file of 50kb. If it is cacheable the user has to download 50kb once. Even if he opens hundreds of pages on your site.
-If it's inline the user downloads 5000kb of css when he opens 100 pages. Think about popular news sites, you open them
-every day and read lots of articles. 
-
-#### Complexity
-
-When you inline, you have to decide what needs to be inlined. Which part of your CSS, which JS modules?
-Do i inline all icons on every page, or just the one i need on this page? 
-This introduces an extra layer of complexity to your application. 
+- Browsers are really good at caching. If assets are inlined, they don't get cached. 
+- What files should we inline? Which part of the css? Voila, a new layer of complexity 
+- base64 encoded images are way bigger than their source file. 
 
 HTTP/2 server push to the rescue
 ---
 
-With server push we can "push" assets like scripts,styles and images along with the requested file. 
-So if index.html requires index.js it is already loaded. no further requests needed. 
+Server push allows a server to send request+response pairs to the browser. If the browser requests `/index.html`,
+and the server knows that `/index.html` contains a reference to `/app.css` and `/app.js` the server now can
+push both files rather than waiting for the browser to request it.
 
 > Hey browser, i think you'll need app.css and app.js along with your requested index.html, so i'll send them too
 
-Our waterfall now looks like this:
+To push a response to the browser the server opens a stream using a so called `PUSH_PROMISE` frame, which
+let the client know exactly which resources are getting pushed. A `PUSH_PROMISE` is associated with an normal request, 
+so that the browser knows which push belongs to which request.
 
-![HTTP/2 push waterfall][HTTP/2-push-waterfall]
-
-Your browser doesn't request the assets anymore. Now the server has control over which files are sent to the browser.
-Every file exists at it's one. Not concatenated, not inlined. So the browser **can** cache them. 
+![HTTP/2 push waterfall][http2-push-waterfall]
 
 <div class="message message--warning">
-   Be careful here. The server doesn't know which files are already cached by the browser. 
-   When a browser receives a pushed file which he already has in cache, he can ignore it, but the file still would be sent
-   over the wire. Resulting in extra overhead similar to inlined assets. 
+   Be careful here. The server doesn't know which files are already cached by the browser. And since every pushed resource
+   must be cacheable, this could lead to much overhead. Browsers can sent an `RST_STREAM` frame to cancel an incoming push,
+   but the request still would be handled by the server.
 </div>
 
 Which files to push?
@@ -118,7 +104,7 @@ A HTML file for example has script, link, img and other tags which point to othe
 
 - relatively simple to implement
 - but it doesn't really make sense to push everything
-- this wouldn't find indirect assets like images requests from css files or scripts loaded by scripts 
+- it's also hard to find indirect dependencies like background images defined in css. 
 
 ### Static list
 

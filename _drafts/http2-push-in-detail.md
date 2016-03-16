@@ -81,7 +81,7 @@ push both files rather than waiting for the browser to request it.
 
 ![HTTP/2 push waterfall][http2-push-waterfall]
 
-Compared to the inlining example we now can download all assets parallel, while still hain separate files which 
+Compared to the inlining example we now can download all assets parallel, while delivering separate files which 
 can be cached by the browser.
 
 
@@ -230,14 +230,6 @@ which generates:
 ``` 
 
 You can use the json for you custom push implementation or even on App Engine.
-
-Push priority
----
-
-TODO: more text
-There are different approaches on how to prioritzize 
-[great explanation by Moto Ishizawa](https://speakerdeck.com/summerwind/2-prioritization)
-
 
 Debugging Server Push
 ---

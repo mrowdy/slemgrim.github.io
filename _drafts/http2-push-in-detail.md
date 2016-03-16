@@ -79,64 +79,84 @@ push both files rather than waiting for the browser to request it.
 
 > Hey browser, i think you'll need app.css and app.js along with your requested index.html, so i'll send them too
 
-To push a response to the browser the server opens a stream using a so called `PUSH_PROMISE` frame, which
-let the client know exactly which resources are getting pushed. A `PUSH_PROMISE` is associated with an normal request, 
+![HTTP/2 push waterfall][http2-push-waterfall]
+
+Compared to the inlining example we now can download all assets parallel, while still hain separate files which 
+can be cached by the browser.
+
+
+Push promise
+---
+
+To push a response to the browser the server opens a stream using a so called [`PUSH_PROMISE`](http://httpwg.org/specs/rfc7540.html#PUSH_PROMISE) frame, which
+let the browser know exactly which resources are getting pushed. A `PUSH_PROMISE` is associated with an normal request, 
 so that the browser knows which push belongs to which request.
 
-![HTTP/2 push waterfall][http2-push-waterfall]
+
+Canceling of push streams
+---
+
+If a browser already has a resource cached he can send a [`RST_STREAM`](http://httpwg.org/specs/rfc7540.html#RST_STREAM) frame 
+to tell the server he wants to cancel an incoming push. 
+The `RST_STREAM` frame immediately closes a stream.
 
 <div class="message message--warning">
    Be careful here. The server doesn't know which files are already cached by the browser. And since every pushed resource
-   must be cacheable, this could lead to much overhead. Browsers can sent an `RST_STREAM` frame to cancel an incoming push,
-   but the request still would be handled by the server.
+   is a GET and therefore cacheable, this could lead to much overhead if you push every asset on every request. Even if the browser sends a
+   RST_STREAM frame
 </div>
-
+ 
 Which files to push?
 ---
 
-Now to the complicated part. Which files should we push?
-There are multiple approaches to this:
+For me, this is the most complicated part. Can we push everything? as mentioned earlier this would lead to 
+a waste of bandwidth and server resources. So choose wisely what files you push.
+I found two different to accomplish this
 
 ### Analyzing requested files
 
-When a file is requests, we can analyze it for further requests. 
-A HTML file for example has script, link, img and other tags which point to other resources.
+When a file is requests, we can search for requested assets and push them.
+A HTML file for example has `<script>`, `<link>`, `<img>` and other tags which point to other resources.
 
 - relatively simple to implement
 - but it doesn't really make sense to push everything
 - it's also hard to find indirect dependencies like background images defined in css. 
 
-### Static list
+### Static push list
 
-Instead of analyzing we could provide a list of resources to be pushed
+Instead of analyzing we could provide a list of resources which we want to push. So wenn a file is request, we look
+into our list if we have something to push. Such a list could look something like this
 
+``` json
+{
+    "index.html" : [
+        "app.css",
+        "app.js",
+        "bg.jpg"
+    ],
+    "contact.html" : [
+        "app.css",
+        "contact.js",
+    ]
+}    
 ```
-- index.html
-    - app.css
-    - app.js
-    - index.js
-    - bg.jpg
-- contact.html
-    - app.css
-    - app.js
-    - contact.js
-    - bg.jpg
-```
 
-- free control about what files are pushed 
+- free control over your pushes
 - harder to maintain
+
+[http2-push-manifest](https://github.com/GoogleChrome/http2-push-manifest) does a really good job in generatin such lists
+from HTML files.
      
 Implementations
 ---
 
 ### Apache
 
-The experimental [mod_http2 Apache Module](https://httpd.apache.org/docs/2.4/mod/mod_http2.html) introduces
+The experimental [mod_http2](https://httpd.apache.org/docs/2.4/mod/mod_http2.html) apache module introduces
 the [H2Push Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2push) which toggles the usage of the HTTP/2
-server push protocol feature and is used your <VirtualHost> section. 
+server push protocol feature and is used in your <VirtualHost> section. 
 
-They detect a push by **Link** entries inside the response headers 
-([mod_headers](https://httpd.apache.org/docs/2.4/mod/mod_headers.html)).
+You have to write all your pushes as `Link` entries inside the response [headers](https://httpd.apache.org/docs/2.4/mod/mod_headers.html).
 
 ``` xml
 <Location /index.html>
@@ -145,23 +165,21 @@ They detect a push by **Link** entries inside the response headers
 </Location>
 ```
 
-There's also the [H2PushDiarySize Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushdiarysize) 
-which basically remembers which files are already pushed on a connection. This avoids duplicated files on single
-connections.
+- [H2PushDiarySize](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushdiarysize) Directive basically remembers
+which files are already pushed on a connection o avoid redundant pushes
 
-And the [H2PushPriority Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushpriority) which handles the 
-[prioritizing]() of single pushes.
+- [H2PushPriority Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushpriority) handles the 
+priority of single pushes.
 
 ### Node
 
-[node-http2](https://github.com/molnarg/node-http2) is a HTTP/2 implementation with an quite simple and similar API
+[node-http2](https://github.com/molnarg/node-http2) is a HTTP/2 implementation with a similar API
 to the standard node.js HTTP extension.
 
 ``` js
 function onRequest(request, response) {
     var filename = path.join(__dirname, request.url);
     
-    // Only if response has the ability to push
     if(response.push){
         var fileToPush = '/assets/css/app.css';
         
@@ -181,11 +199,10 @@ function onRequest(request, response) {
     fileStream.pipe(response);
     fileStream.on('finish', response.end);
 }; 
-   
-I created my examples with this. 
-Todo: include gist?
-   
+      
 ```
+
+They also have [examples](https://github.com/molnarg/node-http2/tree/master/example).
 
 ### Push Manifest
 
@@ -212,6 +229,8 @@ which generates:
 }
 ``` 
 
+You can use the json for you custom push implementation or even on App Engine.
+
 Push priority
 ---
 
@@ -224,8 +243,9 @@ Debugging Server Push
 ---
 
 When you first implement server push you have to check if it works.
-Unfortunately there isn't something like a dedicated "pushed resource" sign in your dev tools. 
-But if you go to the timing tab of a resource you'll see that it has almost no <abbr title="Time to first byte">TTFB</abbr>:
+Unfortunately there isn't something like a dedicated "pushed resources" button in your dev-tools. 
+If you go to the timing tab in chrome dev-tools of a resource you'll see that it has almost no <abbr title="Time to first byte">TTFB</abbr> 
+and the download time is way lower (altough 'Content Download' sounds misleading here).
 
 ![dev tools timing with push][push-example-push]
 
@@ -235,14 +255,10 @@ Compared to a normal http request:
 
 If you really need to see whats going on you can peak into `chrome://net-internals/#events`
 
-Search for **PUSH_PROMISE** and you'll see your pushed assets.
+Search for `PUSH_PROMISE` and you'll see your pushed assets.
 
 ![HTTP/2 server push visible inside net-internals][push-promise]
 
-What does this mean to our beloved tooling like webpack?
----
-
-???
 
 Browser Support
 ---
@@ -263,34 +279,6 @@ Further reading
 [http2-asset-waterfall]: /images/http2-waterfall.png
 [asset-inlining]: /images/inlining.png
 [http2-push-waterfall]: /images/http2-push-waterfall.png
-[push-example-push]: /images/pusxh-example-pushed.jpg
+[push-example-push]: /images/push-example-pushed.jpg
 [push-example-no-push]: /images/push-example-not-pushed.jpg
 [push-promise]: /images/push-promise.jpg
-
----
-
-Notes
-===
-
-- is not a generic push mechanism like websockets 
-- it's designed for optimisation of HTTP/2 conversations
-- server can guess associated resources for a given resource
-
-With HTTP/2 a connection can serve multiple requests simultaneously. 
-
-HTTP/2 push replaces this at the protocol level. Yes this means no more inlining and concatenation, in fact this practice is harmful.
-
-So is it ok to have multiple **script** and **link** tags in our documents? I know, we spent the last years to avoid this, but
-now this comes with a couple of benefits
-
-## type property
-
-## weight property
-
-Weight in HTTP/2 is a value used for distributing bandwidth between the streams. 
-In case of CSS or JavaScript files, what you should do is to assign bandwidth exclusively to those files     
-    
-Todo: what is type? Why is it necessary?
-Todo: what is weight? Why is it necessary? 
-
-At the moment of writing no browser implements handling of the weight property. 

@@ -8,5 +8,6 @@ $color-text: $color-primary;
 $color-text-primary: white;
 $color-text-secondary: hsl(195, 16, 76);
 
-$color-error: red;
-$color-warning: orange;
+$color-info: $color-accent;
+$color-error: #e64762;
+$color-warning: #f6c411;

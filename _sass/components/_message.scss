@@ -1,15 +1,21 @@
 .message {
   padding: $gutter;
-  background-color: $color-text-secondary;
   border: 1px solid currentColor;
+  color: $color-info;
+  background-color: rgba($color-info, 0.1);
+}
+
+.message--info {
+  color: $color-info;
+  background-color: rgba($color-info, 0.1);
 }
 
 .message--warning {
   color: $color-warning;
-  background-color: lighten($color-warning, 45%);
+  background-color: rgba($color-warning, 0.1);
 }
 
 .message--error {
   color: $color-error;
-  background-color: lighten($color-error, 45%);
+  background-color: rgba($color-error, 0.1);
 }

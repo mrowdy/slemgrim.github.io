@@ -32,8 +32,8 @@ stylesheets, scripts, images and other assets.
 ```
 
 When we request a website your browser first loads a HTML file, 
-looks for all assets inside it, and requests each asset at its own. 
-Every asset can then require other assets at its own. Think about background 
+looks for all assets inside it, and requests each asset on its own. 
+Every asset can then require other assets on its own. Think about background 
 images in your stylesheets or scripts loaded with AJAX.
 
 ![http1.x asset waterfall][http1.x-asset-waterfall]

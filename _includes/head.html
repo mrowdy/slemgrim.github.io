@@ -32,7 +32,7 @@
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@slemgrim">
-    <meta name="twitter:image" content="/images/logo.svg">
+    <meta name="twitter:image" content="{{site.url}}/images/logo.svg">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
     <meta name="twitter:description"
           content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }} {% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">

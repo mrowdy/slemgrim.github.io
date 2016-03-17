@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "All you need to know about server push"
-permalink: /all-you-need-to-know-about-server-push/
-date: 2016-03-10 08:00:00 +0000
+title: "A kick-start into server push"
+permalink: /kickstart-into-server-push/
+date: 2016-03-17 20:00:00 +0000
 author: slemgrim
 --- 
 
@@ -15,7 +15,7 @@ Why do we need server push?
 
 To answer that question we have to look at how HTTP/1.x works. 
 The "internet" consists of resources which are linked together. 
-Take your standard web-page, it consists of a HTML file various 
+Take your standard web-page, it consists of a HTML file, various 
 stylesheets, scripts, images and other assets.
 
 ```
@@ -31,29 +31,29 @@ stylesheets, scripts, images and other assets.
 </html>
 ```
 
-So when we request a website your browser first loads a html file, 
-looks for all assets inside it, and requests each asset at it's own. 
-Every asset can than require other assets at its own. Think about background 
+When we request a website your browser first loads a HTML file, 
+looks for all assets inside it, and requests each asset at its own. 
+Every asset can then require other assets at its own. Think about background 
 images in your stylesheets or scripts loaded with AJAX.
 
 ![http1.x asset waterfall][http1.x-asset-waterfall]
 
 You clearly see that the browser needs to download the HTML file before the other assets.
-There's also a lot of time spend on connection to the single resources. 
+There's also a lot of time spent on connection to the single resources. 
 
-With HTTP/2 and it's [multiplexed connections](https://http2.github.io/faq/#why-is-http2-multiplexed) the browser doesn't have
+With HTTP/2 and its [multiplexed connections](https://http2.github.io/faq/#why-is-http2-multiplexed) the browser doesn't have
 to make multiple connections. It keeps the first connection open and downloads all assets from this 
 domain over it.
  
 ![HTTP/2 asset waterfall][http2-asset-waterfall]
 
-In reality it does a lot more things but for the scope of the article this should do it.
+In reality it does a lot more but for the scope of the article this should do.
 We now save a lot of overhead especially when we have many assets. 
 With this feature we eliminate common hacks like script/style concatenation, spriting and domain sharding at 
 protocol level. Pretty rad. 
 
-There are still big time steps in the waterfall. We know which files are required by our HTML file so wy can't we send
-them at once? We already do this. I'ts called inlining.
+There are still big time steps in the waterfall. We know which files are required by our HTML file so why can't we send
+them at once? We already do this. It's called inlining.
 
 ### Whats the problem with inlining?
 
@@ -77,7 +77,7 @@ Server push allows a server to send request+response pairs to the browser. If th
 and the server knows that `/index.html` contains a reference to `/app.css` and `/app.js` the server now can
 push both files rather than waiting for the browser to request it.
 
-> Hey browser, i think you'll need app.css and app.js along with your requested index.html, so i'll send them too
+> Hey browser, I think you'll need app.css and app.js along with your requested index.html, so I'll send them too
 
 ![HTTP/2 push waterfall][http2-push-waterfall]
 
@@ -89,7 +89,7 @@ Push promise
 ---
 
 To push a response to the browser the server opens a stream using a so called [`PUSH_PROMISE`](http://httpwg.org/specs/rfc7540.html#PUSH_PROMISE) frame, which
-let the browser know exactly which resources are getting pushed. A `PUSH_PROMISE` is associated with an normal request, 
+let the browser know exactly which resources are getting pushed. A `PUSH_PROMISE` is associated with a normal request, 
 so that the browser knows which push belongs to which request.
 
 
@@ -101,17 +101,17 @@ to tell the server he wants to cancel an incoming push.
 The `RST_STREAM` frame immediately closes a stream.
 
 <div class="message message--warning">
-   Be careful here. The server doesn't know which files are already cached by the browser. And since every pushed resource
+   Be careful here. The server doesn't know which files are already cached by the browser. Every pushed resource
    is a GET and therefore cacheable, this could lead to much overhead if you push every asset on every request. Even if the browser sends a
-   RST_STREAM frame
+   RST_STREAM frame.
 </div>
  
 Which files to push?
 ---
 
-For me, this is the most complicated part. Can we push everything? as mentioned earlier this would lead to 
+For me, this is the most complicated part. Can we push everything? As mentioned earlier this would lead to 
 a waste of bandwidth and server resources. So choose wisely what files you push.
-I found two different to accomplish this
+I found two different ways to accomplish this.
 
 ### Analyzing requested files
 
@@ -124,8 +124,8 @@ A HTML file for example has `<script>`, `<link>`, `<img>` and other tags which p
 
 ### Static push list
 
-Instead of analyzing we could provide a list of resources which we want to push. So wenn a file is request, we look
-into our list if we have something to push. Such a list could look something like this
+Instead of analyzing, we could provide a list of resources which we want to push. So wenn a file is request, we look
+into our list if we have something to push. Such a list could look something like this:
 
 ``` json
 {
@@ -144,7 +144,7 @@ into our list if we have something to push. Such a list could look something lik
 - free control over your pushes
 - harder to maintain
 
-[http2-push-manifest](https://github.com/GoogleChrome/http2-push-manifest) does a really good job in generatin such lists
+[http2-push-manifest](https://github.com/GoogleChrome/http2-push-manifest) does a really good job in generating such lists
 from HTML files.
      
 Implementations
@@ -165,8 +165,8 @@ You have to write all your pushes as `Link` entries inside the response [headers
 </Location>
 ```
 
-- [H2PushDiarySize](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushdiarysize) Directive basically remembers
-which files are already pushed on a connection o avoid redundant pushes
+- [H2PushDiarySize Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushdiarysize) basically remembers
+which files are already pushed on a connection o avoid redundant pushes.
 
 - [H2PushPriority Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushpriority) handles the 
 priority of single pushes.
@@ -207,8 +207,8 @@ They also have [examples](https://github.com/molnarg/node-http2/tree/master/exam
 ### Push Manifest
 
 [http2-push-manifest](https://github.com/GoogleChrome/http2-push-manifest) generates a list of static resources 
-used in your html files by outputting a json file. 
-This file can be used to create the [Link](#todo) headers alongside with type and weight. You can even use this in App Engine
+used in your HTML files by outputting a json file. 
+This file can be used to create the [Link](#todo) headers alongside with type and weight. You can even use this in App Engine.
 
 The usage is as simple as: 
     
@@ -230,6 +230,17 @@ which generates:
 ``` 
 
 You can use the json for you custom push implementation or even on App Engine.
+
+### NGINX
+
+There is a [experimental HTTP/2 Module](http://nginx.org/en/docs/http/ngx_http_v2_module.html)
+but **without** an implementation of server push. The same goes for NGINX plus.
+I'll keep you updated on this.
+
+### Go
+
+Server push is possible with the official [HTTP/2 package](https://godoc.org/golang.org/x/net/http2).
+I'll provide an example in the future.
 
 Debugging Server Push
 ---
@@ -256,12 +267,24 @@ Browser Support
 ---
 
 Every browser that supports HTTP/2 also supports server push. But they differ in how to 
-handle prioritization with weight and priority
+handle prioritization with weight and priority.
 
 <p class="ciu_embed" data-feature="http2" data-periods="future_1,current,past_1,past_2">   <a href="http://caniuse.com/#feat=http2">Can I Use http2?</a> Data on support for the http2 feature across the major browsers from caniuse.com. </p>
 
+TL;DR
+---
+
+At the moment of writing there's only an experimental implementation of server push for
+apache and no implementation for NGINX. If you really want to push, you can start with [node-http2](https://github.com/molnarg/node-http2) or 
+[HTTP/2 for Go](https://godoc.org/golang.org/x/net/http2). 
+
+Keep in mind that it can be much overhead if you push a lot of files. Especially if those files are 
+already cached by the browser.
+
 Further reading
 ---
+
+- [List of known HTTP/2 implementations](https://github.com/http2/http2-spec/wiki/Implementations)
 - [Deploying JavaScript Applications with HTTP/2](https://rmurphey.com/blog/2015/11/25/building-for-http2)
 - [Explanation of server push in mod_http2](https://icing.github.io/mod_h2/push.html)
 - [Understanding HTTP/2 priorization](https://speakerdeck.com/summerwind/2-prioritization)

@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: center;
+  @include sassy-gridlover-margins();
+}
+
+.header_logo {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.header_home {
+  display: block;
+}

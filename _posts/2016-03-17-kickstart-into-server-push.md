@@ -102,7 +102,7 @@ The `RST_STREAM` frame immediately closes a stream.
 
 <div class="message message--warning">
    Be careful here. The server doesn't know which files are already cached by the browser. Every pushed resource
-   is a GET and therefore cacheable, this could lead to much overhead if you push every asset on every request. Even if the browser sends a
+   is a GET and therefore cacheable, this could lead to a lot of overhead if you push every asset on every request. Even if the browser sends a
    RST_STREAM frame.
 </div>
  
@@ -166,7 +166,7 @@ You have to write all your pushes as `Link` entries inside the response [headers
 ```
 
 - [H2PushDiarySize Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushdiarysize) basically remembers
-which files are already pushed on a connection o avoid redundant pushes.
+which files are already pushed on a connection to avoid redundant pushes.
 
 - [H2PushPriority Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2pushpriority) handles the 
 priority of single pushes.
@@ -208,7 +208,7 @@ They also have [examples](https://github.com/molnarg/node-http2/tree/master/exam
 
 [http2-push-manifest](https://github.com/GoogleChrome/http2-push-manifest) generates a list of static resources 
 used in your HTML files by outputting a json file. 
-This file can be used to create the [Link](#todo) headers alongside with type and weight. You can even use this in App Engine.
+This file can be used to create the [Link](#todo) headers for apache. You can even use this in App Engine.
 
 The usage is as simple as: 
     

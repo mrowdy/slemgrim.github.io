@@ -39,7 +39,7 @@ images in your stylesheets or scripts loaded with AJAX.
 ![http1.x asset waterfall][http1.x-asset-waterfall]
 
 You clearly see that the browser needs to download the HTML file before the other assets.
-There's also a lot of time spent on connection to the single resources. 
+There's also a lot of time spent connecting to the single resources. 
 
 With HTTP/2 and its [multiplexed connections](https://http2.github.io/faq/#why-is-http2-multiplexed) the browser doesn't have
 to make multiple connections. It keeps the first connection open and downloads all assets from this 
@@ -48,7 +48,7 @@ domain over it.
 ![HTTP/2 asset waterfall][http2-asset-waterfall]
 
 In reality it does a lot more but for the scope of the article this should do.
-We now save a lot of overhead especially when we have many assets. 
+We now save a lot of overhead, especially when we have many assets. 
 With this feature we eliminate common hacks like script/style concatenation, spriting and domain sharding at 
 protocol level. Pretty rad. 
 
@@ -77,7 +77,7 @@ Server push allows a server to send request+response pairs to the browser. If th
 and the server knows that `/index.html` contains a reference to `/app.css` and `/app.js` the server now can
 push both files rather than waiting for the browser to request it.
 
-> Hey browser, I think you'll need app.css and app.js along with your requested index.html, so I'll send them too
+> Hey browser, I think you'll need app.css and app.js along with your requested index.html, so I'll send them too.
 
 ![HTTP/2 push waterfall][http2-push-waterfall]
 

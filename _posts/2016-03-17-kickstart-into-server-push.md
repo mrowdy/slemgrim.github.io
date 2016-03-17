@@ -7,7 +7,7 @@ author: slemgrim
 --- 
 
 I bet you heard about server push in the last few months. 
-Every HTTP/2 article mentions it, but do you really know what it's all about?
+Every HTTP/2 article mentions it, but do you really know what it's all about? 
 The intention of this article is to give you a kick-start into the topic.
 
 Why do we need server push?

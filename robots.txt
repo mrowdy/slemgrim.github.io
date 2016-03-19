@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://slemgrim.com/sitemap.xml
+Sitemap: http://slemgrim.com/sitemap.xml

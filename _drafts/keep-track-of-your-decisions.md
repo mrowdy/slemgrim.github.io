@@ -33,6 +33,7 @@ Types of requirements
 - tasks a user must be able to perform
 - provide a value to someone
 - in form of user stories or use case
+- should come from an actual user (direct and indirect)
 
 ### Functional requirement
 

@@ -1,86 +1,132 @@
 ---
 layout: post
-title: "Immutabilty makes you win at everything"
-permalink: /how-immutability-changed-the-way-i-think/
+title: "Mutate, or not to mutate, in JavaScript"
+permalink: /mutate-or-not-to-mutate/
 author: slemgrim
 --- 
 
-The majority of my developer was about objects, passing objects around and 
-changing them. Be it Java, PHP or JavaScript, when you start to learn a 
-language you soon learn the concepts of pointers, references and instances. 
-You start to love them, using them everywhere. Nothing is wrong with that, 
-Why should someone pass complex multidimensional arrays around if they could 
-abstract it to simple composed objects. 
+There are a lot of people out there preaching about immutability as the best solution for everything. 
+Others say immutability is nothing for enterprise systems or just a big part of the functional programming hype. 
+If we google for it, we'll find tons of opinions and articles describing what immutability is 
+In This article we'll focus on the right situations to use it.
 
-{{Comparison between multidimensional arrays and objects}}
-
-Nothing is wrong with that at all. But there a different ways to work with Objects
-and today we'll talk about immutability. 
-
-What is immutability?
+The basics
 ---
 
-The first time i heard "Strings are immutable" was years ago while learning java.
-For me this didn't made any sense at that time since google says: 
-
-> **Immutable**: unchanging over time or unable to be changed. 
-
-I can change a string, so how can it be immutable? 
+Like in a lot of other languages primitives are immutable in JavaScript. This means, whenever we change a primitive,
+we create a new instance of it. 
 
 ```js
-// lets define a string in JS
-let foo = 'bar'; 
-// now lets change it. 
-foo = 'baz';
-console.log(foo); // results in baz
-``` 
+// Strings
+let str = "Hello world!";
+let res = str.slice(1,5); //ello
 
-String changed. String not immutable. Simple. **WRONG!**
-
-Of course this is wrong. The above code doesn't change the string 'bar' to 'baz', 
-instead it created a new string with the value 'baz'. But why is this?
-
-All primitives in JavaScript are Immutable
----
-
-It doesn't matter if its a number a string or a boolean, the behaviour is the same for all primitives. 
-Since this is also true for many other languages like Python, Java or #C this must have a benefit. In fact
-there are a lot of benefits. 
-
-### Concurency
-
-In most resources this is the number one benefit, but not for JavaScript. The idea is, that you don't have 
-to lock something that isn't changeable. JavaScript with it's neat 
-[Even Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop) is never blocking, so there are no 
-situations where concurency is a problem. 
-
-### Security
-
-Mutable objects can be changed at any time, even when you don't expect it. 
-This can lead to strange and heavy to find bugs
-
-```js
-let name = 'Slemgrim';
-let person = {
-    firstname: name;
-}
-
-name = 'mirgmelS';
-console.log(person.firstname) // 'Slemgrim'
+// Numbers
+let number = 10;
+number += 15;
 ```
 
-Imagine what would happen if the string used in the persons firstname could be changed without touching the object.
-You are right: **hell would break lose**. Nothing would be save anymore, our code would be a battlefield where everything
-can change your string without you even noticing.
+This comes with a bunch of benefits:
+
+- Cconcurrency <sup>*</sup>
+- Save to share instances
+- No side effects
+- No temporal coupling
+- Better readability
+- Less memory consumption
+- Easy to cache
+- Easy to test
+
+<sup>*</sup> Not valid for JavaScript because its neat [Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop) 
+is non blocking. 
+
+Objects in JavaScript are mutable by default. As soon we use them, we lose all the benefits. But there are multiple ways to 
+use them like immutable primitives. 
+
+The manual way
+---
+
+Although JavaScript doesn't have support for immutable objects, we still can write our code in a way that 
+doesn't use any form of mutation.
+
+### Don't change objects in functions
+
+Write function that return altered copies instead of changing properties of the given object. 
+
+```js
+//bad
+function save(object){
+    object.saved = true;
+    return object;
+}
+
+//better
+function save(object){
+    let newObject = object.save(true);
+    return newObject;
+}
+```
+
+In this case ```object.save()``` returns a new instance of the object. We can use ```Object.assign``` to clone 
+the original instance, implement a deep clone method or use existing libraries. 
  
-Luckily strings are mutable and the object has only a copy of the initial string 
+#### Do not change objects after construction. 
 
-### Memory Consumption
+```js
+let request = {
+    method: "GET",
+    uri: "http://slemgrim.com"
+}
 
-Multiple used primitives point to the same instance inside the memory. This not only reduces memory consumption but also
-makes primitives save to share and improves cache utilisation.
+// don't do this
+request.method = "POST"
+```
 
-### Performance
+Objects are references, if we avoid changing its properties we will never 
+have strange situations where a state is unclear.
+Also our finished code will be simpler to understand and easier to test. 
+
+### Avoid setters at all cost. 
+
+This is redundant to the two points above. If we use setters, we change our objects. 
+
+Now that we've heard some points we recognise that it is a lot of tedious work to keep everything immutable. 
+This will soon get out of control, so it may be better to get some help. 
+
+### Immutable.js
+
+Facebook's [Immutable.js](https://facebook.github.io/immutable-js/) is a small library which helps us to keep our state immutable.
+There are other libraries which work in a similar way ([Mori](https://github.com/swannodette/mori), 
+[seamless-immutable](https://github.com/rtfeldman/seamless-immutable)), but for this article we stick to immutable.js.
+
+I will not go into detail because their [documentation](https://facebook.github.io/immutable-js/) is really simple. but to wrap it up:
+
+> Immutable.js provides many persistent immutable data structures including: 
+> ```List, Stack, Map, OrderedMap, Set, OrderedSet and Record```
+
+Or in form of code:
+
+```js
+import Map from 'immutable';
+var request = Map({method: 'GET', uri: 'http://slemgrim.com'});
+var post = request.set('method', 'POST');
+request.get('method'); // GET
+post.get('method'); // POST
+```
+
+Although we now lose direct access to objects properties we don't need think about the manual stuff from above.
+
+Bla bla, when should we use it?
+---
 
 
+When to not use it
+---
+
+Conclusion
+---
+
+With that said, I'm not an enthusiast in this matter. Some problems just don't model nicely when everything is 
+immutable. But I do think that we should try to push as much of our code in that direction as possible.
+In short: the advantages always depend on the problem, but I would tend to prefer immutability.
 

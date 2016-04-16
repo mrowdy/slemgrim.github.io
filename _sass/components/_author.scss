@@ -28,3 +28,8 @@
 .author_hire a {
   @extend .link;
 }
+
+.author_social {
+  display: flex;
+  justify-content: flex-start;
+}

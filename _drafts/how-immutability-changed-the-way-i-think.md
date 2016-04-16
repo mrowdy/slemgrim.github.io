@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mutate, or not to mutate, in JavaScript"
+title: "To mutate, or not to mutate, in JavaScript"
 permalink: /mutate-or-not-to-mutate/
 author: slemgrim
 --- 
@@ -38,7 +38,7 @@ This comes with a bunch of benefits:
 - Easy to test
 
 There are pure functional languages like ELM and Haskell where it isn't possible to mutate any value. JavaScript isn't 
-one of them. Objects in JavaScript are mutable by default. As soon we use them, we lose all the above benefits. 
+one of them. Objects in JavaScript are mutable by default. As soon as we use them, we lose all the benefits above. 
 But there are multiple ways to use them like immutable primitives. 
 
 The manual way
@@ -66,9 +66,9 @@ function save(object){
 }
 ```
  
-#### Do not change objects after construction. 
+### Do not change objects after construction. 
 
-Objects are references, if we avoid changing its properties we avoid situation of unclear state.
+Objects are references, if we avoid changing their properties we avoid situation of unclear state.
 Also our finished code will be simpler to understand and easier to test. 
 
 ```js
@@ -83,18 +83,19 @@ request.method = "POST"
 
 ### Avoid setters at all cost. 
 
-This is redundant to the two points above. If we use setters, we change our objects. So we don't use setters.  
+This is redundant to the two points above. If we use setters, we change our objects. So we better not use setters.  
 
-Looks like a lot of tedious work to avoid mutation. The fact that JavaScript doesn't have built in support for immutable
+Looks like a lot of tedious work to avoid mutation. The fact that JavaScript hasn't got a built in support for immutable
 objects makes it really hard for us. Time to get some help. 
 
-### Immutable.js
+Immutable.js
+---
 
 Facebook's [Immutable.js](https://facebook.github.io/immutable-js/) is a small library which helps us to keep our state immutable.
 There are other libraries which work in a similar way ([Mori](https://github.com/swannodette/mori), 
-[seamless-immutable](https://github.com/rtfeldman/seamless-immutable)), but for this article we stick to immutable.js.
+[seamless-immutable](https://github.com/rtfeldman/seamless-immutable)), but for this article we stick to Immutable.js.
 
-I will not go into detail because it's [documentation](https://facebook.github.io/immutable-js/) is really simple. but to wrap it up:
+I will not go into detail because it's [documentation](https://facebook.github.io/immutable-js/) is really simple, but to wrap it up:
 
 > Immutable.js provides many persistent immutable data structures including: 
 > ```List, Stack, Map, OrderedMap, Set, OrderedSet and Record```
@@ -109,28 +110,28 @@ request.get('method'); // GET
 post.get('method'); // POST
 ```
 
-Although we now lose direct access to objects properties we now can focus on our goals instead of fighting against mutations.
+Although we lose direct access to object properties, we now can focus on our goals instead of fighting against mutations.
 
 Bla bla, when should we use it?
 ---
 
 ### Concurrency
 
-This is the number one reason where immutability makes sense. In order to be tread save you don't have to lock something
+This is the number one reason where immutability makes sense. In order to be thread-safe you don't have to lock something
 that doesn't change. In JS there is no real concurrency. Instead we have an 
 [Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop). So forget about this. 
 
 ### To avoid side effects.
 
-Changing properties of objects is mutation. mutation is a side effect by definition. Everyone of us learned that
-wy should avoid side effects at all cost. We don't have to look into the implementation of a function if it doesn't have
+Changing properties of objects is mutation. Mutation is a side effect by definition. Everyone of us learned that
+we should avoid side effects at all cost. We don't have to look into the implementation of a function if it doesn't have
 any side effects. Our code gets easier to reason about and will be more predictable and more testable. 
 
-### With functional Programming
+### With functional programming
 
 There are times where you have to stop and think about whether you're dealing with a value or a reference. Immutable 
-objects are always values. This is one of the core principles of functional programming. If i pass a value to a function
-i can promise it stays the same forever.
+objects are always values. This is one of the core principles of functional programming. If I pass a value to a function
+I can promise it stays the same forever.
 
 When to not use it
 ---
@@ -138,12 +139,12 @@ When to not use it
 ### Often changing properties
 
 If you have objects that change really often, it isn't the best idea to create a new instance for every change.
-This is especially true for games and simulations where this happens multiple times a second. I don't say you can't use
-immutability in games but it's way easier to fall into performance issues than with mutable objects. 
+This is especially true for games and simulations where this happens multiple times a second. I'm not saying you can't use
+immutability in games, but it's way easier to fall into performance issues than with mutable objects. 
 
 ### Huge data structures
 
-If you have a really huge tree of data stored as an immutable container i recommend checking your memory consumption. 
+If you have a really huge tree of data stored as an immutable container I recommend checking your memory consumption. 
 Of course garbage collection will kill all old objects but copying big objects still has its price. 
 
 Conclusion

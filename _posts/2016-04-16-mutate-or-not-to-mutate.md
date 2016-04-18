@@ -115,6 +115,21 @@ Although we lose direct access to object properties, we now can focus on our goa
 Bla bla, when should we use it?
 ---
 
+
+ESLint Immutable
+---
+
+There's also the [eslint-plugin-immutable](https://github.com/jhusain/eslint-plugin-immutable) plugin which disables 
+all mutation in JavaScript. The readme mentions react/redux a lot, but you can safely use the plugin without the two.
+
+### The plugin adds three rules:
+
+- no-let: use const instead of let.
+- no-this: prohibits this and therefore ES6 classes.
+- no-mutation: prohibits assigning a value to the result of member expressions.
+
+**thx to [@thisisgordon](https://k94n.com/) for the hint**
+
 ### Concurrency
 
 This is the number one reason where immutability makes sense. In order to be thread-safe you don't have to lock something

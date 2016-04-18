@@ -112,10 +112,6 @@ post.get('method'); // POST
 
 Although we lose direct access to object properties, we now can focus on our goals instead of fighting against mutations.
 
-Bla bla, when should we use it?
----
-
-
 ESLint Immutable
 ---
 
@@ -129,6 +125,9 @@ all mutation in JavaScript. The readme mentions react/redux a lot, but you can s
 - no-mutation: prohibits assigning a value to the result of member expressions.
 
 **thx to [@thisisgordon](https://k94n.com/) for the hint**
+
+Bla bla, when should we use it?
+---
 
 ### Concurrency
 

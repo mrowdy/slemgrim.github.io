@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The REST inclusion dilemma"
-permalink: /the-rest-include-dilemma/
+permalink: /rest-inclusion-dilemma/
 author: slemgrim
 --- 
 

@@ -3,6 +3,7 @@ layout: post
 title: "To mutate, or not to mutate, in JavaScript"
 permalink: /mutate-or-not-to-mutate/
 author: slemgrim
+disqus_identifier: 0d9145af-8e13-4a91-91e1-b814c25ce757
 --- 
 
 There are a lot of people out there preaching about immutability as the best solution for everything. 

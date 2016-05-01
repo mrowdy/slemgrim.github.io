@@ -4,6 +4,7 @@ title: "A kick-start into server push"
 permalink: /kickstart-into-server-push/
 date: 2016-03-17 20:00:00 +0000
 author: slemgrim
+disqus_identifier: 5cfde89b-91b8-4508-bd51-8ae0587c1f54
 --- 
 
 I bet you heard about server push in the last few months. 

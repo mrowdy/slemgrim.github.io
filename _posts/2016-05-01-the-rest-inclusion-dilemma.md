@@ -3,6 +3,7 @@ layout: post
 title: "The REST inclusion dilemma"
 permalink: /rest-inclusion-dilemma/
 author: slemgrim
+disqus_identifier: 6af753e2-d66e-4042-9de5-11ce6015819a
 --- 
 
 Designing robust REST endpoints isn't trivial, you always have to consider maintainability, 

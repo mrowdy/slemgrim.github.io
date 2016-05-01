@@ -6,16 +6,16 @@ author: slemgrim
 --- 
 
 Designing robust REST endpoints isn't trivial, you always have to consider maintainability, 
-scalability and performance. Wrong decisions in the later often lead to problems with 
+scalability and performance. Wrong decisions in the latter often lead to problems with 
 the other two. One of them is the inclusion of related resources or short
-<abbr title="Inclusion of related resources">IoRR</abbr> (Yeah, i made that up).
+<abbr title="Inclusion of related resources">IoRR</abbr> (yeah, I made that up).
 
 > A dilemma is a situation in which a difficult choice has to be made between two 
 > or more alternatives, especially equally undesirable ones.
 
 REST APIs are usually split into several endpoints to represent different resources. 
 Often these resources are related to each other, which leads to a lot of requests until 
-we have fetched all the data we need. If this takes to much time, 
+we have fetched all the data we need. If this takes too much time, 
 it seems obvious to include the related resources with the first response.
 
 An example API response without IoRR
@@ -39,12 +39,12 @@ An example API response without IoRR
 ```
 
 So far everything looks fine. We get a single article from an unique endpoint. 
-If we need the comments, the response provide us a straightforward way how to get them. 
+If we need the comments, the response provide us a straightforward way to get them. 
 It doesn't give us direct information which comments are related, just where to fetch them. 
 
 <div class="message message--info">
 Since the response contains only the article itself and nothing else, 
-it can be cached as a whole on server side. 
+it can be cached as a whole on server-side. 
 </div>
 
 If we have to fetch all the related data, we need multiple requests. Some of the related 
@@ -125,8 +125,8 @@ because we have to add the additional resources, i.e., more database queries and
 But since it is the only request, we end up a lot faster than before.
 
 <div class="message message--info">
-In case you wonder why i do this "relationship" thingy instead of a self containing article 
-document. This is part of the <a target="_blank" href="http://jsonapi.org/">json:api</a>
+In case you wonder why I do this "relationship" thingy instead of a self containing article 
+document, this is part of the <a target="_blank" href="http://jsonapi.org/">json:api</a>
 specification and ensures consistent endpoint design.
 </div>
 
@@ -134,10 +134,10 @@ Easy come, easy go. While we gained a lot of speed, we introduced other problems
         
 ### Caching
 
-A big part of caching is invalidation. Now that our response consists of more than an article 
+A big part of caching is invalidation. Now that our response consists of more than an article, 
 caching gets complicated. Every time a comment or an author resource gets changed we need 
 to invalidate the cache of every response which contains that specific resource. 
-For this small example that may seems reasonable but in a real world API this renders full-page
+For this small example that may seem reasonable but in a real world API this renders full-page
 caching almost impossible. Caching is not only good for speed, 
 but also frees our servers from unnecessary load. 
  
@@ -150,7 +150,7 @@ It doesn't take long to lose track of which resource is included in what endpoin
 
 ### Scaling
 
-> You wanted a banana but you got a gorilla holding the banana and the entire jungle.
+> You wanted a banana but you got a gorilla holding the banana, and the entire jungle.
 
 As every other software, APIs grow over time, new endpoints are introduced 
 and new relationships arise. If we use IoRR for everything our responses get bigger and bigger.
@@ -162,7 +162,7 @@ Where else do we spend time?
 ---
 
 A response with included resources will always be faster than multiple resource, 
-no mather what we try. If we shift our focus away from the response we may can free enough 
+no mather what we try. If we shift our focus away from the response we might free enough 
 precious time to make IoRR unnecessary. 
 
 ### Language level

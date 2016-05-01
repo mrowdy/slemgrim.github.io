@@ -1,64 +1,61 @@
 ---
 layout: post
-title: "The REST include dilemma"
+title: "The REST inclusion dilemma"
 permalink: /the-rest-include-dilemma/
 author: slemgrim
 --- 
 
-Everyone who is in contact with REST API's knows that performance is crucial. 
-In order to achieve that, a lot of developers decide to include additional resources in their response
-to avoid further requests. But this often comes with a high price. 
+Designing robust REST endpoints isn't trivial, you always have to consider maintainability, 
+scalability and performance. Wrong decisions in the later often lead to problems with 
+the other two. One of them is the inclusion of related resources or short
+<abbr title="Inclusion of related resources">IoRR</abbr> (Yeah, i made that up).
 
-A simple API response
+> A dilemma is a situation in which a difficult choice has to be made between two 
+> or more alternatives, especially equally undesirable ones.
+
+REST APIs are usually split into several endpoints to represent different resources. 
+Often these resources are related to each other, which leads to a lot of requests until 
+we have fetched all the data we need. If this takes to much time, 
+it seems obvious to include the related resources with the first response.
+
+An example API response without IoRR
 ---
 
-We start with a response of an articles with a related category. 
-For demo purpose we don't care about good endpoint design. 
-
 ```js
+//GET /articles/1
 {
   data: [
     {
       id: 1,
-      title: "article",
+      type: "article",
       attributes: {...},
       relationships: {
-        category: "http://example.com/article/1/category",
         comments: "http://example.com/article/1/comments",
+        author: "http://example.com/article/1/author"
       }
     }
   ]
 }
 ```
 
+So far everything looks fine. We get a single article from an unique endpoint. 
+If we need the comments, the response provide us a straightforward way how to get them. 
+It doesn't give us direct information which comments are related, just where to fetch them. 
+
 <div class="message message--info">
-Since this is a single resource, we can cash the whole response at API level.
+Since the response contains only the article itself and nothing else, 
+it can be cached as a whole on server side. 
 </div>
 
-Now in order to show the category alongside the article, we need to make a further API request. 
-This wouldn't be a problem in this simple example, but imagine
-a bigger endpoint where you need a resource with multiple related resources.
+If we have to fetch all the related data, we need multiple requests. Some of the related 
+resources can also have related resources which leads to even more requests. 
+We'll soon see that this is really time consuming.
 
-For every related resource we need an aditional request, or in other words: for every 
-related resource we have to spend some more time on waiting. 
-
-```
-- request article: 100ms 
-    - request category: 100ms
-    - request comments: 100ms
-        - request authors: 100ms
-```
-
-While it is true that we can paralelize some of the requests, 
-we still have to wait for the article, before we know which categories and comments to request. 
-The same for authors and comments. 
-
-Include everything
+Example API response with IoRR
 ---
 
-The solution that seems most simple at first is the inclusion of all related resources.
-
 ```js
+//GET /articles/1
 {
   data: [
     {
@@ -66,114 +63,132 @@ The solution that seems most simple at first is the inclusion of all related res
       title: "article",
       attributes: {...},
       relationships: {
-        category: "http://example.com/article/1/category",
-        comments: "http://example.com/article/1/comments",
+        comments: [
+          {
+            id: 33,
+            type: "comment"
+          },
+          {
+            id: 34,
+            type: "comment"
+          }
+        ],
+        author: {
+          id: 3,
+          type: "author"
+        }
       }
     }
   ],
   included: [
     {
-      id: 1,
-      type: "category",
-      attributes: {...}
+      id: 33,
+      type: "comment",
+      attributes: {...},
+      relationships: {
+        author: {
+          id: 18,
+          type: "author"
+        }
+      }
     },
     {
-      id: 22,
+      id: 34,
       type: "comment",
-      attributes: {...}
+      attributes: {...},
+      relationships: {
+        author: {
+          id: 18,
+          type: "author"
+        }
+      }
     },
     {
-      id: 2112,
-      type: "comment",
-      attributes: {...}
+      id: 3,
+      type: "author",
+      attributes: {...},
+    },
+    {
+      id: 18,
+      type: "author",
+      attributes: {...},
     }
   ]
 }
 ```
 
-<div class="message message--warning">
-It's really important to keep the includes inside a separate directive instead of 
-building a huge article document like you would in your favourite NoSQL database.
+Now everything is contained in one request. One could argue how many levels of nested 
+relations we add, but it doesn't matter for this example. 
+
+The first request will probably take a bit longer than in the previous example 
+because we have to add the additional resources, i.e., more database queries and processing. 
+But since it is the only request, we end up a lot faster than before.
+
+<div class="message message--info">
+In case you wonder why i do this "relationship" thingy instead of a self containing article 
+document. This is part of the <a target="_blank" href="http://jsonapi.org/">json:api</a>
+specification and ensures consistent endpoint design.
 </div>
+
+Easy come, easy go. While we gained a lot of speed, we introduced other problems:
         
-Now we don't need further requests because all is contained in the first one. Since REST standards like [HAL](#), [json:api](#)
-and many others provide that functionality out of the box, that can't be a bad thing. But be careful young padawan. 
-While the only benefit is less requests and therefor les time spent on waiting we introduce new problems:
+### Caching
 
-### No more caching
+A big part of caching is invalidation. Now that our response consists of more than an article 
+caching gets complicated. Every time a comment or an author resource gets changed we need 
+to invalidate the cache of every response which contains that specific resource. 
+For this small example that may seems reasonable but in a real world API this renders full-page
+caching almost impossible. Caching is not only good for speed, 
+but also frees our servers from unnecessary load. 
+ 
+### Maintaining
 
-A big part of caching is invalidation. Now that we have included resources inside the article endpoint we would
-have to invalidate the endpoint cache whenever someone changes an article, changes a category, or adds a comment. 
-I don't say this is impossible, but usually it is really hard to keep track of such cache constructs. The easier way 
-would be to disable the endpoint cache completely and rely on caches deeper in your architecture. For example: cache your service
-layer or your persistence layer where a resource is still a single resource. 
+Where is my data again? Our comments can be fetched from the ```/comments``` endpoint, 
+but are also included in the ```/articles``` endpoint. For the authors it gets even worse: 
+```/author```, ```/comments``` and ```/article``` all return author information. 
+It doesn't take long to lose track of which resource is included in what endpoint. 
 
-### More Complex application structure
+### Scaling
 
-In a perfect world a resource can only be fetched from a single endpoint. You get articles from the article endpoint or
-Categories from the category endpoint. With inclusions everything gets more complicated. Now you have categories from the category
-endpoint and from the article endpoint. So you need logic for that on both places. With an good architecture this can be handled, 
-but in most cases this leads to chaos and a lot of duplicated code. 
+> You wanted a banana but you got a gorilla holding the banana and the entire jungle.
 
-Time is money
+As every other software, APIs grow over time, new endpoints are introduced 
+and new relationships arise. If we use IoRR for everything our responses get bigger and bigger.
+Consumers which only need a small portion of our data are required to download almost the 
+entire database with a single request. And since a lot of clients are already consuming
+our API, we are not able to change something easily without wreaking havoc.
+
+Where else do we spend time?
 ---
 
-Isn't there a better solution than included resources? Before we can answer that question we have to take a look on where
-we spent time. 
+A response with included resources will always be faster than multiple resource, 
+no mather what we try. If we shift our focus away from the response we may can free enough 
+precious time to make IoRR unnecessary. 
 
 ### Language level
 
-If our API has to boot up every time it gets a request (for example in PHP) you pile up a lot of delay. An empty php
-script takes about 20 to 30ms to run. 10 of them takes 300ms. On top of that is your framework which also needs some 
-time to boot. The larger the framework, the longer it takes. And then there is your own code which usually also isn't
-the fastet. And you got all of that for every f***ing request. I recommend to switch to a language/system which can run in 
-the background (thinking go or node API). 
-
-Lets assume our API needs 200ms to boot, and about 50ms to handle a request.  
-
-#### Api that needs to but up for every request
-
-- Request A: 200ms + 50ms
-- Request B: 200ms + 50ms
-- Request C: 200ms + 50ms
-- Request D: 200ms + 50ms
-
-Overall we have 1000ms for 4 requests.
-
-#### Api which is booted once and runs in the background
-
-- Booting: 200ms
-- Request A: 50ms
-- Request B: 50ms
-- Request C: 50ms
-- Request D: 50ms
-
-Overall we arrive at 400ms. This is 250% times faster than with the booting example. But that increases with more requetss
-
-- 10 requests are 357% faster
-- 100 requests are 480% faster
-- 1000 requests are 498% faster
+If your API is written in a language that gets interpreted with every API request (i.e., PHP) 
+you spend a lot of time booting your application and framework for **every** request. 
+Consider moving to a running service where booting occurs only once. 
+There are other languages like go or node.js which are way better suited for this kind of task. 
 
 ### Caching
 
-Without inclusions we can cache the whole response of an endpoint. 
-Lets say a cached resource takes 20ms while a uncached one takes 50ms. In reality this can be even more.
-Like with the booting this also saves a lot of time over time. 
+As mentioned earlier, caching should always be a big deal in an API. Without inclusion we 
+can not only cache the business layer but also the whole response which leads to way 
+faster responses and makes our server happy with greatly reduced load. 
 
-- 100 uncached requests take 5000ms
-- 20 cached ones only take 2000ms
+### HTTP/2
 
-That means we just saved 3 seconds in just 100 requests. While that doesn't sound much, in an big API with a huge amount 
-of consumers this is a lot of time. Less time spent on a request means more parallel requests are possible.
+With HTTP/2 comes [multiplexed](https://http2.github.io/faq/#why-is-http2-multiplexed) 
+connections. This means that a client can reuse a open connection. 
+In HTTP/1.x a connection gets opened for every request. 
+This comes in really handy if we have to make a lot of request for related resources.
 
-### HTTP
-
-Every requests needs to make a new http connection to your server. More requests means more connections means more 
-time spent on nothing. With HTTP2 this isn't true anymore. HTTP2 keeps a connection open for a short time, so subsequent
-calls will be handled over the same connection. This again isn't much a benefit for a single request but can make
-a huge difference when we have related resources.
-
-Conclusion
+TL;DR
 ---
 
-bla
+As the title states: inclusion of related resources is a dilemma. 
+Single responses with included relationships will be always faster than multiple 
+resources but can be completely avoided if you resolve your performance issues at their root. 
+If you have to do includes, be aware of all the trade-offs and future problems you introduce. 

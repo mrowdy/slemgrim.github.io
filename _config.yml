@@ -17,3 +17,5 @@ permalink: /:title
 
 gems:
   - jekyll-sitemap
+
+ampdir: /amp

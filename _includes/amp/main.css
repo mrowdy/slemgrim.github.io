@@ -1,0 +1,22 @@
+body {
+    padding: 25px;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgb(3, 4, 7);
+    background-color: rgb(245, 249, 250);
+}
+
+a {
+    color: rgb(95, 179, 0);
+    text-decoration: none;
+}
+
+.header_home {
+    display: flex;
+    flex-direction: row;
+}
+
+.header_logo {
+    width: 50px;
+}

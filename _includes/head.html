@@ -18,8 +18,10 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
           href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}"/>
 
-
-
+    <!-- AMP link -->
+    {% if page.path contains '_posts' %}
+        <link rel="amphtml" href="{{ page.id | prepend: site.ampdir | prepend: site.baseurl | prepend: site.url }}">
+    {% endif %}
     <!-- Facebook Stuff -->
     <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">

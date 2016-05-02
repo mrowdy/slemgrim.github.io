@@ -155,7 +155,7 @@ Implementations
 
 The experimental [mod_http2](https://httpd.apache.org/docs/2.4/mod/mod_http2.html) apache module introduces
 the [H2Push Directive](https://httpd.apache.org/docs/2.4/mod/mod_http2.html#h2push) which toggles the usage of the HTTP/2
-server push protocol feature and is used in your <VirtualHost> section. 
+server push protocol feature and is used in your &lt;VirtualHost&gt; section. 
 
 You have to write all your pushes as `Link` entries inside the response [headers](https://httpd.apache.org/docs/2.4/mod/mod_headers.html).
 

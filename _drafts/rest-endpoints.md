@@ -267,11 +267,11 @@ For example you call `GET /articles/42` it always should return the same.
 | HEAD    | yes           |
 
 A resource can still change between two requests
-because it gets edit by someone else, or get stale, or various other reasons.
+because it gets edit by someone else, has an updated timestamp or becomes stale.
 
 ## Save Methods
 
-Methods are save if you can't change a resource with them. A `GET` for example
+Methods are save if they don't change a resource. A `GET` for example
 should never change a resource. `DELETE` on the other side, will always change a resource.
 This is important when it comes to caching, save methods can always be cached.
 
@@ -299,12 +299,15 @@ PUT /articles/42
 DELETE /articles/42
 ```
 
-We not only replaced the methods with appropriate ones, we also were able to remove all verbs from
-the endpoints. No more '/add, /edit, /delete'. Now there is only one endpoint left. This is not only way
-simpler for the consumer of the api, it also is easier to maintain when you only have on route to define.
-It also prevents you from inconsistent endpoint names (add and create, edit and update, delete and remove).
+We not only replaced the methods with appropriate ones,
+we also were able to remove all verbs from the endpoints.
+No more '/add, /edit, /delete'. Now there is only one endpoint left '/articles'.
+This is not only simpler for the consumer of the api,
+it's also easier to maintain when you only have on route to define.
+It also prevents you from inconsistent endpoint naming
+(add and create, edit and update, delete and remove).
 
 ## Real World
 
 Most API's implement `GET, POST, PUT and DELETE`. All the other methods are nice to have. But if you don't use
-then return at least a `501 Not Implemented`.
+them return at least a `501 Not Implemented`.

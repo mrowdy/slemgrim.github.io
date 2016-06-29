@@ -1,13 +1,30 @@
 HTTP Methods, they have a purpose
 ===
 
-A lot of REST API's out there are limited to `GET` and `POST` endpoints. Most web developers
-know these two from their beginning with HTML forms. Sadly their API's are designed like HTML Forms.
+A lot of REST API's out there are limited to `GET` and `POST` HTTP calls for
+reading and modifying resources. This surely works for small projects,
+but if you are about to design a long lasting API it can save you a
+lot of trouble if you use the right method in the right situation.
 
-They use `GET` when they want to fetch something from the server and `POST` for everything else.
-Obviously this works in most cases but we can better.
+API's are not HTTP forms.
+---
 
-### An example
+Most web developers are familiar with `GET` and `POST` from years of dealing
+with html forms.
+
+```
+<form method="post">
+    ...
+</form>
+```
+
+With forms there isn't much we can do wrong:
+
+- `GET` if we want to fetch a resource
+- `POST` for everything else
+
+with REST API's this is more complicated. We sure can design our endpoints the
+same way:
 
 ```
 GET /articles
@@ -17,18 +34,23 @@ POST /articles/edit/42
 POST /articles/delete/42
 ```
 
-In case you have to consume an API like this you would have no problems understanding the purpose
-of each endpoint. But if you are the author you just have made your life a little bit harder.
+2 endpoints for fetching, and 3 endpoints for manipulating resources.
+The verb in each endpoint definition gives us a good idea what its purpose is.
+Nothing seems wrong at first, but after learning more about other HTTP Methods
+we revisit this example and tear it apart.
 
-The Methods
----
+## GET - For reading resources.
 
-### GET - Request data from a specified resource
+Every time we want to read data from an API we use `GET.
+Be it a single resource or a collection of resources, `GET` is the way to go.`
+We absolutely never change, create or delete a resource with a `GET` request.
+We're not even allowed to send a body-entity with it.
 
-Every time you want to read data from an API you use 'GET'.
-A `GET` endpoint can have various parameters usually provided inside the query string
+If we need parameters for filtering, pagination or other formatting reasons
+we can use query params. I'll do a separate article about the right usage of
+query params in the future.
 
-**Examples**
+### Examples
 ```
 GET api.example.com/articles/42
 GET api.example.com/articles/?page=1
@@ -36,39 +58,40 @@ GET api.example.com/articles/?filter[title]=Foo&order=date
 GET api.example.com/articles/?format=JSON
 ```
 
-Get requests can't have a body. Which means all needed information is contained inside the URI.
-Which brings a lot of benefits:
+Every relevant information of a GET request is contained in the URI itself.
+This brings a few benefits:
 
 - Get Requests are cachable
-- You can bookmark and share them
+- They can be bookmarked and are shareable
 - Browser history can keep track of them
 
 <div class="message message--info">
-When you first learned about it you probably heard that a `GET` request comes with a query string.
-attached to the URI. Query strings are just a way to send information, they have nothing to do with `GET`.
+Query strings are just one way to send information,
+they are neither limited to 'GET' nor do they anything to do with `GET`.
 All the other methods also support query strings.
 </div>
 
 <div class="message message--info">
-`GET` requests are limited in length is another common misconception. The [RFC](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.1)
-makes clear that there is no limit of length. However there are different limits in different browser implementation</div>
+`GET` requests are limited in length is another common misconception.
+The [RFC](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.1)
+makes clear that there is no limit of length.
+However there are limits in different browser implementations</div>
 
-### HEAD
+## HEAD
 
-The `HEAD` method is similar to the `GET` Method.
-The only difference is the missing body in the response of the `HEAD` request.
+The `HEAD` method is quite similar to the `GET` Method.
+The only difference is the missing body-entity in the response.
 
-We can use it to check the response headers without the need to download the full resource.
-You can for example check the `Last-Modified` header to decide if you have to re-download a resource or
-use the cached one.
+We can use it to check the response headers without the need to download
+the full resource. We can for example check the `Last-Modified` header
+to decide if we have to re-download a resource or use the cached one.
 
+## POST
 
-### POST
-
-The `POST` method is mostly used to create a resource.
-But only if you don't know the unique identifier of the new resource.
-
-Lets say you are about to create an new article:
+This method is mostly used for creating resources.
+The limitation is that we don't know the specific URI of a resource.
+If we are about to create a new resource, and don't know its id, we send it
+to the root endpoint of that resource.
 
 ```
 POST /article/
@@ -78,23 +101,25 @@ POST /article/
 }
 ```
 
-The server will respond with:
+The API will create the resource and responds with an unique location
+(now with an ID). We use this location for further calls on that endpoint.
 
 ```
 HTTP/1.1 201 Created
 Location: /articles/42
 ```
 
-After creation you know the ID for that article. So there is no need to use `POST` for any further
-calls on this resource.
+Now that we know the unique URL of the just created resource `/articles/42`
+we shouldn't use any more `POST` requests with the resource.
 
-IF you make the same call a second time, the server either creates an new article with another ID or tells
-you that this article already exists. This means that `POST` is not idempotent. But more on that later.
+IF we send the same request a second time, the server either creates an new article with another ID or tells
+us that this article already exists. This means that `POST` is not idempotent nor safe. But more on that later.
 
 ### PUT
 
-We used `POST` to create a resource. After the creation we can use PUT to edit a resource.
-With put we always need to know the unique URI of a resource.
+If we know the unique URI of a resource (e.g. /articles/42) we can use `PUT` to manipulate it.
+This is also true if we know the unique URI of a resource that doesn't exist yet.
+So we also can use it to create resources.
 
 ```
 PUT /article/43
@@ -104,45 +129,52 @@ PUT /article/43
 }
 ```
 
-So instead of saying "POST when we create something and PUT when we edit something" we should say:
-"PUT when we do know the unique URI of the resource and POST if we don't"
+<div class="message message--info">
+Instead of saying "POST to create create resources and PUT when to
+edit resources" we should say:
+"PUT when we do know the unique URI and POST if we don't"
+</div>
 
 ### DELETE
 
-With `DELETE` we request that a resource should be deleted on the server. There is no guarantee that
-the operation has been carried out. The server can delete a resource or just flag it as deleted.
-As with put, its required to now the unique URI of a resource do delete it
+With `DELETE` we request that a resource should be deleted on the server.
 
-**Possible return types**
+```
+DELETE /article/42
+DELETE /article
+```
 
-- **200 OK** when a resource was successfully deleted.
-- **202 Accepted** if the action was accepted but not carried out yet
-- **204 No Content** if the response doesn't contain a body
+The first example would delete the resource with the id 42. The second one would
+delete all resources of that type.
+
+There is no guarantee that the operation has been carried out.
+The server can delete a resource or just flag it as deleted, that's up to the API
+and shouldn't concerne you.
+As with `PUT`, its required to know the unique URI of a resource do delete it.
 
 ### TRACE
 
-Trace is probably the most simple method. It returns the same thing you send to it.
-We use this method mainly for testing what the server receives and if it gets changed by someone in
-the request chain. The response should always be `200 OK` and the send information inside the body entity
-alongside an Content-Type of `message/http`.
+The probably most simple method. Send something with `TRACE` and it will
+reply with the same thing inside its body-entity.
 
 ```
-POST /article/
-PING
+TRACE /endpoint/
+Time is an illusion. Lunchtime doubly so.
 ```
 
-Should return
+Should return:
 
 ```
 200 OK
-PING
+Time is an illusion. Lunchtime doubly so.
 ```
 
-Its like Ping-Pong except that the other one is to stupid to say pong and replies with ping.
+We use this method mainly for testing what the server receives
+and if it gets changed by a proxy or someone else in the request chain.
 
 ### OPTIONS
 
-This method is used to inform a client of capabilities of an endpoint.
+This method is used to inform a client over the capabilities of an endpoint.
 It should respond with `200 OK` and should have at least an `ALLOW` header.
 
 ```
@@ -150,16 +182,24 @@ It should respond with `200 OK` and should have at least an `ALLOW` header.
 Allow: GET, PUT, POST, DELETE
 ```
 
-If there is a body it should information about the communication options.
-But the spec doesn't say anything about the format of these options.
+If there is a body-entity it should information about the communication options.
+We can use this to inform a client which HTTP Methods are implemented.
+
+> If the OPTIONS request includes an entity-body, then the media type MUST be
+> indicated by a Content-Type field. Although this specification does not define any use for such a body,
+> future extensions to HTTP might use the OPTIONS body to make more detailed queries on the server.
+
+As the format of the body-entity is not described by the RFC we can use it for our own purpose like
+[documenting](http://zacstewart.com/2012/04/14/http-options-method.html) our API.
 
 ### PATCH
 
-Patch is similar to `PUT` with the difference that you only change parts of an resource.
-`PUT` *replaces* a resource with a new one.
-`PATCH` *changes parts of an existing resource.
+A lot of people will say that `PATCH` is similar to `PUT` but that isn't true at all.
+With `PATCH` we can edit parts of a resource instead of replacing the whole resource with a new one.
+The problem is that "replace parts" isn't what you would think at first.
 
-Given an resource with multiple fields:
+
+Given the resource:
 ```
 {
     "id": 42,
@@ -169,7 +209,7 @@ Given an resource with multiple fields:
 }
 ```
 
-With `PATCH` we can only change one field leaving the others the way they are.
+Now we could send a patch like this:
 
 ```
 PATCH /articles/42
@@ -178,9 +218,28 @@ PATCH /articles/42
 }
 ```
 
+But that is wrong. A `PATCH` request should contain the description of a change
+and not only the changed value.
+
+```
+PATCH /articles/42
+[replace the value at location "title" with "Foo bar baz"]
+```
+
+Like with `OPTIONS` the RFC doesn't define a format. So we can do something like this:
+
+````
+PATCH /articles/42
+{
+    "operation": "replace",
+    "property": "title",
+    "value": "Foo bar baz"
+}
+````
+
 ### CONNECT
 
-A `CONNECT` request induces your proxy to establish an HTTP tunnel to the endpoint.
+A `CONNECT` request induces a proxy/client to establish an HTTP tunnel to the endpoint.
 Usually is it used for SSL connections, but can be used with HTTP as well.
 In most cases it is used for proxy-chaining and tunneling.
 

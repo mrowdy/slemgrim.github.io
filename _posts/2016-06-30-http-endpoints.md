@@ -6,7 +6,7 @@ author: slemgrim
 disqus_identifier: 0d914523af-8e13-4a91-91e1-b814c25ce757
 ---
 
-A lot of REST API's out there are limited to `GET` and `POST` HTTP calls for
+A lot of REST APIs out there are limited to `GET` and `POST` HTTP calls for
 reading and modifying resources. This surely works for small projects,
 but if you are about to design a long lasting API it can save you a
 lot of trouble if you use the right method in the right situation.
@@ -78,7 +78,7 @@ All the other methods also support query strings.
 </div>
 
 <div class="message message--info">
-GET requests are limited in length is another common misconception.
+That GET requests are limited in length is another common misconception.
 The <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.1">RFC</a>
 makes clear that there is no limit of length.
 However there are limits in different browser implementations</div>
@@ -155,8 +155,8 @@ delete all resources of that type.
 
 There is no guarantee that the operation has been carried out.
 The server can delete a resource or just flag it as deleted, that's up to the API
-and shouldn't concerne you.
-As with `PUT`, it's required to know the unique URI of a resource do delete it.
+and shouldn't concern you.
+As with `PUT`, it's required to know the unique URI of a resource to delete it.
 
 ### TRACE
 
@@ -264,7 +264,7 @@ because it gets edited by someone else, has an updated timestamp or becomes stal
 
 Methods are safe if they don't change a resource. A `GET` for example
 should never change a resource. `DELETE` on the other hand, will always change a resource.
-This is important when it comes to caching, safe methods can always be cached.
+This is important when it comes to caching because safe methods can always be cached.
 
 
 | Method  | is idempotent | is Safe |
@@ -279,9 +279,9 @@ This is important when it comes to caching, safe methods can always be cached.
 | CONNECT | yes           | no      |
 | HEAD    | yes           | yes     |
 
-## Lessons Learned
+## Lessons learned
 
-With all that in mind we can safely change the first example:
+With all that in mind, we can safely change the first example:
 
 ```
 GET /articles
@@ -296,12 +296,12 @@ we also were able to remove all verbs from the endpoints.
 No more `/add, /edit, /delete`. Now there is only one endpoint left `/articles`.
 
 If we design all our endpoints like this we'll never have to think
-"did i call it /create or /add this time".
+"did I call it /create or /add this time".
 Our config files and documentation are not bloated with verbs and duplicated endpoints.
 And best of all: our consumers can be dead simple and rely on standards.
 
 ## TL;DR
 
 Most APIs implement `GET`, `POST`, `PUT` and `DELETE`. Other methods are quite useful
-but depending on the application more a nice to have than a requirement. We should always
+but depending on the application, more of a nice to have than a requirement. We should always
 think twice which method is the right one for our purpose.

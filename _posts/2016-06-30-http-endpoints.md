@@ -1,5 +1,10 @@
-HTTP Methods, they have a purpose
-===
+---
+layout: post
+title: "HTTP Methods, they have a purpose"
+permalink: /http-methods/
+author: slemgrim
+disqus_identifier: 0d914523af-8e13-4a91-91e1-b814c25ce757
+---
 
 A lot of REST API's out there are limited to `GET` and `POST` HTTP calls for
 reading and modifying resources. This surely works for small projects,
@@ -10,7 +15,7 @@ APIs are not HTTP forms.
 ---
 
 Most web developers are familiar with `GET` and `POST` from years of dealing
-with html forms.
+with HTML forms.
 
 ```
 <form method="post">
@@ -20,11 +25,10 @@ with html forms.
 
 With forms there isn't much we can do wrong:
 
-- `GET` if we want to fetch a resource
+- `GET` for fetching resources
 - `POST` for everything else
 
-with REST APIs this is more complicated. We sure can design our endpoints the
-same way:
+Of course we can apply this pattern to APIs:
 
 ```
 GET /articles
@@ -35,14 +39,16 @@ POST /articles/delete/42
 ```
 
 2 endpoints for fetching, and 3 endpoints for manipulating resources.
-The verb in each endpoint definition gives us a good idea what its purpose is.
-Nothing seems wrong at first, but after learning more about other HTTP Methods
-we will revisit this example and tear it apart.
+The verb at the end of each endpoint definition gives us a good idea what its purpose is.
+But the fact that verbs in endpoint names is considered bad behavior and the blatant ignoring of HTTP methods
+are just two reason why we should avoid this pattern.
+
+After learning about all the other HTTP methods we revisit this example.
 
 ## GET - For reading resources.
 
-Every time we want to read data from an API we use `GET.
-Be it a single resource or a collection of resources, `GET` is the way to go.`
+Every time we want to read data from an API we use `GET`.
+Be it a single resource or a collection of resources, `GET` is the way to go.
 We absolutely never change, create or delete a resource with a `GET` request.
 We're not even allowed to send a body-entity with it.
 
@@ -58,7 +64,7 @@ GET api.example.com/articles/?filter[title]=Foo&order=date
 GET api.example.com/articles/?format=JSON
 ```
 
-Every relevant information of a `GET` request is contained in the URI itself.
+All relevant information of a `GET` request is contained in the URI itself.
 This brings a few benefits:
 
 - `GET` requests are cachable
@@ -67,13 +73,13 @@ This brings a few benefits:
 
 <div class="message message--info">
 Query strings are just one way to send information,
-they are neither limited to GET nor do have they anything to do with GET.
+they are neither limited to GET nor do they have anything to do with GET.
 All the other methods also support query strings.
 </div>
 
 <div class="message message--info">
 GET requests are limited in length is another common misconception.
-The [RFC](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.1)
+The <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.1">RFC</a>
 makes clear that there is no limit of length.
 However there are limits in different browser implementations</div>
 
@@ -83,8 +89,8 @@ The `HEAD` method is quite similar to the `GET` Method.
 The only difference is the missing body-entity in the response.
 
 We can use it to check the response headers without the need to download
-the full resource. We can for example check the `Last-Modified` header
-to decide if we have to re-download a resource or use the cached one.
+the full resource. We, for example, can check the `Last-Modified` header
+to decide if we have to re-download a resource or use a cached one.
 
 ## POST
 
@@ -109,17 +115,17 @@ HTTP/1.1 201 Created
 Location: /articles/42
 ```
 
-Now that we know the unique URL of the just created resource `/articles/42`
-we shouldn't use any more `POST` requests with the resource.
+Now that we know the unique URL of the just created resource (`/articles/42`)
+we don't have any reason to use other `POST` request with that resource.
 
-If we send the same request a second time, the server either creates a new article with another ID or tells
+If we send the same request a second time, the API either creates a new article with a different ID or tells
 us that this article already exists. This means that `POST` is not idempotent nor safe. But more on that later.
 
 ### PUT
 
 If we know the unique URI of a resource (e.g. /articles/42) we can use `PUT` to manipulate it.
 This is also true if we know the unique URI of a resource that doesn't exist yet.
-So we also can use it to create resources.
+So we can also use it to create resources.
 
 ```
 PUT /article/43
@@ -132,7 +138,7 @@ PUT /article/43
 <div class="message message--info">
 Instead of saying "POST to create resources and PUT to
 edit resources" we should say:
-"PUT when we do know the unique URI and POST if we don't"
+"PUT when we know the unique URI and POST if we don't"
 </div>
 
 ### DELETE
@@ -150,7 +156,7 @@ delete all resources of that type.
 There is no guarantee that the operation has been carried out.
 The server can delete a resource or just flag it as deleted, that's up to the API
 and shouldn't concerne you.
-As with `PUT`, its required to know the unique URI of a resource do delete it.
+As with `PUT`, it's required to know the unique URI of a resource do delete it.
 
 ### TRACE
 
@@ -170,7 +176,7 @@ Time is an illusion. Lunchtime doubly so.
 ```
 
 We use this method mainly for testing what the server receives
-and if it gets changed by a proxy or someone else in the request chain.
+and if it gets manipulated by a proxy or someone else in the request chain.
 
 ### OPTIONS
 
@@ -194,12 +200,13 @@ As the format of the body-entity is not described by the RFC we can use it for o
 
 ### PATCH
 
-A lot of people will say that `PATCH` is similar to `PUT` but that isn't true at all.
+A lot of people say that `PATCH` is similar to `PUT` but that isn't true at all.
 With `PATCH` we can edit parts of a resource instead of replacing the whole resource with a new one.
 The problem is that "replace parts" isn't what you would think at first.
 
 
 Given the resource:
+
 ```
 {
     "id": 42,
@@ -209,7 +216,7 @@ Given the resource:
 }
 ```
 
-Now we could send a patch like this:
+We could implement a `PATCH` like this:
 
 ```
 PATCH /articles/42
@@ -247,45 +254,30 @@ In most cases it is used for proxy-chaining and tunneling.
 CONNECT api.example.com:443/articles/42
 ```
 
-## Idempotent Methods
+## Idempotent and safe Methods
 
 When you can call an endpoint multiple times without its result changing, it is *idempotent*.
-For example you call `GET /articles/42` it always should return the same.
-
-###Idempotence of methods
-
-| Method  | is idempotent |
-|---------|---------------|
-| GET     | yes           |
-| PUT     | yes           |
-| POST    | no            |
-| PATCH   | no            |
-| DELETE  | yes           |
-| TRACE   | yes           |
-| OPTIONS | yes           |
-| CONNECT | yes           |
-| HEAD    | yes           |
-
+For example, a call to `GET /articles/42` will always return the same, while `POST /articles` will create
+a new resource with a different ID every time we call it.
 A resource can still change between two requests
 because it gets edited by someone else, has an updated timestamp or becomes stale.
-
-## Safe Methods
 
 Methods are safe if they don't change a resource. A `GET` for example
 should never change a resource. `DELETE` on the other hand, will always change a resource.
 This is important when it comes to caching, safe methods can always be cached.
 
-| Method  | is Safe |
-|---------|---------|
-| GET     | yes     |
-| PUT     | no      |
-| POST    | no      |
-| PATCH   | no      |
-| DELETE  | no      |
-| TRACE   | no      |
-| OPTIONS | yes     |
-| CONNECT | no      |
-| HEAD    | yes     |
+
+| Method  | is idempotent | is Safe |
+|---------|---------------|---------|
+| GET     | yes           | yes     |
+| PUT     | yes           | no      |
+| POST    | no            | no      |
+| PATCH   | no            | no      |
+| DELETE  | yes           | no      |
+| TRACE   | yes           | no      |
+| OPTIONS | yes           | yes     |
+| CONNECT | yes           | no      |
+| HEAD    | yes           | yes     |
 
 ## Lessons Learned
 
@@ -301,13 +293,15 @@ DELETE /articles/42
 
 We not only replaced the methods with appropriate ones,
 we also were able to remove all verbs from the endpoints.
-No more '/add, /edit, /delete'. Now there is only one endpoint left '/articles'.
-This is not only simpler for the consumer of the API,
-it's also easier to maintain when you only have one route to define.
-It also prevents you from inconsistent endpoint naming
-(add and create, edit and update, delete and remove).
+No more `/add, /edit, /delete`. Now there is only one endpoint left `/articles`.
 
-## Real World
+If we design all our endpoints like this we'll never have to think
+"did i call it /create or /add this time".
+Our config files and documentation are not bloated with verbs and duplicated endpoints.
+And best of all: our consumers can be dead simple and rely on standards.
 
-Most APIs implement `GET, POST, PUT and DELETE`. All the other methods are nice to have. But if you don't use,
-them return at least a `501 Not Implemented`.
+## TL;DR
+
+Most APIs implement `GET`, `POST`, `PUT` and `DELETE`. Other methods are quite useful
+but depending on the application more a nice to have than a requirement. We should always
+think twice which method is the right one for our purpose.

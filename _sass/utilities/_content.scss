@@ -37,4 +37,14 @@
   blockquote {
     @extend .quote;
   }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td,th {
+    border: 1px solid $color-background;
+    padding: .5em;
+    text-align: left;
+  }
 }

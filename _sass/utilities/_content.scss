@@ -34,6 +34,11 @@
     margin: 0;
   }
 
+  .img-inline {
+    width: auto;
+    display: inline;
+  }
+
   blockquote {
     @extend .quote;
   }

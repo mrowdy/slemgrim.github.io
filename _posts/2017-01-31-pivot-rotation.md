@@ -3,6 +3,7 @@ layout: post
 title: "Rotation by pivot in Unity editor"
 permalink: /unity-editor-pivot-rotation/
 author: slemgrim
+disqus_identifier: 0d914523af-8e13-4a91-91e1-asdf345afd
 --- 
 
 {% include video.html 

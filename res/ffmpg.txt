@@ -1,0 +1,2 @@
+ffmpeg -i pivot-rotation-1.flv -vcodec copy pivot-rotation-1.mp4
+ffmpeg -i pivot-rotation-1.flv -vcodec libvpx -acodec libvorbis pivot-rotation-1.webm

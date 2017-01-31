@@ -34,6 +34,11 @@
     margin: 0;
   }
 
+  .img-inline {
+    width: auto;
+    display: inline;
+  }
+
   blockquote {
     @extend .quote;
   }
@@ -46,5 +51,10 @@
     border: 1px solid $color-background;
     padding: .5em;
     text-align: left;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
   }
 }
